@@ -255,6 +255,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
         theoryContainer.innerHTML = htmlSnippet;
         navigateTo('screen-theory');
+        
+        // Magically apply rich python syntax highlighting if library loaded
+        if (window.Prism) {
+            Prism.highlightAllUnder(theoryContainer);
+        }
     };
 
     // Add CSS animations
