@@ -257,4 +257,29 @@ document.addEventListener('DOMContentLoaded', () => {
         .chevron { color: var(--grey-text); font-size: 1.2rem; }
     `;
     document.head.appendChild(style);
+
+    window.handleQuiz = function(element, isCorrect) {
+        // Reset options
+        document.querySelectorAll('#quiz-options .option').forEach(opt => {
+            opt.classList.remove('selected');
+            opt.classList.remove('wrong-selection');
+            opt.querySelector('.radio').classList.remove('active');
+            opt.querySelector('.radio').innerText = '';
+        });
+
+        element.classList.add('selected');
+        const radio = element.querySelector('.radio');
+        radio.classList.add('active');
+
+        if (isCorrect) {
+            radio.innerText = '✔️';
+            document.getElementById('quiz-accuracy').innerText = '100%';
+        } else {
+            element.classList.add('wrong-selection');
+            element.style.borderColor = '#ff4d4d';
+            radio.innerText = '❌';
+            radio.style.background = '#ff4d4d';
+            document.getElementById('quiz-accuracy').innerText = '0%';
+        }
+    };
 });
