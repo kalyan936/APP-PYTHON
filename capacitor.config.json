@@ -1,5 +1,5 @@
 {
   "appId": "com.stitch.app",
   "appName": "StitchApp",
-  "webDir": "."
+  "webDir": "www"
 }
