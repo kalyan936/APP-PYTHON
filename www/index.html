@@ -6,6 +6,7 @@
     <title>Stitch - Python Intelligence</title>
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Manrope:wght@600;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/pyodide/v0.24.1/full/pyodide.js"></script>
 </head>
 <body>
     <div id="app-container">
@@ -70,8 +71,8 @@
             </header>
 
             <div class="toolbar">
-                <button class="run-btn primary-btn-small">▸ Run</button>
-                <button class="debug-btn">🕷 Debug</button>
+                <button class="run-btn primary-btn-small" id="run-code-btn">▸ Run</button>
+                <button class="debug-btn">🕷 Clear</button>
                 <div class="spacer"></div>
                 <button class="icon-btn">⚙</button>
                 <button class="icon-btn">🕒</button>
@@ -83,14 +84,7 @@
                     <div class="window-controls"><span class="dot red"></span><span class="dot yellow"></span><span class="dot green"></span></div>
                 </div>
                 <div class="editor-content">
-                    <pre><code class="language-python"><span class="keyword">import</span> numpy <span class="keyword">as</span> np
-
-<span class="keyword">def</span> <span class="function">calculate_matrix</span>(data):
-    <span class="comment"># Multiply by scalar</span>
-    <span class="keyword">return</span> data * <span class="number">10.5</span>
-    
-matrix_a = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>]
-print(calculate_matrix(matrix_a))</code></pre>
+                    <textarea id="python-code-editor" class="code-textarea" spellcheck="false" placeholder="Write your Python code here..."></textarea>
                 </div>
             </div>
 
@@ -99,9 +93,8 @@ print(calculate_matrix(matrix_a))</code></pre>
                     <span class="tab active">TERMINAL</span>
                     <span class="tab">PROBLEMS</span>
                 </div>
-                <div class="terminal-content">
-                    <p>$ python main.py</p>
-                    <p class="output-green">Level: 25.0</p>
+                <div class="terminal-content" id="terminal-output" style="white-space: pre-wrap; word-wrap: break-word;">
+                    <p>$ waiting for execution...</p>
                 </div>
             </div>
 

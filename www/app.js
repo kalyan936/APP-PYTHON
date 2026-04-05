@@ -144,6 +144,15 @@ const theoryModules = [
     }
 ];
 
+let pyodideReadyPromise = null;
+async function initPyodide() {
+    const terminal = document.getElementById('terminal-output');
+    if(terminal) terminal.innerText = "$ Booting Neural Python Web-Engine...\n";
+    let pyodide = await loadPyodide();
+    if(terminal) terminal.innerText = "$ Python Engine Loaded ✓\n$ Ready for execution.";
+    return pyodide;
+}
+
 document.addEventListener('DOMContentLoaded', () => {
     const theoryMenuList = document.getElementById('theory-menu-list');
     const theoryContainer = document.getElementById('theory-dynamic-container');
@@ -191,6 +200,11 @@ document.addEventListener('DOMContentLoaded', () => {
         const activeScrollable = targetScreen?.querySelector('.scrollable');
         if (activeScrollable) {
             activeScrollable.scrollTop = 0;
+        }
+
+        // Auto-boot python engine if navigating strictly to practice screen
+        if (targetScreenId === 'screen-editor' && !pyodideReadyPromise && window.loadPyodide) {
+            pyodideReadyPromise = initPyodide();
         }
     };
 
@@ -282,4 +296,47 @@ document.addEventListener('DOMContentLoaded', () => {
             document.getElementById('quiz-accuracy').innerText = '0%';
         }
     };
+
+    // Execution Logic
+    const runBtn = document.getElementById('run-code-btn');
+    if (runBtn) {
+        runBtn.addEventListener('click', async () => {
+            const code = document.getElementById('python-code-editor').value;
+            const terminal = document.getElementById('terminal-output');
+            
+            if(!pyodideReadyPromise) {
+                terminal.innerText = "Error: Engine didn't boot. Are you offine? Check connection.";
+                return;
+            }
+            
+            terminal.innerText = "$ Executing sequence...\n";
+            try {
+                let pyodide = await pyodideReadyPromise;
+                
+                // Route Standard Output directly to HTML terminal
+                pyodide.setStdout({ batched: (msg) => { terminal.innerText += msg + "\n"; } });
+                
+                await pyodide.runPythonAsync(code);
+                terminal.innerText += "\n[Process Completed]";
+                
+                // Show completion banner natively!
+                document.querySelector('.success-notification').style.display = 'flex';
+                setTimeout(() => { document.querySelector('.success-notification').style.display = 'none'; }, 3000);
+            } catch (err) {
+                // Strip the brutal pyodide stack trace formatting purely to readable errors
+                let cleanErr = err.toString().split('File "<exec>"').pop();
+                terminal.innerText += "\n[Exception Caught]\n" + cleanErr.trim();
+            }
+        });
+    }
+
+    const clearBtn = document.querySelector('.debug-btn');
+    if(clearBtn) {
+        clearBtn.addEventListener('click', () => {
+            document.getElementById('terminal-output').innerText = "$ Console cleared.";
+        });
+    }
+
+    // Hide success pill by default
+    document.querySelector('.success-notification').style.display = 'none';
 });
