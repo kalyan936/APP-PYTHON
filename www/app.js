@@ -147,10 +147,26 @@ const theoryModules = [
 let pyodideReadyPromise = null;
 async function initPyodide() {
     const terminal = document.getElementById('terminal-output');
-    if(terminal) terminal.innerText = "$ Booting Neural Python Web-Engine...\n";
-    let pyodide = await loadPyodide();
-    if(terminal) terminal.innerText = "$ Python Engine Loaded ✓\n$ Ready for execution.";
-    return pyodide;
+    if(terminal) terminal.innerText = "$ Establishing Secure WebAssembly Environment...\n";
+    
+    try {
+        if (!window.loadPyodide) {
+            await new Promise((resolve, reject) => {
+                const script = document.createElement('script');
+                script.src = "https://cdn.jsdelivr.net/pyodide/v0.24.1/full/pyodide.js";
+                script.onload = resolve;
+                script.onerror = reject;
+                document.head.appendChild(script);
+            });
+        }
+        
+        let pyodide = await loadPyodide();
+        if(terminal) terminal.innerText = "$ Python Engine Loaded ✓\n$ Ready for execution.";
+        return pyodide;
+    } catch(err) {
+        if(terminal) terminal.innerText = "$ Fatal Engine Error: Your device's browser architecture may be too old to support WebAssembly (WASM), or your network connection rejected the download.";
+        return null;
+    }
 }
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -202,8 +218,8 @@ document.addEventListener('DOMContentLoaded', () => {
             activeScrollable.scrollTop = 0;
         }
 
-        // Auto-boot python engine if navigating strictly to practice screen
-        if (targetScreenId === 'screen-editor' && !pyodideReadyPromise && window.loadPyodide) {
+        // Auto-boot python engine organically if navigating strictly to practice screen
+        if (targetScreenId === 'screen-editor' && !pyodideReadyPromise) {
             pyodideReadyPromise = initPyodide();
         }
     };
