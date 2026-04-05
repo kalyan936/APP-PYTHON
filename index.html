@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Stitch - Python Intelligence</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Manrope:wght@600;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div id="app-container">
+        
+        <!-- ==================== SCREEN 1: DASHBOARD ==================== -->
+        <div id="screen-dashboard" class="screen active">
+            <header class="app-header">
+                <div class="avatar">👨‍💼</div>
+                <h1 class="gradient-text title-manrope">Python Intelligence</h1>
+                <div class="streak-badge">7 🔥</div>
+            </header>
+
+            <div class="main-content scrollable">
+                <div class="card current-progress">
+                    <p class="overline-text">CURRENT PROGRESS</p>
+                    <div class="progress-metric">
+                        <span class="large-number">64%</span> <span class="mastery-text">Mastery</span>
+                    </div>
+                    <div class="progress-bar-bg"><div class="progress-bar-fill" style="width: 64%"></div></div>
+                    <div class="assistant-quote">
+                        "Keep pushing! You've mastered Lists. Dictionaries are just around the corner. Focus on key-value pairs today!"
+                    </div>
+                </div>
+
+                <div class="card activity-streak">
+                    <h3 class="streak-title gold-text">7 Day Streak!</h3>
+                    <p class="streak-sub">Next milestone: 10 days</p>
+                    <div class="streak-grid">
+                        <div class="day past">M</div><div class="day past">T</div>
+                        <div class="day completed">✅</div><div class="day completed">✅</div>
+                        <div class="day completed">✅</div><div class="day completed">✅</div>
+                        <div class="day current">🔥</div>
+                    </div>
+                </div>
+
+                <div class="card next-lesson">
+                    <span class="pill-label">NEXT LESSON</span>
+                    <h2 class="lesson-heading">Advanced List Comprehensions</h2>
+                    <p class="lesson-body">Learn how to write elegant, Pythonic code by condensing loops into powerful single-line expressions.</p>
+                    <div class="lesson-meta">
+                        <span>🕒 12 mins</span> <span>⭐ Intermediate</span>
+                    </div>
+                    <button class="primary-btn" onclick="navigateTo('screen-editor')">Resume Session ▸</button>
+                </div>
+
+                <div class="pro-tip widget">
+                    <div class="pro-tip-border"></div>
+                    <div class="pro-tip-content">
+                        <h4 class="amber-text">💡 Pro Tip</h4>
+                        <p>Use <code>enumerate()</code> when you need both the index and value in a loop. It's more readable than <code>range(len())</code>.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ==================== SCREEN 2: EDITOR ==================== -->
+        <div id="screen-editor" class="screen">
+            <header class="app-header">
+                <button class="back-btn" onclick="navigateTo('screen-dashboard')">←</button>
+                <h1 class="gradient-text title-manrope">Python Intelligence</h1>
+                <div class="streak-badge">7 🔥</div>
+            </header>
+
+            <div class="toolbar">
+                <button class="run-btn primary-btn-small">▸ Run</button>
+                <button class="debug-btn">🕷 Debug</button>
+                <div class="spacer"></div>
+                <button class="icon-btn">⚙</button>
+                <button class="icon-btn">🕒</button>
+            </div>
+
+            <div class="editor-window">
+                <div class="editor-bar">
+                    <span class="file-name">main.py</span>
+                    <div class="window-controls"><span class="dot red"></span><span class="dot yellow"></span><span class="dot green"></span></div>
+                </div>
+                <div class="editor-content">
+                    <pre><code class="language-python"><span class="keyword">import</span> numpy <span class="keyword">as</span> np
+
+<span class="keyword">def</span> <span class="function">calculate_matrix</span>(data):
+    <span class="comment"># Multiply by scalar</span>
+    <span class="keyword">return</span> data * <span class="number">10.5</span>
+    
+matrix_a = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>]
+print(calculate_matrix(matrix_a))</code></pre>
+                </div>
+                
+                <div class="ai-overlay">
+                    <div class="robot-icon">🤖 Agentic Assistant</div>
+                    <p>I noticed you're using numpy. Want me to optimize this function for matrix multiplication?</p>
+                    <div class="ai-actions">
+                        <button class="text-btn purple">YES, OPTIMIZE</button>
+                        <button class="text-btn grey">DISMISS</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="terminal-section">
+                <div class="terminal-tabs">
+                    <span class="tab active">TERMINAL</span>
+                    <span class="tab">PROBLEMS</span>
+                </div>
+                <div class="terminal-content">
+                    <p>$ python main.py</p>
+                    <p class="output-green">Level: 25.0</p>
+                </div>
+            </div>
+
+            <div class="success-notification floating-pill">
+                ✅ Exercise Complete! Neural score updated.
+            </div>
+            <div style="height: 80px;"></div>
+        </div>
+
+        <!-- ==================== SCREEN 3: JOURNEY ==================== -->
+        <div id="screen-journey" class="screen">
+            <header class="app-header">
+                <h1 class="title-manrope white-text">Practice Journey</h1>
+            </header>
+            
+            <div class="main-content scrollable">
+                <p class="summary-text">Master Python fundamentals through interactive challenges. Each step unlocks new professional capabilities.</p>
+                
+                <div class="global-stats component-margin">
+                    <p class="overline-text">GLOBAL PROGRESS</p>
+                    <div class="stats-flex"><span class="large-number">64 %</span> <span class="icon">📈</span></div>
+                    <div class="progress-bar-bg"><div class="progress-bar-fill green-grad" style="width: 64%"></div></div>
+                </div>
+
+                <div class="skill-map component-margin">
+                    <div class="node completed"><div class="icon-wrap">{ }</div></div>
+                    <div class="line"></div>
+                    <div class="node current"><div class="icon-wrap glow">>_</div></div>
+                    <div class="line"></div>
+                    <div class="node locked"><div class="icon-wrap">🔒</div></div>
+                </div>
+
+                <div class="card current-module">
+                    <h3 class="white-text">Current Module</h3>
+                    <ul class="module-list">
+                        <li class="done"><span class="icon">✅</span> Lists & Tuples</li>
+                        <li class="active"><span class="icon">▶</span> Dictionary Comprehension</li>
+                        <li class="locked"><span class="icon">🔒</span> Lambda Functions</li>
+                    </ul>
+                </div>
+
+                <div class="card sandbox-card component-margin" onclick="navigateTo('screen-editor')">
+                    <h3 class="white-text">Live Coding Sandbox</h3>
+                    <p class="streak-sub">New exercises are generated every 24 hours based on your learning curve.</p>
+                    <button class="gradient-text-btn">Launch IDE ➔</button>
+                </div>
+                <div style="height: 100px;"></div>
+            </div>
+            
+            <!-- Instant Feedback Overlay -->
+            <div class="feedback-popup floating-pill">
+                ✅ Function logic is optimized! <span class="green-text">+50 XP</span>
+            </div>
+        </div>
+
+        <!-- ==================== SCREEN 4: QUIZ ==================== -->
+        <div id="screen-quiz" class="screen">
+            <header class="app-header">
+                <div class="avatar">👨‍💼</div>
+                <h1 class="title-manrope white-text">Python Intelligence</h1>
+                <div class="streak-badge">7 🔥</div>
+            </header>
+            
+            <div class="main-content scrollable">
+                <div class="hero-section center-text component-margin">
+                    <p class="gold-caps">CURRENT CHALLENGE</p>
+                    <h2 class="display-text title-manrope">List Comprehension Mastery</h2>
+                </div>
+
+                <div class="stats-card row-flex component-margin">
+                    <div class="col">
+                        <p class="overline-text">TIME LEFT</p>
+                        <p class="mint-mono">04:52</p>
+                    </div>
+                    <div class="col right-align">
+                        <p class="overline-text">ACCURACY</p>
+                        <p class="large-white">98%</p>
+                    </div>
+                </div>
+                <div class="progress-bar-bg margin-bot"><div class="progress-bar-fill blue-purple-grad" style="width: 60%"></div></div>
+
+                <div class="quiz-container component-margin">
+                    <div class="quiz-header">
+                        <span class="pill-label purple">Q8 / 12</span>
+                        <span class="grey-italic">Difficulty: Intermediate</span>
+                    </div>
+                    <p class="quiz-question">Which of the following is the correct syntax for a nested list comprehension that flattens a matrix [[1, 2], [3, 4]] into [1, 2, 3, 4]?</p>
+                    
+                    <div class="code-snippet margin-bot">
+<pre><code class="language-python"><span class="string">matrix</span> = [[<span class="number">1</span>, <span class="number">2</span>], [<span class="number">3</span>, <span class="number">4</span>]]
+<span class="comment"># How to flatten this?</span></code></pre>
+                    </div>
+
+                    <div class="options-stack">
+                        <div class="option"><span>A) [num for num in row for row in matrix]</span><div class="radio"></div></div>
+                        <div class="option selected"><span>B) [num for row in matrix for num in row]</span><div class="radio active">✔️</div></div>
+                        <div class="option"><span>C) [row for num in matrix for num in row]</span><div class="radio"></div></div>
+                    </div>
+                </div>
+
+                <div class="leaderboard component-margin">
+                    <h3 class="white-text margin-bot">Top Performers 🏆</h3>
+                    <div class="rank-row"><div class="rank-avatar">👩‍💻</div><div class="rank-info"><span class="name">Sarah.py <span class="pro-tag">PRO</span></span><span class="xp">12,450 XP</span></div><div class="badge gold">1</div></div>
+                    <div class="rank-row"><div class="rank-avatar">👨‍💻</div><div class="rank-info"><span class="name">ZenCoder</span><span class="xp">11,920 XP</span></div><div class="badge silver">2</div></div>
+                    <div class="rank-row active-user"><div class="rank-avatar">👨‍💼</div><div class="rank-info"><span class="name">You (Rank 42)</span><span class="xp">8,240 XP <span class="green-up">↗</span></span></div></div>
+                </div>
+                
+                <div style="height: 100px;"></div>
+            </div>
+        </div>
+
+        <!-- ==================== SCREEN 5: THEORY MENU ==================== -->
+        <div id="screen-theory-menu" class="screen">
+            <header class="app-header">
+                <h1 class="title-manrope white-text">Python Curriculum</h1>
+                <span class="pill-label dark">13 Modules</span>
+            </header>
+            
+            <div class="main-content scrollable">
+                <p class="lesson-body margin-bot">Select a theory module to begin your learning journey.</p>
+                <div id="theory-menu-list">
+                    <!-- Javascript injects theory menu cards here -->
+                </div>
+                <div style="height: 100px;"></div>
+            </div>
+        </div>
+
+        <!-- ==================== SCREEN 6: THEORY CONTENT ==================== -->
+        <div id="screen-theory" class="screen">
+            <header class="app-header">
+                <span class="pill-label purple">🎓 THEORY MODULE</span>
+            </header>
+            
+            <div class="main-content scrollable" id="theory-dynamic-container">
+                <!-- Javascript injects the detailed content of the selected module here -->
+            </div>
+        </div>
+
+        <!-- ==================== GLOBAL BOTTOM NAV ==================== -->
+        <nav class="bottom-nav">
+            <button class="nav-item" onclick="navigateTo('screen-theory-menu')">
+                <span class="icon">📚</span>
+                <span>THEORY</span>
+            </button>
+            <button class="nav-item" onclick="navigateTo('screen-editor')">
+                <span class="icon">💻</span>
+                <span>PRACTICE</span>
+            </button>
+            <button class="nav-item active" onclick="navigateTo('screen-dashboard')">
+                <span class="icon">🏠</span>
+                <span>HOME</span>
+            </button>
+            <button class="nav-item" onclick="navigateTo('screen-quiz')">
+                <span class="icon">🎯</span>
+                <span>QUIZZES</span>
+            </button>
+            <button class="nav-item" onclick="navigateTo('screen-journey')">
+                <span class="icon">🗺</span>
+                <span>PROJECTS</span>
+            </button>
+        </nav>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
