@@ -1,0 +1,36 @@
+name: Build iOS App
+
+on:
+  push:
+    branches: [ "main", "master" ]
+  workflow_dispatch:
+
+jobs:
+  build-ios:
+    name: Build iOS App
+    runs-on: macos-latest
+    
+    steps:
+      - name: Checkout Source Code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 18
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Sync Capacitor project for iOS
+        run: npx cap sync ios
+
+      - name: Setup fastlane (Optional, for building .ipa)
+        run: brew install fastlane
+
+      - name: Build iOS App
+        run: |
+          cd ios/App
+          # Note: A real .ipa build requires Apple Developer Certificates and Provisioning Profiles
+          # This command builds the app but does not securely sign it for standard device install
+          xcodebuild clean build -workspace App.xcworkspace -scheme App -destination "generic/platform=iOS" CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO
