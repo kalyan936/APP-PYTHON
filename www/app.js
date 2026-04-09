@@ -346,355 +346,703 @@ const theoryModules = [
     {
         id: 1,
         title: "Introduction to Python",
-        tag: "THE BEGINNING",
-        overview: "Python is a high-level, interpreted programming language known for its clear syntax and readability. It is the perfect starting point for any software engineer.",
-        explanation: "Created in 1991, Python's design philosophy emphasizes <strong>readability</strong>. It uses simple indentation instead of curly braces to define blocks of code.<br><br>Today, it is used for:<br>• <strong>Web Development:</strong> Backend logic for sites like Instagram.<br>• <strong>Data Science:</strong> Analyzing massive datasets.<br>• <strong>Machine Learning:</strong> Creating AI models.<br>• <strong>Automation:</strong> Writing scripts to handle repetitive tasks.",
-        code: `# Your first Python code
-print("Hello World!")
+        tag: "THE GENESIS",
+        overview: "Welcome to the world of Python, the most influential programming language of the 21st century. Whether you are aiming to build the next generation of AI, analyze the global economy, or simply automate your daily tasks, Python is the gateway to your future. It is a language designed not just to be executed by machines, but to be read by humans.",
+        explanation: `<strong>1. The Philosophy of Zen:</strong> Python follows a strict set of principles known as the 'Zen of Python'. One of its core tenets is: <em>"Beautiful is better than ugly."</em> This means Python code is intentionally designed to look clean, organized, and almost like the English language. Unlike traditional languages that use complex brackets <code>{ }</code> and semicolons <code>;</code>, Python uses whitespace (indentation). This isn't just a style choice—it's a requirement that forces developers to write readable code.<br><br>
+        <strong>2. Why Python Dominates Today:</strong><br>
+        • <strong>AI and Machine Learning:</strong> 90% of AI research is done in Python. Libraries like TensorFlow and PyTorch have made it the heartbeat of Silicon Valley.<br>
+        • <strong>Data Science:</strong> From predicting weather patterns to analyzing stock markets, Python's Pandas and NumPy libraries are the industry standard.<br>
+        • <strong>Web Backend:</strong> Instagram, Spotify, and Pinterest all run on Python-based frameworks like Django and Flask.<br>
+        • <strong>NASA & SpaceX:</strong> From controlling telescopes to launching rockets, Python is used for critical mission-control software.<br><br>
+        <strong>3. The Interpreter Advantage:</strong> Python is an <em>Interpreted</em> language. This means that unlike languages like C++, you don't have to wait for your plan to 'compile' into a file. You write a line, and Python executes it instantly. This creates a tight feedback loop that is perfect for learning and rapid prototyping.<br><br>
+        <strong>4. The Ecosystem (Batteries Included):</strong> Python is famous for its 'Batteries Included' philosophy. This means that out of the box, it comes with a massive library of tools to handle everything from internet protocols to complex mathematics. If Python doesn't have it built-in, the community has likely created a 'Package' for it among the 400,000+ available on PyPI.`,
+        code: `# Your journey begins with a simple output
+print("Establishing connection with the Python environment...")
 
-# Python is like talking to a computer
-if 5 > 2:
-    print("Logic is simple in Python!")`,
-        visual: "A glowing Python logo transforming into a bridge connecting a human brain to a computer core.",
-        recap: "Python is designed for humans first.<br>Clean indentation is required for structure.<br>It is the lead language for AI and Data Science.",
-        hook: "Run your first print statement to start your coding journey!"
+# Python is self-documenting. Use comments to explain your 'why'
+# The computer ignores these lines, but they are vital for your team
+
+x = 10
+y = 20
+
+# Python executes logic top-to-bottom
+if x < y:
+    print("Logic confirmed: 10 is indeed less than 20.")
+    print("Notice how this line is indented? That signifies it belongs to the 'if' block.")`,
+        visual: "A glowing, neon-green digital bridge appearing out of thin air, connecting a human consciousness to a massive, pulsating crystalline computer core.",
+        recap: "Python is a high-level, interpreted language focused on readability.<br>It is the primary language for Artificial Intelligence and Data Science.<br>Indentation is mandatory and defines the structure of your program.<br>It follows the 'Zen of Python' principle: Simple is better than complex.",
+        hook: "Run your first script! Type: print('I am starting my career as a Python Developer') and watch the terminal respond."
     },
     {
         id: 2,
         title: "Variables",
-        tag: "DATA STORAGE",
-        overview: "Variables are containers for storing data values. In Python, you don't need to declare types; you just assign a name to a value.",
-        explanation: `<strong>Naming Rules:</strong> Variable names must start with a letter or underscore and are case-sensitive.<br><br><strong>Dynamic Typing:</strong> You can change a variable's type simply by assigning it a new value. This makes Python extremely flexible during development.`,
-        code: `name = "Stitch"    # A String
-level = 100         # An Integer
-is_active = True    # A Boolean
+        tag: "DIGITAL CONTAINERS",
+        overview: "Variables are the memory of your program. Without them, a computer would have no way to remember a user's name, a player's score, or the status of a mission. In Python, variables are like 'intelligent jars' that automatically adapt to whatever you put inside them.",
+        explanation: `<strong>1. The Assignment Operator (=):</strong> In math, = means 'is equal to'. In Python, it means 'RECEIVE'. When you write <code>score = 100</code>, you are telling the computer to create a memory slot named 'score' and slide the value 100 inside it.<br><br>
+        <strong>2. Dynamic Typing (The Python Power):</strong> In languages like Java or C, you must tell the computer: 'This jar will ONLY ever hold numbers.' If you try to put text in it, the program crashes. Python is different. It is <em>Dynamically Typed</em>. This means you can store a number in a variable, and later replace it with text or a list. The variable adapts to the data.<br><br>
+        <strong>3. Variable Naming Conventions:</strong><br>
+        • <strong>Lower_snake_case:</strong> This is the standard for variables (e.g., <code>user_score</code>, <code>is_logged_in</code>).<br>
+        • <strong>Meaningful Names:</strong> Never name a variable <code>x</code> if it stores a price. Use <code>product_price</code>. This makes your code 'Self-Documenting'.<br>
+        • <strong>Reserved Words:</strong> You cannot name a variable <code>print</code> or <code>if</code>, as these are reserved for Python's own internal commands.<br><br>
+        <strong>4. Memory Addresses:</strong> Under the hood, Python doesn't actually 'put the value in the jar'. It puts the value in a physical location in your RAM and makes the variable name 'point' to that location. If you change the value, the variable points to a new location. This is why Python is so memory-efficient with large datasets.`,
+        code: `# Assignment
+player_name = "Stitch"
+player_health = 100
+is_ready = True
 
-# Variables can change!
-level = "Master"
-print(f"{name} is now at {level} level.")`,
-        visual: "A row of colorful glowing jars, each labelled with a name and containing different types of data liquid.",
-        recap: "Variables store information for later use.<br>Python handles data types automatically.<br>Use descriptive names for better readability.",
-        hook: "Create a variable called 'xp' and set it to 500!"
+print(f"Player {player_name} starting with {player_health} HP.")
+
+# Dynamic Typing in Action
+# We update the 'player_health' from a number to a status string
+player_health = "Critical Condition"
+print(f"Status Update: {player_health}")
+
+# Multiple Assignment
+a, b, c = 1, 2, 3
+print(f"Rapid variables: {a}, {b}, {c}")`,
+        visual: "A massive, infinitely tall warehouse where robotic arms are slapping holographic labels onto glowing crystal canisters of light.",
+        recap: "Variables are named references to memory locations.<br>Python uses '=' to assign values, moving from right to left.<br>Dynamic typing allows variables to change their data type at runtime.<br>Use snake_case and descriptive names for all variable declarations.",
+        hook: "Create three variables: 'city', 'country', and 'population'. Print them in a single sentence using an f-string!"
     },
     {
         id: 3,
         title: "Operators",
-        tag: "MATH & LOGIC",
-        overview: "Operators are used to perform operations on variables and values. They are the building blocks of every calculation and logical check.",
-        explanation: "<strong>1. Arithmetic:</strong> <code>+</code>, <code>-</code>, <code>*</code>, <code>/</code>, <code>//</code> (floor), <code>%</code> (remainder).<br><strong>2. Comparison:</strong> <code>==</code>, <code>!=</code>, <code>></code>, <code><</code>. Returns True or False.<br><strong>3. Logical:</strong> <code>and</code>, <code>or</code>, <code>not</code>. These allow you to combine multiple conditions into a single decision.",
-        code: `# Math operations
-result = 10 % 3 # Remainder is 1
+        tag: "LOGIC ENGINES",
+        overview: "Operators are the 'verbs' of the programming world. They are the symbols that indicate a specific action should be performed on your data. Whether you are building a calculator, a physics engine for a game, or a facial recognition system, operators are what make the data MOVE.",
+        explanation: `<strong>1. Arithmetic Operators (The Mathematician):</strong><br>
+        • <code>**</code> (Exponentiation): Calculate powers (e.g., 2**3 is 8).<br>
+        • <code>//</code> (Floor Division): Divides and rounds DOWN to the nearest whole number.<br>
+        • <code>%</code> (Modulo): Returns only the remainder. This is used in coding to check if numbers are even/odd or to create scrolling loops.<br><br>
+        <strong>2. Comparison Operators (The Decision Maker):</strong> These compare two items and return a <code>Boolean</code> (True or False).<br>
+        • <code>==</code>: Checks if values are identical. (Note: different from the single = assignment operator).<br>
+        • <code>!=</code>: Checks if values are NOT identical.<br><br>
+        <strong>3. Logical Operators (The Architect):</strong> These allow you to build complex 'if/then' rules.<br>
+        • <code>and</code>: Returns True only if BOTH conditions are met.<br>
+        • <code>or</code>: Returns True if at least ONE condition is met.<br>
+        • <code>not</code>: Reverses the result (True becomes False).<br><br>
+        <strong>4. Assignment Operators:</strong> Shortcuts for updating variables. <code>score += 10</code> is the same as <code>score = score + 10</code>. This is used thousands of times in professional game loops and financial tracking systems.`,
+        code: `# Arithmetic: The power of Modulo
+number = 15
+print(f"Is {number} Even? {number % 2 == 0}")
 
-# Logical checks
-age = 20
-has_ticket = True
-can_enter = age >= 18 and has_ticket
+# Logic: Building a Security Check
+user_age = 25
+has_permission = True
+banned = False
 
-print(f"Can enter? {can_enter}")`,
-        visual: "A complex clockwork mechanism with interweaving gears representing different math symbols.",
-        recap: "Arithmetic operators handle numeric calculations.<br>Logical operators evaluate truth values.<br>Comparison operators compare two values.",
-        hook: "Try calculating the remainder of 15 divided by 4 using the % operator!"
+# Complex logical chain
+access_granted = (user_age >= 21 or has_permission) and not banned
+print(f"System Access: {access_granted}")
+
+# Augmented Assignment
+gold = 100
+gold += 50 # Add loot
+gold *= 2  # Double with a power-up
+print(f"Total Gold: {gold}")`,
+        visual: "A massive, brass Victorian-era mechanical computer where giant gears with symbols (+, -, *, /) interlock perfectly to output glowing numbers.",
+        recap: "Arithmetic operators handle numeric math and exponents.<br>Comparison operators are the basis of all computer decisions.<br>Logical operators (and, or, not) combine multiple conditions.<br>Augmented assignment (+=, -=) provides a concise way to update data.",
+        hook: "Calculate 2 raised to the power of 10 using the ** operator and check if it is greater than 1000!"
     },
     {
         id: 4,
         title: "Input & Output",
-        tag: "INTERACTION",
-        overview: "Programs need to communicate. Input allows users to provide data, and Output displays results back to the user.",
-        explanation: "<strong>1. Output:</strong> Use <code>print()</code>. F-strings (e.g., <code>f'Hello {name}'</code>) are the modern way to include variables in text.<br><br><strong>2. Input:</strong> Use <code>input()</code>. <strong>Crucial:</strong> input() always returns data as a <strong>string</strong>. You must convert it (casting) if you want to use it as a number.",
-        code: `# Getting user data
-user_name = input("Enter your name: ")
-age = int(input("Enter your age: ")) # Convert to int
+        tag: "HUMAN INTERFACE",
+        overview: "A program that cannot interact with a human is just a silent box of code. Input and Output (I/O) are the digital sensory organs of your application. They allow your script to 'listen' to the user and 'speak' through the screen.",
+        explanation: `<strong>1. Output with f-strings (The Modern Standard):</strong> In the past, joining text and variables was messy. Today, we use <em>Formatted String Literals</em>. By placing an <code>f</code> before the opening quote, you can drop any variable directly into curly braces <code>{ }</code>. It is fast, readable, and handles different data types automatically.<br><br>
+        <strong>2. The Input Function:</strong> This function pauses the entire program and waits for the user to type something and press 'Enter'. This is how we build interactive chatbots, CLI tools, and login screens.<br><br>
+        <strong>3. The Data Type Trap (CRITICAL):</strong> The <code>input()</code> function is 'type-blind'. It treats everything—even numbers—as <strong>Text (Strings)</strong>. If you ask for a user's age and they type '25', Python sees it as the word '25', not the number. You cannot do math with words! To fix this, you must 'wrap' the input in a converter like <code>int()</code> or <code>float()</code>.<br><br>
+        <strong>4. Escape Characters:</strong> Sometimes you need to format your output with more than just words. Use <code>\\n</code> for a new line or <code>\\t</code> for a tab space. This allows you to create structured tables and professional-looking reports in the terminal.`,
+        code: `# Phase 1: Interactive Conversation
+user_name = input("Identify yourself, Engineer: ")
+print(f"Hello, {user_name}. Accessing neural network...\\n")
 
-print(f"Welcome {user_name}! In 10 years, you will be {age + 10}.")`,
-        visual: "A futuristic holographic interface where speech bubbles float between a human and a terminal.",
-        recap: "print() sends data to the screen.<br>input() pauses execution and waits for user typing.<br>Always cast inputs if you need numeric data.",
-        hook: "Ask the user for their favorite color and print it back with a message!"
+# Phase 2: Numeric Input with Casting
+# We take the input and immediately convert it to float (decimal number)
+current_temp = float(input("Enter current reactor temperature (°C): "))
+threshold = 100.5
+
+if current_temp > threshold:
+    print(f"WARNING: Temperature {current_temp} exceeds safety margin of {threshold}!")
+else:
+    print("Reactor status: STABLE")
+
+# Phase 3: Multi-line reporting
+print("\\n--- SYSTEM REPORT ---")
+print(f"USER:\\t{user_name}")
+print(f"STATUS:\\tOperational")`,
+        visual: "A high-definition holographic console where glowing text cascades down in front of a user, responding in real-time to their touch and voice commands.",
+        recap: "print() is used to display data; f-strings are the preferred formatting method.<br>input() always returns data as a String (Text).<br>Explicit casting (int(), float()) is required to use input for math.<br>Escape characters like \\n and \\t allow for structured text formatting.",
+        hook: "Write a script that asks the user for two numbers, multiplies them, and prints the result in a friendly message!"
     },
     {
         id: 5,
         title: "Data Types",
-        tag: "CORE TYPES",
-        overview: "Everything in Python is an object, and every object has a data type. Understanding these types is vital for memory and logic.",
-        explanation: "<strong>1. Numeric:</strong> <code>int</code> (whole numbers), <code>float</code> (decimals), <code>complex</code>.<br><strong>2. Text:</strong> <code>str</code> (strings of characters).<br><strong>3. Boolean:</strong> <code>bool</code> (True or False values).<br><strong>4. Sequence Types:</strong> Groups like <code>list</code> and <code>tuple</code>.<br><br>Use <code>type()</code> to check what type of data a variable is holding.",
-        code: `x = 10.5        # float
-y = "Hello"     # str
-z = True        # bool
+        tag: "NATURE OF DATA",
+        overview: "In Python, everything has a 'Nature'. Data Types define what a piece of data is, what it can do, and how it is stored in your computer's brain. Mastering these types is the difference between writing 'scripts' and building 'software'.",
+        explanation: `<strong>1. Integers (int):</strong> Whole numbers without decimals. They can be positive, negative, or zero. In Python, integers have <em>arbitrary precision</em>, meaning they can grow as large as your computer's memory allows. You can calculate the number of atoms in the universe without fear of 'overflow'.<br><br>
+        <strong>2. Floating Point Numbers (float):</strong> These represent real numbers with a decimal point. While extremely powerful, they are slightly less precise than integers due to how computers handle binary fractions. Use them for coordinates, currency (usually), and scientific measurements.<br><br>
+        <strong>3. Strings (str):</strong> Any sequence of characters wrapped in quotes. Strings in Python are <em>Immutable</em>, meaning once you create a string, you cannot change a single character inside it—you must create a new string instead.<br><br>
+        <strong>4. Booleans (bool):</strong> The simplest but most powerful type. It can only be <code>True</code> or <code>False</code>. They are the foundation of all computer logic, acting as the 'On/Off' switches of your code.<br><br>
+        <strong>5. Sequence and Mapping Types:</strong> Python also includes complex types like Lists, Tuples, and Dictionaries which act as 'Compound' types to hold multiple values at once. We will explore these in depth in Module 11-14.`,
+        code: `# Integers: No limit to size!
+stars_in_galaxy = 100_000_000_000 
+print(f"Stars: {stars_in_galaxy}")
 
-print(f"x is a {type(x)}")
-print(f"z is a {type(z)}")`,
-        visual: "A sorting machine placing different shapes (data) into specialized bins (types).",
-        recap: "Integers and Floats handle numbers.<br>Strings handle text data.<br>Booleans handle yes/no logic.",
-        hook: "Check the type of the value 100.0 using the type() function!"
+# Floats: Precision matters
+pi_value = 3.14159
+print(f"Pi is approximately: {pi_value}")
+
+# Strings: Multi-line and concatenation
+message = "Python is" + " Awesome"
+multi_line_str = """
+This is a long 
+multi-line string
+block.
+"""
+
+# Booleans: The Logic Switches
+is_learning = True
+is_tired = False
+print(f"Is student succeeding? {is_learning and not is_tired}")`,
+        visual: "A high-tech lab where a scientist is analyzing different substances—some solid (integers), some liquid (floats), and some glowing energy pulses (booleans).",
+        recap: "int handles whole numbers; float handles decimals.<br>Strings are immutable text sequences wrapped in quotes.<br>Booleans (True/False) drive the decision-making of the program.<br>Use the type() function to inspect any variable's nature at runtime.",
+        hook: "Identify the data type of '123' versus 123. If you add them, will Python be happy? Try it!"
     },
     {
         id: 6,
         title: "Type Casting",
-        tag: "TRANSFORMATION",
-        overview: "Type Casting is the process of converting one data type into another. This is often necessary when mixing different types of data.",
-        explanation: "<strong>1. Implicit Casting:</strong> Python does this automatically (e.g., adding an int to a float).<br><strong>2. Explicit Casting:</strong> You manually convert using functions like <code>int()</code>, <code>float()</code>, or <code>str()</code>.<br><br>This is most common when reading numeric input from a user or combining strings with numbers in old-style printing.",
-        code: `age_str = "25"
-age_int = int(age_str) # Conversion to int
+        tag: "SHAPE-SHIFTING",
+        overview: "Data is often provided in a format that isn't ready for work. Type Casting (or Type Conversion) is the process of changing a value from one 'Nature' to another. It is the core of data cleaning and user input handling.",
+        explanation: `<strong>1. Implicit Casting (The Automatic Way):</strong> Python is helpful. If you add an integer (5) to a float (2.0), it knows the result must be a float (7.0) to prevent losing data. You don't have to do anything here.<br><br>
+        <strong>2. Explicit Casting (The Manual Way):</strong> This is when YOU take control. <br>
+        • <code>int()</code>: Chops off the decimal point of a float. It is NOT rounding; it is truncation.<br>
+        • <code>float()</code>: Adds a .0 to an integer to prepare it for high-precision math.<br>
+        • <code>str()</code>: Turns anything (even lists or advanced objects) into readable text. This is vital for logging and reporting.<br><br>
+        <strong>3. The Value Error Risk:</strong> You can't cast 'Hello' into an <code>int</code>. If you try, Python will throw a <em>ValueError</em>. As a professional, you must ensure your data is 'clean' before you attempt to cast it.<br><br>
+        <strong>4. Bool Casting:</strong> In Python, everything has a 'Truthy' or 'Falsy' value. 0, empty strings "", and empty lists [] are Falsy. Almost everything else is Truthy. You can use <code>bool()</code> to check if a variable actually contains data.`,
+        code: `# Implicit: Float wins
+result = 10 + 4.5
+print(f"Implicit casting result: {result} is a {type(result)}")
 
-price = 19.99
-price_rounded = int(price) # results in 19 (removes decimals)
+# Explicit: Truncation
+pi = 3.99
+print(f"Casting Pi to Int: {int(pi)}") # Result: 3
 
-print(f"Age plus 5: {age_int + 5}")`,
-        visual: "A magical lens that turns a block of wood (string) into a solid block of metal (integer).",
-        recap: "int() converts to whole numbers.<br>str() converts anything to text.<br>float() adds decimal points to integers.",
-        hook: "Convert the string '55' into a float and print it!"
+# String conversion for concatenation
+age = 25
+print("I am " + str(age) + " years old.")
+
+# Truthy check
+username = ""
+print(f"Does username exist? {bool(username)}")`,
+        visual: "A digital alchemy table where a block of solid ice (string) is melted into water (float) and then frozen into a precise geometric cube (integer).",
+        recap: "Implicit casting happens automatically to preserve precision.<br>Explicit casting uses constructor functions like int(), float(), and str().<br>Casting to int always truncates (removes decimals) without rounding.<br>The bool() function assesses the 'truthiness' of any data object.",
+        hook: "Ask the user for their birth year, cast it to an integer, and subtract it from the current year to reveal their age!"
     },
     {
         id: 7,
         title: "Conditional Statements",
-        tag: "LOGIC GATES",
-        overview: "Conditional statements allow your program to make decisions. Without them, your code would just run the same way every single time.",
-        explanation: "<strong>1. If:</strong> Executes if a condition is True.<br><strong>2. Elif:</strong> Short for 'else if'; checks another condition if the first was False.<br><strong>3. Else:</strong> The 'catch-all' that runs if none of the previous conditions were met.<br><br>Python uses <strong>colon (:)</strong> and <strong>indentation</strong> to define which code belongs to the condition.",
-        code: `score = 85
+        tag: "DECISION ARCHITECTURE",
+        overview: "In a static script, every line runs in order. In a real application, the program must sense its environment and choose a path. Conditional statements (if, elif, else) are the brain cells of your software, allowing for complex decision-making based on dynamic data.",
+        explanation: `<strong>1. The 'If' Foundation:</strong> Every decision starts with <code>if</code>. If the condition is True, the indented code block below it runs. If False, Python skips it entirely.<br><br>
+        <strong>2. Branching with 'Elif':</strong> Short for 'Else If'. Use this to check multiple specific conditions in sequence. Python checks them one by one and stops as soon as it finds a True one.<br><br>
+        <strong>3. The Catch-All 'Else':</strong> This is your fallback. If none of the conditions were met, the <code>else</code> block executes. It is incredibly important for error handling and providing default behaviors.<br><br>
+        <strong>4. Nested Conditionals:</strong> You can place an <code>if</code> inside another <code>if</code>. This allows you to build 'Deep Logic' (e.g., 'If the user is logged in, AND if they are an admin, then allow access').<br><br>
+        <strong>5. Shorthand (Ternary):</strong> For simple decisions, you can write them in one line: <code>status = "Adult" if age >= 18 else "Minor"</code>. High-level developers use this to keep code succinct.`,
+        code: `# Scenario: Automated Smart Home
+temp = 22
+is_day = True
 
-if score >= 90:
-    print("Grade: A")
-elif score >= 80:
-    print("Grade: B")
+if temp > 25:
+    print("Action: Cooling active.")
+elif temp < 18:
+    print("Action: Heating active.")
 else:
-    print("Keep studying!")`,
-        visual: "A literal fork in the road where a digital sign post lights up based on your data input.",
-        recap: "if starts the check sequence.<br>elif adds extra logic branches.<br>else provides the default behavior.",
-        hook: "Write an if statement that prints 'Access Granted' if a variable password is 'secret'!"
+    print("Action: Temperature optimal.")
+
+# Nested Logic Check
+user_active = True
+has_premium = False
+
+if user_active:
+    if has_premium:
+        print("Welcome to the Platinum Lounge.")
+    else:
+        print("Welcome, Basic User.")
+else:
+    print("Account suspended.")`,
+        visual: "A literal 3D fork in a glowing digital highway where neon signs light up in real-time, guiding data packets into different tunnels based on logic gates.",
+        recap: "Indentations (4 spaces) define the code blocks for each condition.<br>Python stops at the FIRST True condition in an if-elif chain.<br>The 'else' block provides a vital safety default for your logic.<br>Nested conditionals allow for multi-layered decision trees.",
+        hook: "Write a script that takes a student's numerical grade and outputs 'A', 'B', 'C', or 'F' using an elif chain!"
     },
     {
         id: 8,
         title: "While Loops",
-        tag: "REPETITION",
-        overview: "A While Loop repeats a block of code as long as a specified condition remains True. It's useful when you don't know the exact number of iterations beforehand.",
-        explanation: "<strong>The Structure:</strong> First, initialize a variable. Then, set the <code>while</code> condition. Inside the loop, you must <strong>update</strong> the variable so the loop eventually ends, otherwise you create an 'Infinite Loop'.<br><br><strong>Break:</strong> Use <code>break</code> to stop the loop immediately, even if the condition is still True.",
-        code: `count = 1
-while count <= 3:
-    print(f"Iteration number: {count}")
-    count += 1  # Increment to avoid infinite loop
+        tag: "PERSISTENT EXECUTION",
+        overview: "While loops are the 'heartbeat' of interactive software. They keep the program alive as long as a certain condition stays True. Whether it is an app waiting for you to click a button, or a game loop running at 60 frames per second, the while loop is the engine under the hood.",
+        explanation: `<strong>1. The Anatomy of a While Loop:</strong> It consists of a <em>Condition</em> and a <em>Body</em>. The loop checks the condition, runs the body, and then immediately jumps back up to check the condition again. This cycle repeats indefinitely.<br><br>
+        <strong>2. Avoiding the Infinite Abyss:</strong> If your condition never becomes False, your program hangs. This is an 'Infinite Loop'. To avoid this, you must ALWAYS include a line inside the loop that modifies a variable used in the condition.<br><br>
+        <strong>3. The Sentinel Control:</strong> Use while loops when you don't know how many times you need to repeat. For example: 'Keep asking for an email until the user types a valid one'.<br><br>
+        <strong>4. Break and Continue:</strong> <br>
+        • <code>break</code>: Acts as an emergency eject button. It stops the loop immediately and moves to the code below it.<br>
+        • <code>continue</code>: Skips the rest of the current turn and jumps back to the top of the loop for the next check.`,
+        code: `# Reactor Startup Sequence
+power_level = 0
+target = 30
 
-print("Loop finished!")`,
-        visual: "A circular race track where a car keeps going until its 'gas' variable hits zero.",
-        recap: "While loops run while a condition is True.<br>Always update the control variable inside the loop.<br>Use them for listener loops or retry logic.",
-        hook: "Create a while loop that prints numbers from 5 down to 1!"
+while power_level < target:
+    power_level += 5
+    print(f"Current Output: {power_level} GW")
+    if power_level == 15:
+        print("Note: Stabilizers engaged.")
+
+print("Reactor Online.")
+
+# Sentinel Input Example
+secret_key = ""
+while secret_key != "1234":
+    secret_key = input("Enter Security Key (Hint: 1234): ")
+    if secret_key == "quit":
+        break
+
+print("Vault Unlocked.")`,
+        visual: "A circular particle accelerator where a beam of light keeps spinning faster and faster until a specific energy threshold is hit.",
+        recap: "While loops execute based on truth conditions, not predefined counts.<br>Infinite loops can crash apps; always ensure an exit strategy exists.<br>Break exits the loop; Continue restarts the loop from the top.<br>While loops are most common in game engines and user-input validation.",
+        hook: "Create a loop that prints 'Hello' and then asks the user if they want to 'stop'. Exit the loop only when they type 'yes'!"
     },
     {
         id: 9,
         title: "For Loops",
-        tag: "ITERATION",
-        overview: "A For Loop is used to iterate over a sequence (like a list, string, or range). It is predictable and executes a set number of times.",
-        explanation: "<strong>1. Range:</strong> <code>range(5)</code> generates numbers from 0 to 4.<br><strong>2. Iterating Sequences:</strong> You can loop through every letter in a word or every item in a list directly.<br><strong>3. Continue:</strong> Use <code>continue</code> to skip the rest of the current iteration and move to the next one.",
-        code: `# Using range
-for i in range(1, 4):
-    print(f"Step {i}")
+        tag: "LINEAR PROCESSING",
+        overview: "If while loops are about persistence, for loops are about precision. A for loop is an iterator used to step through a sequence of items one by one. It is the gold standard for processing lists of users, pixels in an image, or files on a hard drive.",
+        explanation: `<strong>1. The 'For-In' Concept:</strong> In Python, you don't 'count' from 1 to 10 in a for loop like in older languages. Instead, you say: 'For every target in this group, do this'. This is incredibly readable and reduces errors.<br><br>
+        <strong>2. The Marvelous Range() Function:</strong> <code>range(10)</code> creates a sequence of integers from 0 to 9. <br>
+        • <code>range(5, 10)</code>: Start at 5, stop before 10.<br>
+        • <code>range(0, 100, 10)</code>: Count by tens (0, 10, 20...).<br><br>
+        <strong>3. Iterating Over Strings:</strong> Since a string is just a collection of characters, you can loop through words. This is vital for text processing and cryptography.<br><br>
+        <strong>4. Else with Loops:</strong> A unique Python feature! You can add an <code>else</code> block AFTER a loop. It runs only if the loop completed naturally WITHOUT hitting a <code>break</code>. This is perfect for searching tasks.`,
+        code: `# Automating a Message Broadcast
+recipients = ["Alice", "Bob", "Charlie"]
 
-# Iterating a string
-for char in "PY":
-    print(f"Letter: {char}")`,
-        visual: "A conveyor belt moving standardized boxes (data items) past a scanner (the loop body).",
-        recap: "For loops are used for predefined sequences.<br>range(start, stop) is commonly used for counting.<br>Continue skips one step; Break stops the whole loop.",
-        hook: "Use a for loop to print every character in your name!"
+for person in recipients:
+    print(f"Sending encrypted invite to: {person}")
+
+# Power Calculation Table
+print("\\nPower Table:")
+for x in range(1, 5):
+    print(f"{x} squared is {x**2}")
+
+# Searching with Loop-Else
+search_item = "Diamond"
+inventory = ["Wood", "Stone", "Iron"]
+
+for item in inventory:
+    if item == search_item:
+        print("Item found!")
+        break
+else:
+    print("Warning: Item not found in database.")`,
+        visual: "A high-speed maglev train stopping for exactly one second at every station on a map before reaching the final terminal.",
+        recap: "For loops are used for iterating over sequences (lists, ranges, strings).<br>The range() function is the primary tool for generating numeric sequences.<br>For loops are generally safer and cleaner than while loops for collections.<br>Loop-else blocks provide a way to handle 'not found' scenarios effectively.",
+        hook: "Use a for loop with a range(10, 0, -1) to create a rocket countdown from 10 to 1!"
     },
     {
         id: 10,
         title: "Strings & Indexing",
-        tag: "TEXT MASTERY",
-        overview: "Strings are sequences of characters. In Python, you can manipulate text by accessing specific positions called indexes.",
-        explanation: "<strong>1. Indexing:</strong> Python indexes start at <strong>0</strong>. Use <code>str[0]</code> for the first letter.<br><strong>2. Slicing:</strong> Use <code>[start:stop]</code> to extract a portion of the string.<br><strong>3. Negative Indexing:</strong> Use <code>-1</code> to get the last character of the string, which is useful when you don't know the string's length.",
-        code: `text = "Python"
-# Get first letter
-print(text[0])  # P
+        tag: "TEXT ARCHITECTURE",
+        overview: "Strings are more than just words; they are an 'Array of Characters'. In Python, strings are one of the most powerful and flexible data structures, equipped with an arsenal of tools for slicing, dicing, and analyzing text data at scale.",
+        explanation: `<strong>1. Zero-Based Indexing:</strong> The most important concept in coding. The first character of a string is at position <code>0</code>, not 1. This is because the index represents the <em>offset</em> from the start of the memory block.<br><br>
+        <strong>2. Slicing Mastery:</strong> Use <code>[start:stop:step]</code> to extract pieces.<br>
+        • <code>text[0:4]</code>: All characters from index 0 to 3.<br>
+        • <code>text[::-1]</code>: A Python 'magic trick' that reverses the entire string instantly.<br><br>
+        <strong>3. Immutability Principle:</strong> Strings are frozen in memory. You can't write <code>text[0] = "X"</code>. To change a string, you must create a new version using methods like <code>.replace()</code> or by joining different slices together.<br><br>
+        <strong>4. Essential Methods:</strong><br>
+        • <code>.strip()</code>: Removes unwanted spaces (vital for user input cleaning).<br>
+        • <code>.split()</code>: Breaks a sentence into a list of words. Great for analyzing data CSVs.<br>
+        • <code>.join()</code>: The opposite of split. Glues a list of words back into a sentence.`,
+        code: `# The Anatomy of a String
+subject = "Python Engineering"
 
-# Slice middle parts
-print(text[0:2]) # Py
+# Slicing
+title = subject[:6] # "Python"
+skill = subject[7:] # "Engineering"
+print(f"Topic: {title} | Skill: {skill}")
 
-# Get last letter
-print(text[-1]) # n`,
-        visual: "A long train where each carriage holds one letter and has a specific number painted on the side.",
-        recap: "Indexes always start at 0.<br>Slicing [start:end] excludes the ending index.<br>Negative indexes count backwards from the end.",
-        hook: "Take the word 'Learning' and slice out the 'Learn' part!"
+# Cleaning messy data
+raw_input = "   stitch_user   "
+clean_user = raw_input.strip().capitalize()
+print(f"Normalized UID: '{clean_user}'")
+
+# Reversing strings (Palindrome check)
+word = "radar"
+is_palindrome = word == word[::-1]
+print(f"Is '{word}' a palindrome? {is_palindrome}")
+
+# Formatting for Reports
+report = "id,name,level"
+columns = report.split(",")
+print(f"Header 2: {columns[1]}")`,
+        visual: "A vertical glass stack of characters where a laser beam reflects off specific levels to extract glowing letters for a new word.",
+        recap: "Indexes start at 0; negative indexes (-1) count from the end.<br>Slicing is non-destructive and creates a new string fragment.<br>Strings are immutable—you cannot modify them after creation.<br>Methods like strip, split, and join are the workhorses of data processing.",
+        hook: "Take the string 'Python_Mastery' and slice it to get only the word 'Mastery'. Then reverse it!"
     },
     {
         id: 11,
         title: "Lists",
-        tag: "COLLECTIONS",
-        overview: "Lists are used to store multiple items in a single variable. They are ordered, changeable, and allow duplicate values.",
-        explanation: "<strong>1. Creation:</strong> Defined with square brackets <code>[ ]</code>.<br><strong>2. Methods:</strong> Use <code>.append()</code> to add to the end, <code>.insert()</code> to add at a specific spot, and <code>.pop()</code> to remove an item.<br><strong>3. Nested Lists:</strong> A list can contain other lists, allowing you to create grids or matrices.",
-        code: `fruits = ["Apple", "Banana"]
-fruits.append("Orange")
+        tag: "DYNAMIC ARRAYS",
+        overview: "Lists are the most versatile data structure in Python. They are essentially 'Dynamic Arrays' that can grow or shrink as your program runs. Whether you are storing a list of users, a series of logs, or a high-score table, lists are your primary tool for managing collections of data that change over time.",
+        explanation: `<strong>1. Mutable Architecture:</strong> Unlike strings, lists are <em>Mutable</em>. This means you can overwrite any single element, add new ones, or delete ones you don't need without destroying the original list. This makes them extremely efficient for handling real-time data flow.<br><br>
+        <strong>2. Indexing and Slicing:</strong> Lists follow the same zero-based indexing rules as strings. You can use <code>list[0]</code> to get the first item or <code>list[-1]</code> to grab the last. Slicing allowing you to 'subset' your data instantly.<br><br>
+        <strong>3. The Powerful List Arsenal:</strong><br>
+        • <code>.append()</code>: Add a single item to the very end.<br>
+        • <code>.extend()</code>: Merge an entire second list into the first one.<br>
+        • <code>.insert(index, value)</code>: Squeeze an item between two existing ones.<br>
+        • <code>.pop()</code>: Remove and 'hand back' the last item in the list.<br><br>
+        <strong>4. List Comprehensions (The Pythonic Way):</strong> One of Python's greatest features. Instead of writing 4 lines of a for-loop to filter a list, you can do it in one line: <code>[x for x in list if x > 10]</code>. This is what separates junior devs from senior engineers.`,
+        code: `# Managing a futuristic inventory
+inventory = ["Plasma Rifle", "Medkit", "Energy Cell"]
 
-# Accessing
-print(f"Second item: {fruits[1]}")
+# Adding and modifying
+inventory.append("Shield Generator")
+inventory[1] = "Advanced Medkit" # Overwriting
+print(f"Updated Stock: {inventory}")
 
-# Updating
-fruits[0] = "Mango"
-print(fruits)`,
-        visual: "A digital filing cabinet where you can easily slide new drawers in and out or reorder them.",
-        recap: "Lists are mutable (can be changed).<br>Items are accessed via zero-based indexing.<br>Lists can hold different data types at once.",
-        hook: "Create a list of 3 colors and append 'Purple' to it!"
+# Slicing the first two items
+essential_gear = inventory[:2]
+print(f"Priority Gear: {essential_gear}")
+
+# List Comprehension: Filtering expensive items
+items = [100, 250, 45, 600, 12]
+expensive_items = [p for p in items if p > 100]
+print(f"Luxury items: {expensive_items}")
+
+# Popping out an item for use
+last_item = inventory.pop()
+print(f"Equipped: {last_item}")`,
+        visual: "A high-speed digital conveyor belt where storage slots can expand, contract, or swap colors instantly as they move through a factory.",
+        recap: "Lists are ordered, changeable collections identified by [].<br>They can hold multiple data types simultaneously (int, str, etc.).<br>Methods like append and pop provide efficient stack-like management.<br>List comprehensions offer a succinct way to filter and transform data.",
+        hook: "Create a list of 5 numbers and use a list comprehension to create a new list that doubles all of them!"
     },
     {
         id: 12,
         title: "Tuples",
-        tag: "CONSTANT DATA",
-        overview: "Tuples are similar to lists but are IMMUTABLE. Once a tuple is created, its contents cannot be changed, added to, or removed.",
-        explanation: "<strong>1. Why use them?</strong> They are faster than lists and safer for data that must not change (like coordinates or configuration).<br><strong>2. Syntax:</strong> Defined with parentheses <code>( )</code>.<br><strong>3. Packing/Unpacking:</strong> You can assign a tuple to multiple variables in one line.",
-        code: `coordinates = (10, 20)
-# coordinates[0] = 5  # This would cause an ERROR!
+        tag: "IMMUTABLE SEQUENCES",
+        overview: "Tuples are the 'Steadfast Siblings' of lists. Once a tuple is born, it cannot be changed. This 'Immutability' makes them a mission-critical tool for data that must remain constant throughout your program's life, such as screen resolutions, API keys, or physical constants.",
+        explanation: `<strong>1. Why Immutability Matters:</strong> In a large team, a developer might accidentally overwrite a global list variable. If that variable was a Tuple, Python would throw an error instantly. This makes your code 'Self-Protecting'.<br><br>
+        <strong>2. Performance and Efficiency:</strong> Because Tuples are fixed in size, Python can store them more efficiently in memory than Lists. If you have a massive collection of data that won't change, using a Tuple will make your app run faster.<br><br>
+        <strong>3. Packing and Unpacking (Structural Magic):</strong> You can assign a tuple's values to separate variables in a single line. This is the cleanest way to handle functions that need to 'return' more than one piece of information.<br><br>
+        <strong>4. Syntax Note:</strong> Tuples use parentheses <code>( )</code>. Special Case: To create a tuple with only ONE item, you must include a trailing comma <code>(item,)</code>, otherwise Python thinks it's just a regular variable in parentheses.`,
+        code: `# Coordinates that must never shift
+origin = (0, 0)
+print(f"Starting System at: {origin}")
 
-# Unpacking
-x, y = coordinates
-print(f"X is {x}, Y is {y}")`,
-        visual: "A sealed, transparent glass safe where you can see the data inside but cannot reach in to change it.",
-        recap: "Tuples use () and are immutable.<br>Used for fixed data sequences like GPS points.<br>Faster and more memory-efficient than lists.",
-        hook: "Try to create a tuple of your birth day, month, and year!"
+# Attempting to change would fail:
+# origin[0] = 5 <-- TypeError
+
+# Powerful Unpacking
+user_data = ("Admin", "192.168.1.1", "Secure")
+role, ip, security = user_data
+print(f"Logging in {role} from {ip}")
+
+# Swapping values (Classic Python trick using Tuples!)
+a, b = 10, 20
+a, b = b, a 
+print(f"After swap: a={a}, b={b}")`,
+        visual: "A rows of solid diamond cubes, each containing a piece of data that is perfectly visible but permanently sealed behind unbreakable glass.",
+        recap: "Tuples are immutable (cannot be changed) and use ().<br>They are more memory-efficient and safer than lists for static data.<br>Unpacking allows for multi-variable assignment from a single tuple.<br>A trailing comma is required for single-item tuples (e.g., 'val',).",
+        hook: "Create a tuple representing your 'Home' location with latitude and longitude. Try to update the latitude and see the error!"
     },
     {
         id: 13,
         title: "Sets",
-        tag: "UNIQUE ITEMS",
-        overview: "A Set is an unordered collection of items where every element is unique. Sets are great for removing duplicates and performing math operations like unions.",
-        explanation: "<strong>1. No Duplicates:</strong> If you add the same item twice, the set will only keep one.<br><strong>2. Operations:</strong> You can easily find the intersection (items in both), union (items in either), or difference (items in one but not the other) between two sets.<br><strong>3. Unordered:</strong> You cannot access items by index because the order is not guaranteed.",
-        code: `nums = {1, 2, 2, 3}
-print(nums) # results in {1, 2, 3}
+        tag: "UNBIASED COLLECTIONS",
+        overview: "Sets are unordered collections of unique elements. Think of a set as a magical room where duplicate items simply evaporate. In professional programming, sets are used for lightning-fast membership testing, deduplicating massive datasets, and performing mathematical set operations.",
+        explanation: `<strong>1. The Power of Uniqueness:</strong> If you try to add 'User123' to a set that already contains it, the set will simply ignore the request. This makes sets the perfect tool for tracking 'Unique Visitors' to a website or 'Distinct Keywords' in a document.<br><br>
+        <strong>2. Membership Speed:</strong> Checking if an item is 'in' a List requires Python to look at every item one by one (this is slow). Checking if an item is 'in' a Set is near-instant, regardless of how many millions of items are in it. This is due to a technique called 'Hashing'.<br><br>
+        <strong>3. Mathematical Brilliance:</strong> Use sets to compare groups of data:<br>
+        • <strong>Union (|):</strong> All unique items from both groups.<br>
+        • <strong>Intersection (&):</strong> Only items that appear in BOTH groups.<br>
+        • <strong>Difference (-):</strong> items in Group A that are NOT in Group B.<br><br>
+        <strong>4. Syntax:</strong> Defined with curly braces <code>{ }</code>. Caution: <code>{}</code> creates an empty Dictionary. To create an empty Set, you must use the <code>set()</code> function.`,
+        code: `# Deduplicating a log of IDs
+raw_logs = ["id1", "id2", "id1", "id3", "id2"]
+unique_ids = set(raw_logs)
+print(f"Filtered log: {unique_ids}") # Duplicate 'id1' and 'id2' are gone
 
-# Check for existence
-print(1 in nums) # True`,
-        visual: "A magical bag that automatically dissolves any duplicate items you try to put inside.",
-        recap: "Sets use {} and only store unique values.<br>Items are unordered and cannot be indexed.<br>Perfect for math-heavy comparison tasks.",
-        hook: "Create a set from the list [1, 1, 2, 2, 3, 3] and see what happens!"
+# Comparing User Groups
+active_users = {"Alice", "Bob", "Charlie"}
+premium_users = {"Charlie", "David"}
+
+# Who is active AND premium?
+both = active_users & premium_users
+print(f"VIP Online: {both}")
+
+# Who is active but has NOT paid for premium?
+standard = active_users - premium_users
+print(f"Show Ads to: {standard}")`,
+        visual: "A chaotic, floating cloud of unique symbols that constantly shift positions but never allow two of the same symbol to exist simultaneously.",
+        recap: "Sets are unordered collections with no duplicate values.<br>Membership testing using the 'in' keyword is extremely fast.<br>Set operations (union, intersection) allow for complex group comparisons.<br>Empty sets must be created using the set() constructor function.",
+        hook: "Create a set of your 5 favorite fruits. Use the .add() method to add a fruit already in the set and print it!"
     },
     {
         id: 14,
         title: "Dictionaries",
-        tag: "KEY-VALUE PAIRS",
-        overview: "Dictionaries store data in Key:Value pairs. They are unordered, changeable, and indexed by keys instead of numbers.",
-        explanation: "<strong>1. Mapping:</strong> Think of a real dictionary; you look up the 'Word' (Key) to find the 'Definition' (Value).<br><strong>2. Keys:</strong> Must be unique and immutable (like strings or numbers).<br><strong>3. Methods:</strong> Use <code>.keys()</code>, <code>.values()</code>, or <code>.items()</code> to see different parts of your dictionary.",
-        code: `user = {
-    "name": "Stitch",
-    "level": 100,
-    "role": "Admin"
+        tag: "ASSOCIATIVE MAPPING",
+        overview: "Dictionaries (or 'Dicts') are the most powerful data structure for organized web development and software engineering. While lists use numbers for indexing, Dictionaries use 'Keys'. It's like having a giant box of wires where every wire has a specific label that tells you exactly where it goes.",
+        explanation: `<strong>1. Key-Value Pairs:</strong> Data is stored in the format <code>{Key: Value}</code>. The 'Key' is your label (usually a string), and the 'Value' is the data itself. You can find any value instantly just by knowing its label.<br><br>
+        <strong>2. No Duplicates Allowed (Keys):</strong> Every key in a dictionary must be unique. If you try to add a new value to an existing key, Python will simply 'Overwrite' the old data. This is how we update user profiles or stock prices.<br><br>
+        <strong>3. Mapping Complexity:</strong> Values in a dictionary can be <em>anything</em>—another dictionary, a list of objects, or even a function. This allows you to build deeply nested data structures like JSON (the language of the internet).<br><br>
+        <strong>4. Iteration Mastery:</strong> Use <code>.items()</code> to loop through both labels and data at once. Use <code>.get()</code> instead of direct indexing to safely look up data without crashing the app if the key is missing.`,
+        code: `# Modeling a Game Protagonist
+player = {
+    "uid": "stitch_7",
+    "lvl": 100,
+    "inventory": ["Shield", "Key"],
+    "is_pro": True
 }
 
-print(user["name"]) # Stitch
-user["level"] = 101 # Update`,
-        visual: "A wall of numbered locks where each lock has a specific label and opens to reveal its own prize.",
-        recap: "Dictionaries use {'key': 'value'} syntax.<br>Keys must be unique; values can be anything.<br>Fastest way to retrieve data by a specific label.",
-        hook: "Create a dictionary representing a car with 'brand' and 'model' keys!"
+# Accessing and Updating
+print(f"Current Level: {player['lvl']}")
+player["lvl"] += 1 # Level up
+
+# Safe access with .get()
+# If 'guild' is missing, it returns 'None' instead of crashing
+guild_name = player.get("guild", "No Guild Joined")
+print(f"Alliance: {guild_name}")
+
+# Iterating through everything
+print("\\n--- SYSTEM DUMP ---")
+for key, value in player.items():
+    print(f"NODE {key.upper()}: {value}")`,
+        visual: "A high-tech terminal wall with millions of glowing labels; you touch a label and a secret compartment slides open to reveal the data stored inside.",
+        recap: "Dictionaries use curly braces {} and store data in key-value pairs.<br>Keys must be unique and immutable; values can be any data type.<br>Use dict.get() for safe data retrieval and dict.items() for iteration.<br>Dictionaries are the foundation of working with web APIs and JSON data.",
+        hook: "Create a dictionary called 'book' with keys for 'title', 'author', and 'year'. Change the year to 2024!"
     },
     {
         id: 15,
         title: "Functions",
-        tag: "REUSABLE BLOCKS",
-        overview: "A function is a block of code which only runs when it is called. Functions allow you to reuse logic without retyping it.",
-        explanation: "<strong>1. Parameters:</strong> Data passed into the function to influence its behavior.<br><strong>2. Return:</strong> The keyword used to send a value back to where the function was called.<br><strong>3. DRY Principle:</strong> Don't Repeat Yourself! If you write the same code twice, make it a function.",
-        code: `def greet(name):
-    return f"Hello, {name}!"
+        tag: "PROCEDURAL LOGIC",
+        overview: "Functions are the 'Brain Modules' of your program. They are self-contained blocks of code that perform a specific task. By separating your logic into functions, you create code that is easier to read, easier to test, and completely reusable across different parts of your application.",
+        explanation: `<strong>1. The DRY Principle:</strong> Professional engineers live by the motto: <strong>Don't Repeat Yourself</strong>. If you notice you've copied and pasted the same 5 lines of code twice, you should turn them into a function.<br><br>
+        <strong>2. Parameters vs Arguments:</strong> Think of a function like a recipe. <em>Parameters</em> are the placeholders (like 'ingredient_a'), and <em>Arguments</em> are the actual values you pass in (like 'Sugar'). This allows one function to behave differently based on the input.<br><br>
+        <strong>3. Scope (Local vs Global):</strong> Variables created inside a function are 'Local'. They exist only while the function is running. This prevents 'Variable Pollution' where different parts of your app accidentally interfere with each other.<br><br>
+        <strong>4. Docstrings (Professionalism):</strong> Use triple quotes <code>""" """</code> at the start of your function to explain what it does. This allows tools and other developers to understand your logic without reading the code itself.`,
+        code: `# Designing a Modular Logic Block
+def calc_net_salary(gross, tax_rate=0.2):
+    """
+    Calculates the final salary after tax deduction.
+    Default tax rate is 20%.
+    """
+    tax_amount = gross * tax_rate
+    return gross - tax_amount
 
-# Call the function
-message = greet("Programmer")
-print(message)`,
-        visual: "A vending machine where you insert currency (parameters) and it pushes out a specific product (return value).",
-        recap: "Use 'def' to create a function.<br>Functions make code modular and easier to debug.<br>Local variables inside a function stay inside that function.",
-        hook: "Write a function 'add' that takes a and b and returns their sum!"
+# Utilizing the function
+user1_final = calc_net_salary(5000)
+user2_final = calc_net_salary(5000, tax_rate=0.35)
+
+print(f"Net Standard: ${user1_final}")
+print(f"Net Executive: ${user2_final}")
+
+# Functional Scoping
+def secret_operation():
+    internal_token = "ABC-123" # Local
+    return internal_token
+
+# print(internal_token) # Error! Not accessible globally`,
+        visual: "A futuristic modular engine where you can swap out 'logic batteries' (functions) depending on whether you need the engine to fly, swim, or drill.",
+        recap: "Functions (def) enable code reusability and modular design.<br>Parameters define the inputs; the return statement provides the output.<br>Scope protects variables inside functions from being accessed outside.<br>Default parameter values allow for flexible function calls.",
+        hook: "Write a function 'square' that takes a number and returns it multiplied by itself. Call it with the number 7!"
     },
     {
         id: 16,
         title: "Lambda Expressions",
-        tag: "ONE-LINERS",
-        overview: "Lambda expressions are small, anonymous functions. They are used for simple, short-term tasks that don't require a full 'def' block.",
-        explanation: "<strong>Syntax:</strong> <code>lambda arguments : expression</code>. You can have any number of arguments, but only <strong>one expression</strong>.<br><br>They are often used as arguments to other functions like <code>map()</code>, <code>filter()</code>, or for quick calculations.",
-        code: `sqr = lambda x : x * x
-print(sqr(5)) # 25
+        tag: "STREAMLINED LOGIC",
+        overview: "Lambda expressions are the 'Special Ops' of Python functions. They are small, anonymous functions defined without a name, designed for quick, one-time operations. While traditional functions are like factories, lambdas are like handheld tools—compact, efficient, and perfect for working inside other functions.",
+        explanation: `<strong>1. The Syntax of Simplicity:</strong> A lambda follows a strict one-line rule: <code>lambda arguments: expression</code>. You can have multiple inputs, but you can only have ONE calculation. This forces you to write code that is clean and focused.<br><br>
+        <strong>2. Functional Programming Power:</strong> Lambdas truly shine when paired with built-in functions like <code>map()</code>, <code>filter()</code>, and <code>sorted()</code>. Instead of writing a helper function and calling it by name, you can inject the logic directly where it's needed.<br><br>
+        <strong>3. Anonymous Nature:</strong> Because they don't have a variable name attached, they are automatically cleaned up from memory after use. This makes them ideal for large-scale data processing where you want to keep your memory footprint low.<br><br>
+        <strong>4. When to Use (and When to Pass):</strong> Use lambdas for simple math or sorting logic. However, if your logic requires multiple lines, loops, or complex error handling, stick to a traditional <code>def</code> function for the sake of your teammates' sanity.`,
+        code: `# The Classic Lambda: Squaring numbers
+square = lambda x : x * x
+print(f"5 squared is {square(5)}")
 
-# Used in sorting
-pairs = [(1, 'one'), (2, 'two')]
-pairs.sort(key=lambda p: p[1]) # Sort by name`,
-        visual: "A tiny portable tool that performs one specific job and fits right in your pocket.",
-        recap: "Lambdas are anonymous (no name required).<br>Limited to a single expression.<br>Perfect for quick data filtering or sorting.",
-        hook: "Create a lambda that multiplies two numbers 'a' and 'b'!"
+# Real-world usage: Sorting complex data
+# We want to sort users by their 'level' key inside a list
+users = [
+    {"name": "Alice", "level": 50},
+    {"name": "Bob", "level": 10},
+    {"name": "Charlie", "level": 85}
+]
+
+# Using lambda as a 'Key' for sorting
+users.sort(key=lambda u: u["level"])
+print(f"Users sorted by XP: {users}")
+
+# Filter: Getting only high-level players
+pro_players = list(filter(lambda u: u["level"] > 40, users))
+print(f"Pro Squad: {pro_players}")`,
+        visual: "A tiny, high-frequency energy pulse that performs a complex calculation in a fraction of a millisecond and then vanishes into the digital ether.",
+        recap: "Lambdas are anonymous, single-expression functions.<br>Syntax: lambda arguments : expression.<br>They are most effective when used with map, filter, and sort.<br>Always prioritize code readability—avoid using lambdas for complex logic.",
+        hook: "Create a lambda that takes two numbers and returns the larger one. Test it with 15 and 42!"
     },
     {
         id: 17,
         title: "Classes & Objects",
-        tag: "BLUEPRINTS",
-        overview: "Object-Oriented Programming (OOP) allows you to model real-world concepts. A Class is a blueprint, and an Object is the actual item built from it.",
-        explanation: "<strong>1. Attributes:</strong> Data stored within the object (e.g., color, health).<br><strong>2. Methods:</strong> Functions that belong to the object (e.g., walk, fire_laser).<br><strong>3. __init__:</strong> The special 'constructor' method that runs when an object is first created to set its initial state.",
-        code: `class Robot:
-    def __init__(self, name):
-        self.name = name
+        tag: "ARCHITECTURAL BLUEPRINTS",
+        overview: "Object-Oriented Programming (OOP) is the philosophy that powers almost all modern software. Instead of writing code as a list of instructions, you build your app as a collection of interacting 'Objects'. Every object is an instance of a 'Class'—a master blueprint that defines its properties and behaviors.",
+        explanation: `<strong>1. Modeling Reality:</strong> If you are building a game, don't use loose variables like <code>enemy_hp</code>. Create an <code>Enemy</code> class. This class acts as the template. When you create 100 enemies, they are all 'Objects' born from that one template. This is the secret to scaling applications.<br><br>
+        <strong>2. Attributes (The 'What'):</strong> These are variables that belong to the object. If the object is a 'Car', attributes might be <code>color</code>, <code>fuel_level</code>, and <code>speed</code>. They define the 'State' of the object at any given moment.<br><br>
+        <strong>3. Methods (The 'How'):</strong> These are functions that live inside the class. They define what the object can DO. A car can <code>drive()</code>, <code>refuel()</code>, and <code>honk()</code>. Every method must take <code>self</code> as its first parameter.<br><br>
+        <strong>4. The Constructor (__init__):</strong> This is a special method that runs automatically the moment an object is created. It is the 'Birth Certificate' of the object, where you set its starting attributes (like giving the robot its name).`,
+        code: `# The Master Prototype
+class Drone:
+    def __init__(self, model, battery=100):
+        # Setting the initial state
+        self.model = model
+        self.battery = battery
+        self.status = "Idle"
 
-    def speak(self):
-        return f"Beep! I am {self.name}"
+    def launch(self):
+        if self.battery > 10:
+            self.status = "Flight"
+            self.battery -= 5
+            return f"{self.model} is airborne!"
+        return "Insufficient power for takeoff."
 
-my_bot = Robot("Dexter")
-print(my_bot.speak())`,
-        visual: "A holographic blueprint of a car that sparkles and solidifies into a real, driveable car.",
-        recap: "Classes are templates; Objects are the instances.<br>'self' refers to the current object itself.<br>OOP helps organize complex, large-scale code.",
-        hook: "Create a 'Dog' class with a 'bark' method!"
+# Deploying Objects from the Blueprint
+scout_1 = Drone("Seeker-V1")
+heavy_1 = Drone("Tanker-X", battery=50)
+
+print(scout_1.launch())
+print(f"Scout Status: {scout_1.status} | Battery: {scout_1.battery}%")`,
+        visual: "A glowing, 3D holographic wireframe of a futuristic aircraft that suddenly solidifies into a physical, metal drone that flies away.",
+        recap: "Classes are templates; Objects are the actual instances in memory.<br>The __init__ method initializes attributes when an object is created.<br>'self' represents the specific instance of the object being manipulated.<br>Methods represent the actions or behaviors of the object.",
+        hook: "Create a 'Account' class with an 'owner' attribute and a 'balance'. Add a 'deposit' method!"
     },
     {
         id: 18,
         title: "Inheritance",
-        tag: "SPECIALIZATION",
-        overview: "Inheritance allows a class (Child) to take on the characteristics of another class (Parent). This prevents code duplication and allows for complex hierarchies.",
-        explanation: "<strong>1. Parent Class:</strong> The base class containing general attributes.<br><strong>2. Child Class:</strong> The specialized class that inherits from the parent.<br><strong>3. Method Overriding:</strong> A child can replace a parent's method with its own version to behave differently.",
-        code: `class Animal:
-    def speak(self): print("Noise")
+        tag: "SYSTEM EVOLUTION",
+        overview: "In software engineering, complexity is the enemy. Inheritance allows you to build a general system and then create specialized versions of it without retyping the code. This 'is-a' relationship allows Child classes to inherit everything from Parent classes, enabling rapid development and clean hierarchies.",
+        explanation: `<strong>1. The Base Class (Parent):</strong> This class defines the general properties shared by many objects. For example, all 'Users' have an email and a password. This is your foundation.<br><br>
+        <strong>2. The Derived Class (Child):</strong> This is a specialized version of the parent. An 'Admin' <em>is a</em> 'User', but they have extra powers. Instead of recreating the email logic, 'Admin' just inherits it from 'User' and adds its own <code>delete_database()</code> method.<br><br>
+        <strong>3. Method Overriding:</strong> Sometimes, the child needs to behave differently than the parent. You can define a method with the same name in the child class, and Python will use that version instead of the parent's. This is called <em>Polymorphism</em>.<br><br>
+        <strong>4. The Super() Function:</strong> A powerful tool that allows a child to call a method from its parent class. This is useful when you want to use the parent's logic but add just a little bit more on top of it.`,
+        code: `# Base Architecture: General AI
+class CoreAI:
+    def __init__(self, version):
+        self.version = version
+    
+    def process(self, data):
+        return f"v{self.version} processing {data}"
 
-class Dog(Animal): # Inherits from Animal
-    def speak(self): print("Woof!")
+# Specialized Branch: Language AI
+class LanguageAI(CoreAI):
+    def translate(self, text, target_lang):
+        # Inherits 'process' method but adds translation
+        base_log = self.process(text)
+        return f"Translating: '{text}' to {target_lang} (Logic: {base_log})"
 
-rexi = Dog()
-rexi.speak() # Uses specialized version`,
-        visual: "A family tree where the children inherit the height of the parents but develop their own unique skills.",
-        recap: "Inheritance creates a 'is-a' relationship.<br>Child classes can add new methods or change old ones.<br>Pass the parent class name in parentheses during definition.",
-        hook: "Make a 'Car' class inherit from a 'Vehicle' class!"
+# Specialized Branch: Vision AI (Overriding logic)
+class VisionAI(CoreAI):
+    def process(self, image):
+        # We override the base 'process' with vision-specific logic
+        return f"Analyzing pixels in {image}... Found 10 objects."
+
+# Utilizing the Hierarchy
+translator = LanguageAI("4.0")
+scanner = VisionAI("2.1")
+
+print(translator.translate("Hello", "French"))
+print(scanner.process("view_source.jpg"))`,
+        visual: "A master sword being placed into a magical furnace and emerging as a specialized 'Fire Sword', glowing with new runes while retaining its original sharp edge.",
+        recap: "Inheritance creates a hierarchy where children gain traits from parents.<br>Subclasses promote 'Code Reusability' by sharing base logic.<br>Use super() to extend parent methods without overwriting them entirely.<br>Overriding allows specialized behavior in child classes.",
+        hook: "Create a 'Bird' class with a 'fly' method, then a 'Penguin' class that overrides 'fly' to say 'I walk instead'!"
     },
     {
         id: 19,
         title: "Error Handling",
-        tag: "CRASH PROTECTION",
-        overview: "Errors (exceptions) are inevitable. Error handling allows your program to gracefully catch these errors instead of crashing and closing.",
-        explanation: "<strong>1. Try:</strong> The block of code that might fail.<br><strong>2. Except:</strong> The block that runs if an error occurs. You can catch specific errors like <code>ZeroDivisionError</code>.<br><strong>3. Finally:</strong> Code that runs no matter what, often used for cleanup like closing files.",
-        code: `try:
-    num = int(input("Enter divisor: "))
-    print(100 / num)
-except ZeroDivisionError:
-    print("Cannot divide by zero!")
-except ValueError:
-    print("Please enter a valid number!")`,
-        visual: "A high-tech safety net that catches a falling gymnast and gently places them back on their feet.",
-        recap: "Try-Except blocks keep your app alive.<br>Specific exceptions help you identify exactly what went wrong.<br>Finally is used for mission-critical cleanup.",
-        hook: "Try to divide by zero in a try-except block and print a catch message!"
+        tag: "SYSTEM RESILIENCE",
+        overview: "Professional software doesn't just work when things go right; it handles things when they go wrong. Errors (exceptions) are part of life—users will input text where numbers should be, files will be deleted, and internet connections will fail. Error handling is the safety net that prevents your app from crashing.",
+        explanation: `<strong>1. The Try-Except Block:</strong> This is your protective shield. You 'try' a piece of risky code. If it works, great! If it fails, Python looks for an <code>except</code> block that matches the error. This keeps the application alive instead of showing a scary red error message.<br><br>
+        <strong>2. Catching Specific Exceptions:</strong> Don't just catch 'all' errors. If you catch <code>ZeroDivisionError</code> specifically, you can tell the user: 'Hey, you can't divide by zero!'. If you catch <code>FileNotFoundError</code>, you can tell them: 'That file is missing'. Specificity is key to good UX.<br><br>
+        <strong>3. Raising Exceptions (Raise):</strong> Sometimes, you want to trigger your own errors. For example, 'If user age is negative, RAISE an error'. This allows you to enforce your own business rules within your code.<br><br>
+        <strong>4. The Finally Clause:</strong> This is for mission-critical cleanup. Whether the code succeeded or failed, the <code>finally</code> block will ALWAYS run. This is where you close database connections or save files to ensure no data is lost during a crash.`,
+        code: `# Building a Resilient Data Parser
+def divide_resources(total, agents):
+    try:
+        # Risky Calculation
+        each = total / agents
+        print(f"Distribution logic successful: {each} per agent.")
+    except ZeroDivisionError:
+        print("ALERT: System cannot divide by zero agents. Request aborted.")
+    except TypeError:
+        print("ALERT: Input must be numeric. Translation failed.")
+    finally:
+        print("Network Connection: SECURE")
+
+# Testing the Safety Net
+divide_resources(100, 0)      # Triggers ZeroDivision
+divide_resources(100, "Two")  # Triggers TypeError
+divide_resources(100, 5)      # Success!`,
+        visual: "A fragile glass sculpture being dropped from a building but being caught by a soft, high-tech carbon-fiber net just inches from the pavement.",
+        recap: "Exceptions are signals that something unexpected happened.<br>Try blocks isolate risky code; Except blocks handle specific failures.<br>Use multiple except clauses to provide tailored feedback for specific errors.<br>The finally block ensures critical cleanup logic runs every single time.",
+        hook: "Try to open a file called 'ghost.txt' in a try block, and use 'except FileNotFoundError' to print a custom warning!"
     },
     {
         id: 20,
         title: "Git & GitHub",
-        tag: "VERSION CONTROL",
-        overview: "Git is a version control system that tracks changes in your code. GitHub is a cloud platform where you can host and share your Git repositories.",
-        explanation: "<strong>1. Commit:</strong> A snapshot of your work at a specific time.<br><strong>2. Branch:</strong> A parallel version of your code to test features without breaking the main app.<br><strong>3. Pull Request:</strong> A way to propose changes to a project and have others review your code before merging it.",
-        code: `# Basic Git Commands
-# git init         (Start project)
-# git add .        (Stage changes)
-# git commit -m "" (Save snapshot)
-# git push         (Upload to cloud)`,
-        visual: "A glowing timeline where you can travel back to any saved point in history or jump into parallel universes.",
-        recap: "Git handles local version history.<br>GitHub enables global collaboration.<br>Branches isolate risky changes from stable code.",
-        hook: "Create a GitHub account and push your first 'Hello World' file today!"
+        tag: "COLLABORATIVE MASTERY",
+        overview: "In the professional world, software is built by teams, not individuals. Git is the 'Time Machine' and 'Parallel Universe Generator' of the software industry. GitHub is the cloud-based hub where the entire world's code lives. Mastering these tools is what bridges the gap between a student and a professional engineer.",
+        explanation: `<strong>1. Distributed Version Control (Git):</strong> Git tracks every single character change in your project. If you break your code on a Friday, you can 'roll back' to the version from Wednesday in three seconds. It removes the fear of making mistakes.<br><br>
+        <strong>2. The Commit Cycle:</strong> Think of a <code>commit</code> as a save point in a game. You make changes, you <code>add</code> them to the stage, and then you <code>commit</code> them with a meaningful message explaining WHY the change was made.<br><br>
+        <strong>3. Branching (Parallel Universes):</strong> This is the most powerful feature. You can create a 'Branch' to test a new crazy idea. If it works, you 'Merge' it into the main project. If it fails, you delete the branch and the main project remains perfectly safe.<br><br>
+        <strong>4. GitHub & Pull Requests:</strong> GitHub is the social network for developers. You 'Push' your code to the cloud, and when you want your team to approve your changes, you open a 'Pull Request'. Experts review your code, leave comments, and then merge it.`,
+        code: `# The Professional Workflow Workflow:
+# PHASE 1: Initialization
+# git init               <-- Establish a new timeline
+
+# PHASE 2: Development Loop
+# git status             <-- Peek at current changes
+# git add main.py        <-- Stage a specific file for saving
+# git add .              <-- Stage ALL changes
+# git commit -m "Fix login glitch" <-- Create a permanent save point
+
+# PHASE 3: Cloud Synchronization
+# git push origin main   <-- Upload your timeline to GitHub
+
+# PHASE 4: Collaborative Branches
+# git checkout -b feature-ai <-- Create and jump to a new universe`,
+        visual: "A massive multi-dimensional tree where thousands of branches grow out of a single trunk, each with its own developers working on it simultaneously.",
+        recap: "Git provides version history and enables safe experimentation.<br>Commits are snapshots; Branches are isolated environments for features.<br>GitHub allows for code hosting, social review, and team collaboration.<br>Mastering Pull Requests (PRs) is a critical career milestone.",
+        hook: "Research what 'git clone' does — it's how you teleport any public project in the world down to your computer!"
     },
     {
         id: 21,
         title: "Deployment",
-        tag: "GOING LIVE",
-        overview: "Deployment is the process of making your application available to the real world. It moves your code from your laptop to a server on the internet.",
-        explanation: "<strong>1. Virtual Environments:</strong> Use <code>venv</code> to isolate your project's libraries so they don't conflict with other projects.<br><strong>2. Requirements:</strong> A list of tools your app needs to run (e.g., <code>pip freeze > requirements.txt</code>).<br><strong>3. Hosting:</strong> Platforms like Railway, Render, or AWS that run your code 24/7.",
-        code: `# Deployment Prep
-# 1. Create venv: python -m venv venv
-# 2. Activate: venv\\Scripts\\activate
-# 3. Create map: pip freeze > requirements.txt`,
-        visual: "A rocket ship carrying a glass-shielded server box up into a glowing cloud in the sky.",
-        recap: "Venv keeps your project clean and portable.<br>Requirements.txt is the recipe for your environment.<br>Launchpad (Deployment) makes your code real.",
-        hook: "Look up Railway.app — it is one of the easiest ways to host a Python app for free!"
+        tag: "THE ARRIVAL",
+        overview: "Code on your laptop is a hobby. Code on a server is a business. Deployment is the final transition where your application leaves your personal machine and becomes a digital service available to billions of people across the globe via the cloud.",
+        explanation: `<strong>1. Virtual Environments (venv):</strong> This is the most important prep step. A computer might have 10 different versions of libraries installed. A Virtual Environment creates a clean, isolated 'bubble' where ONLY the libraries your app needs are installed. This ensures that if it works on your machine, it WILL work on the server.<br><br>
+        <strong>2. Requirements Tracking:</strong> Use <code>pip freeze > requirements.txt</code> to create a recipe of every dependency your app needs. The server reads this file and automatically installs everything required to bake your app into a working service.<br><br>
+        <strong>3. Cloud Providers:</strong> Industry giants like <strong>AWS, Google Cloud, and Azure</strong> provided the massive global infrastructure. For beginners, platforms like <strong>Railway, Render, or Heroku</strong> offer one-click deployment that connects directly to your GitHub repository.<br><br>
+        <strong>4. Continuous Integration (CI/CD):</strong> Pros don't deploy manually. They set up pipelines so that every time they <code>git push</code>, the server automatically runs tests and launches the new version of the app. This is the gold standard of modern software delivery.`,
+        code: `# Phase 1: Isolation (Local Laptop)
+# python -m venv env          <-- Create the bubble
+# source env/bin/activate     <-- Enter the bubble
+
+# Phase 2: Dependency Management
+# pip install pandas requests <-- Install what you need
+# pip freeze > requirements.txt <-- Create the blueprint
+
+# Phase 3: Cloud Interaction (Command Line Deployment)
+# railway login
+# railway up                  <-- Launch code to the stratosphere
+
+# Phase 4: Production Hygiene
+# .gitignore                  <-- Create a file to hide passwords!`,
+        visual: "A gleaming rocket ship lifting out of a misty forest, breaking through the clouds, and docking with a massive orbital space station (The Internet).",
+        recap: "Deployment moves code from local development to production servers.<br>Virtual environments (venv) prevent library conflicts and 'Dependency Hell'.<br>requirements.txt is the essential map for server-side installation.<br>Modern platforms use Git-based deployment for seamless, automated scaling.",
+        hook: "Go to Render.com or Railway.app and look at their 'Deploy from GitHub' button — that's the future!"
     }
 ];
 
