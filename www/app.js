@@ -347,416 +347,354 @@ const theoryModules = [
         id: 1,
         title: "Introduction to Python",
         tag: "THE BEGINNING",
-        overview: "Programming shouldn't feel like math homework; it should feel like magic. Python is the world's most friendly bridge between your human ideas and the computer's raw power.",
-        explanation: "Imagine talking to a super-intelligent robot using plain English. That is Python. Created in 1991, its entire design philosophy is built around <strong>Readability</strong>. If the code is hard to read, it's not 'Pythonic'.<br><br>Today, Python is the undisputed king of:<br>• <strong>Artificial Intelligence:</strong> Researching the future.<br>• <strong>Data Science:</strong> Making sense of the world's chaos.<br>• <strong>Web Dev:</strong> Powering Instagram, Netflix, and NASA.<br><br><strong>Why you'll love it:</strong> Unlike other languages, Python doesn't force you to use cryptic symbols like { } or ; to end your sentences. Instead, it uses simple <strong>Indentation</strong> (4 spaces). It forces your code to look clean, organized, and beautiful.",
-        code: `# Your first conversation with Python
-print("Hello Future Programmer!")
+        overview: "Python is a high-level, interpreted programming language known for its clear syntax and readability. It is the perfect starting point for any software engineer.",
+        explanation: "Created in 1991, Python's design philosophy emphasizes <strong>readability</strong>. It uses simple indentation instead of curly braces to define blocks of code.<br><br>Today, it is used for:<br>• <strong>Web Development:</strong> Backend logic for sites like Instagram.<br>• <strong>Data Science:</strong> Analyzing massive datasets.<br>• <strong>Machine Learning:</strong> Creating AI models.<br>• <strong>Automation:</strong> Writing scripts to handle repetitive tasks.",
+        code: `# Your first Python code
+print("Hello World!")
 
-# Python can do math instantly
-print(f"2 + 2 is {2 + 2}")
-
-# It's as readable as a story
+# Python is like talking to a computer
 if 5 > 2:
-    print("Five is indeed greater than two!")`,
-        visual: "A glowing, neon-green circuit board morphing into a friendly robotic hand reaching out for a high-five.",
-        recap: "Python is focused on human readability first.<br>It uses indentation (spaces) to structure code instead of messy brackets.<br>It is the primary language for AI and Data Science globally.",
-        hook: "Try running: print('I am a Python developer!') and watch the computer respond!"
+    print("Logic is simple in Python!")`,
+        visual: "A glowing Python logo transforming into a bridge connecting a human brain to a computer core.",
+        recap: "Python is designed for humans first.<br>Clean indentation is required for structure.<br>It is the lead language for AI and Data Science.",
+        hook: "Run your first print statement to start your coding journey!"
     },
     {
         id: 2,
         title: "Variables",
         tag: "DATA STORAGE",
-        overview: "In Python, we don't just 'use' data; we store it in magical jars called Variables. You give each jar a name, and you can swap its contents whenever you want.",
-        explanation: `<strong>Dynamic Typing:</strong> In older languages, you had to tell the computer exactly what was in the jar (Number, Text, etc.). Python is smarter. It looks inside the jar and figures it out for you.<br><br><strong>The Core Data Types:</strong><br><table style='width:100%; border-collapse: collapse; margin-top: 10px;'>
-<tr style='background: rgba(255,255,255,0.05);'>
-<td style='padding: 8px; border-bottom: 1px solid #333;'><strong>Type</strong></td>
-<td style='padding: 8px; border-bottom: 1px solid #333;'><strong>Purpose</strong></td>
-</tr>
-<tr>
-<td style='padding: 8px; border-bottom: 1px solid #333;'><code>int</code></td>
-<td style='padding: 8px; border-bottom: 1px solid #333;'>Whole numbers (age, score)</td>
-</tr>
-<tr>
-<td style='padding: 8px; border-bottom: 1px solid #333;'><code>float</code></td>
-<td style='padding: 8px; border-bottom: 1px solid #333;'>Decimal numbers (price, GPA)</td>
-</tr>
-<tr>
-<td style='padding: 8px; border-bottom: 1px solid #333;'><code>str</code></td>
-<td style='padding: 8px; border-bottom: 1px solid #333;'>Text strings (\"Hello world\")</td>
-</tr>
-<tr>
-<td style='padding: 8px; border-bottom: 1px solid #333;'><code>bool</code></td>
-<td style='padding: 8px; border-bottom: 1px solid #333;'>True or False logic</td>
-</tr>
-</table><br>You can 'cast' (convert) data between types using functions like <code>str()</code> or <code>int()</code>.`,
-        code: `# Store text
-name = "Stitch"
-# Store a number
-level = 100
+        overview: "Variables are containers for storing data values. In Python, you don't need to declare types; you just assign a name to a value.",
+        explanation: `<strong>Naming Rules:</strong> Variable names must start with a letter or underscore and are case-sensitive.<br><br><strong>Dynamic Typing:</strong> You can change a variable's type simply by assigning it a new value. This makes Python extremely flexible during development.`,
+        code: `name = "Stitch"    # A String
+level = 100         # An Integer
+is_active = True    # A Boolean
 
-# Swap the number for text (Dynamic Typing!)
-level = "Master Level"
-
-print(f"User: {name} is at {level}")`,
-        visual: "A row of glowing crystal jars on a floating shelf, each labelled with a holographic tag and glowing with a different color.",
-        recap: "Variables are named storage spots in memory.<br>Python defines types automatically (Dynamic Typing).<br>Use descriptive names so your code reads like a book.",
-        hook: "Create a variable called 'life_goal' and assign it your dream job!"
+# Variables can change!
+level = "Master"
+print(f"{name} is now at {level} level.")`,
+        visual: "A row of colorful glowing jars, each labelled with a name and containing different types of data liquid.",
+        recap: "Variables store information for later use.<br>Python handles data types automatically.<br>Use descriptive names for better readability.",
+        hook: "Create a variable called 'xp' and set it to 500!"
     },
     {
         id: 3,
         title: "Operators",
         tag: "MATH & LOGIC",
-        overview: "Operators are the gears of your program. They crush numbers, compare truth, and decide which path your code should take next.",
-        explanation: "<strong>1. Arithmetic:</strong> Use <code>+</code>, <code>-</code>, <code>*</code>, <code>/</code> for basic math. Use <code>//</code> for floor division (removes decimals) and <code>%</code> for modulo (the remainder).<br><br><strong>2. Comparison:</strong> Is X equal to Y? Use <code>==</code>. Is it different? Use <code>!=</code>. These are the basis of all computer decisions.<br><br><strong>3. Logical:</strong> The words <code>and</code>, <code>or</code>, and <code>not</code> allow you to build complex rules (e.g., 'If it is raining AND I have an umbrella').<br><br><strong>4. Membership:</strong> Use the word <code>in</code> to check if an item exists inside a list or a string. It's incredibly readable!",
-        code: `# The Modulo trick (is a number even?)
-num = 10
-print(f"Is {num} even? {num % 2 == 0}")
+        overview: "Operators are used to perform operations on variables and values. They are the building blocks of every calculation and logical check.",
+        explanation: "<strong>1. Arithmetic:</strong> <code>+</code>, <code>-</code>, <code>*</code>, <code>/</code>, <code>//</code> (floor), <code>%</code> (remainder).<br><strong>2. Comparison:</strong> <code>==</code>, <code>!=</code>, <code>></code>, <code><</code>. Returns True or False.<br><strong>3. Logical:</strong> <code>and</code>, <code>or</code>, <code>not</code>. These allow you to combine multiple conditions into a single decision.",
+        code: `# Math operations
+result = 10 % 3 # Remainder is 1
 
-# Chained logic
-age = 25
-has_license = True
-can_drive = age >= 18 and has_license
-print(f"Access Granted: {can_drive}")`,
-        visual: "A massive brass mechanical engine where gears of different sizes (operators) interlock to move a golden logic lever.",
-        recap: "Arithmetic operators handle calculations.<br>Comparison operators check for equality or size.<br>Logical operators combine truth values into smart conditions.",
-        hook: "Calculate 2 raised to the power of 10 using the ** operator!"
+# Logical checks
+age = 20
+has_ticket = True
+can_enter = age >= 18 and has_ticket
+
+print(f"Can enter? {can_enter}")`,
+        visual: "A complex clockwork mechanism with interweaving gears representing different math symbols.",
+        recap: "Arithmetic operators handle numeric calculations.<br>Logical operators evaluate truth values.<br>Comparison operators compare two values.",
+        hook: "Try calculating the remainder of 15 divided by 4 using the % operator!"
     },
     {
         id: 4,
         title: "Input & Output",
-        tag: "USER INTERACTION",
-        overview: "A program that doesn't talk is just a ghost. We use Input and Output to bridge the gap between human users and the digital brain.",
-        explanation: "<strong>Output (Print):</strong> We use <code>print()</code> to show data. Use <strong>f-strings</strong> (by adding an 'f' before your quotes) to inject variables directly into curly braces <code>{}</code>.<br><br><strong>Input (Asking):</strong> The <code>input()</code> function pauses the program and waits for the user to type. <br><br><strong>The Trap:</strong> Everything the user types returns as a <strong>String</strong>. You must wrap it in <code>int()</code> if you want to perform math on it!",
-        code: `# Asking the user
-favorite_food = input("What's your favorite meal? ")
+        tag: "INTERACTION",
+        overview: "Programs need to communicate. Input allows users to provide data, and Output displays results back to the user.",
+        explanation: "<strong>1. Output:</strong> Use <code>print()</code>. F-strings (e.g., <code>f'Hello {name}'</code>) are the modern way to include variables in text.<br><br><strong>2. Input:</strong> Use <code>input()</code>. <strong>Crucial:</strong> input() always returns data as a <strong>string</strong>. You must convert it (casting) if you want to use it as a number.",
+        code: `# Getting user data
+user_name = input("Enter your name: ")
+age = int(input("Enter your age: ")) # Convert to int
 
-# Responding with f-string
-print(f"Excellent choice! I love {favorite_food} too.")
-
-# Numeric conversion
-height_cm = int(input("How tall are you in cm? "))
-height_m = height_cm / 100
-print(f"You are {height_m} meters tall.")`,
-        visual: "A futuristic holographic interface where text bubbles float between a human and a glowing computer core.",
-        recap: "print() sends data out; input() brings data in.<br>f-strings are the most efficient way to format text with data.<br>Always convert user input to a number if you need to calculate.",
-        hook: "Ask the user for their name and their age, then print a personalized greeting!"
+print(f"Welcome {user_name}! In 10 years, you will be {age + 10}.")`,
+        visual: "A futuristic holographic interface where speech bubbles float between a human and a terminal.",
+        recap: "print() sends data to the screen.<br>input() pauses execution and waits for user typing.<br>Always cast inputs if you need numeric data.",
+        hook: "Ask the user for their favorite color and print it back with a message!"
     },
     {
         id: 5,
         title: "Data Types",
-        tag: "DECISION MAKING",
-        overview: "Right now, our programs simply execute line by line. Real software makes decisions! Conditionals give your code a brain to make structural choices.",
-        explanation: "<strong>1. If Statements:</strong> Decisions at a crossroad. Use <code>if</code> for the first check, <code>elif</code> for secondary checks, and <code>else</code> for the catch-all.<br><br><strong>2. Loops:</strong> Humans hate repetition; computers thrive on it.<br>• <strong>For Loops:</strong> Use when you know exactly how many times to repeat (e.g., for each item in a list).<br>• <strong>While Loops:</strong> Runs as long as a condition is True. Perfect for 'Keep going until the battery dies'.",
-        code: `# Branching Decisions
-weather = "raining"
-if weather == "raining":
-    print("Take an umbrella")
-else:
-    print("Enjoy the sun")
+        tag: "CORE TYPES",
+        overview: "Everything in Python is an object, and every object has a data type. Understanding these types is vital for memory and logic.",
+        explanation: "<strong>1. Numeric:</strong> <code>int</code> (whole numbers), <code>float</code> (decimals), <code>complex</code>.<br><strong>2. Text:</strong> <code>str</code> (strings of characters).<br><strong>3. Boolean:</strong> <code>bool</code> (True or False values).<br><strong>4. Sequence Types:</strong> Groups like <code>list</code> and <code>tuple</code>.<br><br>Use <code>type()</code> to check what type of data a variable is holding.",
+        code: `x = 10.5        # float
+y = "Hello"     # str
+z = True        # bool
 
-# Predictable Repetition
-for i in range(3):
-    print(f"Repetition {i+1}")`,
-        visual: "A literal fork in a golden digital road, where glowing signs point you in different directions based on logic gates.",
-        recap: "if/elif/else allows logical branching.<br>for loops iterate predictably over sequences.<br>while loops execute continuously until a condition becomes False.",
-        hook: "Write an if-statement that checks if a score is 100 and prints 'Perfect Game!'"
+print(f"x is a {type(x)}")
+print(f"z is a {type(z)}")`,
+        visual: "A sorting machine placing different shapes (data) into specialized bins (types).",
+        recap: "Integers and Floats handle numbers.<br>Strings handle text data.<br>Booleans handle yes/no logic.",
+        hook: "Check the type of the value 100.0 using the type() function!"
     },
     {
         id: 6,
         title: "Type Casting",
-        tag: "COLLECTIONS",
-        overview: "As your data grows, you need smarter containers to hold related groups of information. List, Tuples, Sets, and Dictionaries are your storage heroes.",
-        explanation: "<strong>1. Lists [ ]:</strong> Ordered rows of items. You can add, remove, and shuffle them anytime. Access them by index (starts at 0).<br><br><strong>2. Dictionaries { }:</strong> Label-based storage. Instead of 'item #1', you look up 'username' to get 'Stitch'. Lightning fast for data retrieval.<br><br><strong>3. Sets & Tuples:</strong> Use <strong>Sets</strong> to automatically delete duplicates and <strong>Tuples</strong> for data that must never change (like GPS coordinates).",
-        code: `# A versatile list
-inventory = ["Sword", "Shield", "Potion"]
-inventory.append("Map")
-print(f"First item: {inventory[0]}")
+        tag: "TRANSFORMATION",
+        overview: "Type Casting is the process of converting one data type into another. This is often necessary when mixing different types of data.",
+        explanation: "<strong>1. Implicit Casting:</strong> Python does this automatically (e.g., adding an int to a float).<br><strong>2. Explicit Casting:</strong> You manually convert using functions like <code>int()</code>, <code>float()</code>, or <code>str()</code>.<br><br>This is most common when reading numeric input from a user or combining strings with numbers in old-style printing.",
+        code: `age_str = "25"
+age_int = int(age_str) # Conversion to int
 
-# A powerful dictionary
-player = {"name": "Stitch", "level": 100}
-print(f"Player {player['name']} is ready!")`,
-        visual: "A high-tech digital filing cabinet where the list drawer holds ordered items and the dictionary drawer has labelled index cards.",
-        recap: "Lists [] are your daily driver for sequences.<br>Dictionaries {} map labels to values for fast retrieval.<br>Sets handle unique items; Tuples handle immutable data.",
-        hook: "Create a list of your 3 favorite movies and print the second one (Index 1)!"
+price = 19.99
+price_rounded = int(price) # results in 19 (removes decimals)
+
+print(f"Age plus 5: {age_int + 5}")`,
+        visual: "A magical lens that turns a block of wood (string) into a solid block of metal (integer).",
+        recap: "int() converts to whole numbers.<br>str() converts anything to text.<br>float() adds decimal points to integers.",
+        hook: "Convert the string '55' into a float and print it!"
     },
     {
         id: 7,
         title: "Conditional Statements",
-        tag: "TEXT PROCESSING",
-        overview: "In programming, text isn't just a list of words; it's a sequence of data that you can slice, dice, and transform with surgical precision.",
-        explanation: `<strong>1. Slicing:</strong> Think of a word like a piece of wood. You can use <code>[start:stop]</code> to cut out exact sections. Want the first 4 letters? Use <code>[:4]</code>.<br><br><strong>2. Cleaning:</strong> Use <code>.strip()</code> to remove annoying whitespace from user input, and <code>.replace()</code> to swap out whole sections of text instantly.<br><br><strong>3. Searching:</strong> The <code>re</code> module (Regular Expressions) is like a metal detector for text. It can find every email address or phone number hidden in a massive document in milliseconds.`,
-        code: `# Slicing a word
-word = "Programming"
-print(f"First 4: {word[:4]}") # result: Prog
+        tag: "LOGIC GATES",
+        overview: "Conditional statements allow your program to make decisions. Without them, your code would just run the same way every single time.",
+        explanation: "<strong>1. If:</strong> Executes if a condition is True.<br><strong>2. Elif:</strong> Short for 'else if'; checks another condition if the first was False.<br><strong>3. Else:</strong> The 'catch-all' that runs if none of the previous conditions were met.<br><br>Python uses <strong>colon (:)</strong> and <strong>indentation</strong> to define which code belongs to the condition.",
+        code: `score = 85
 
-# Multi-method chaining
-data = "  python code  "
-print(data.strip().upper()) # result: "PYTHON CODE"`,
-        visual: "A robotic, pinpoint laser cleanly slicing through a floating 3D word block, rearranging the glowing letters gracefully.",
-        recap: "Strings are sequences of characters that can be sliced.<br>Methods like .strip() and .upper() handle common cleaning tasks.<br>Regular Expressions (re) provide advanced pattern searching.",
-        hook: "Take the word 'Learning' and slice out only the 'Learn' part (Index 0 to 5)!"
+if score >= 90:
+    print("Grade: A")
+elif score >= 80:
+    print("Grade: B")
+else:
+    print("Keep studying!")`,
+        visual: "A literal fork in the road where a digital sign post lights up based on your data input.",
+        recap: "if starts the check sequence.<br>elif adds extra logic branches.<br>else provides the default behavior.",
+        hook: "Write an if statement that prints 'Access Granted' if a variable password is 'secret'!"
     },
     {
         id: 8,
         title: "While Loops",
-        tag: "REUSABLE CODE",
-        overview: "Functions are the ultimate time-savers. They package complex logic into reusable factories so you don't have to keep writing the same code over and over.",
-        explanation: `<strong>The DRY Rule:</strong> Don't Repeat Yourself. If you type the same logic twice, put it in a function.<br><br><strong>1. Inputs (Arguments):</strong> Raw materials you drop into the factory.<br><strong>2. Output (Return):</strong> The finished product that pops out the other side.<br><br><strong>3. Lambdas:</strong> These are tiny, one-liner functions (like a mini-conveyor belt) for simple tasks.`,
-        code: `# A function factory
-def create_greeting(name, time="Morning"):
-    return f"Good {time}, {name}!"
+        tag: "REPETITION",
+        overview: "A While Loop repeats a block of code as long as a specified condition remains True. It's useful when you don't know the exact number of iterations beforehand.",
+        explanation: "<strong>The Structure:</strong> First, initialize a variable. Then, set the <code>while</code> condition. Inside the loop, you must <strong>update</strong> the variable so the loop eventually ends, otherwise you create an 'Infinite Loop'.<br><br><strong>Break:</strong> Use <code>break</code> to stop the loop immediately, even if the condition is still True.",
+        code: `count = 1
+while count <= 3:
+    print(f"Iteration number: {count}")
+    count += 1  # Increment to avoid infinite loop
 
-# Using the factory
-print(create_greeting("Stitch", "Evening"))
-
-# A mini Lambda conveyor belt
-double = lambda x: x * 2
-print(f"Double of 10: {double(10)}")`,
-        visual: "A futuristic chrome vending machine where raw materials (arguments) go in, gears turn (logic), and the finished soda (return) pops out.",
-        recap: "Functions prevent code duplication (the DRY principle).<br>Use 'def' to create the blueprint and 'return' to send the result out.<br>Default parameters allow flexibility without extra work.",
-        hook: "Create a function called 'multiply' that takes two numbers and returns their product!"
+print("Loop finished!")`,
+        visual: "A circular race track where a car keeps going until its 'gas' variable hits zero.",
+        recap: "While loops run while a condition is True.<br>Always update the control variable inside the loop.<br>Use them for listener loops or retry logic.",
+        hook: "Create a while loop that prints numbers from 5 down to 1!"
     },
     {
         id: 9,
         title: "For Loops",
-        tag: "CODE LIBRARIES",
-        overview: "You don't need to reinvent the wheel. Python gives you access to a limitless library of pre-written code that you can teleport into your project instantly.",
-        explanation: `<strong>1. The Standard Library:</strong> Python comes with 'batteries included'. Modules like <code>math</code>, <code>random</code>, and <code>datetime</code> are already on your machine.<br><br><strong>2. External Packages:</strong> There are over 400,000 community libraries. Use <strong>PIP</strong> (the Package Installer) to grab them.<br><br><strong>3. Main Guards:</strong> Use <code>if __name__ == "__main__":</code> to ensure code only runs when you execute the file directly, not when someone else imports it.`,
-        code: `import math
-from random import randint
+        tag: "ITERATION",
+        overview: "A For Loop is used to iterate over a sequence (like a list, string, or range). It is predictable and executes a set number of times.",
+        explanation: "<strong>1. Range:</strong> <code>range(5)</code> generates numbers from 0 to 4.<br><strong>2. Iterating Sequences:</strong> You can loop through every letter in a word or every item in a list directly.<br><strong>3. Continue:</strong> Use <code>continue</code> to skip the rest of the current iteration and move to the next one.",
+        code: `# Using range
+for i in range(1, 4):
+    print(f"Step {i}")
 
-# Teleporting math logic
-print(f"Square root of 81 is {math.sqrt(81)}")
-
-# Rolling a digital die
-print(f"You rolled a: {randint(1, 6)}")`,
-        visual: "A massive, towering library stretching to the clouds. You whisper 'import physics' and an entire book of calculations flies into your hands.",
-        recap: "Modules allow you to use code written by others or yourself across different files.<br>PIP is the gateway to the global Python ecosystem.<br>Keep your code modular for easier debugging and maintenance.",
-        hook: "Import the 'datetime' module and print out the current date and time!"
+# Iterating a string
+for char in "PY":
+    print(f"Letter: {char}")`,
+        visual: "A conveyor belt moving standardized boxes (data items) past a scanner (the loop body).",
+        recap: "For loops are used for predefined sequences.<br>range(start, stop) is commonly used for counting.<br>Continue skips one step; Break stops the whole loop.",
+        hook: "Use a for loop to print every character in your name!"
     },
     {
         id: 10,
         title: "Strings & Indexing",
-        tag: "STORAGE",
-        overview: "When your computer turns off, variables vanish. To make data permanent, you must store it in the Iron Vault of your hard drive.",
-        explanation: `<strong>1. The Safety Net:</strong> Always use <code>with open()</code>. It's like a robotic arm that opens the drawer, writes the notes, and guaranteed-slams the drawer shut even if the building catches fire.<br><br><strong>2. File Modes:</strong><br>• <code>'w'</code>: Wipe and write fresh.<br>• <code>'a'</code>: Append (add) to the end of the existing file.<br>• <code>'r'</code>: Read the contents back into your brain.`,
-        code: `# Writing into the vault safely
-with open("quest.txt", "w") as vault:
-    vault.write("Objective: Master Python!")
+        tag: "TEXT MASTERY",
+        overview: "Strings are sequences of characters. In Python, you can manipulate text by accessing specific positions called indexes.",
+        explanation: "<strong>1. Indexing:</strong> Python indexes start at <strong>0</strong>. Use <code>str[0]</code> for the first letter.<br><strong>2. Slicing:</strong> Use <code>[start:stop]</code> to extract a portion of the string.<br><strong>3. Negative Indexing:</strong> Use <code>-1</code> to get the last character of the string, which is useful when you don't know the string's length.",
+        code: `text = "Python"
+# Get first letter
+print(text[0])  # P
 
-# Peeking back inside
-with open("quest.txt", "r") as vault:
-    print(f"Current quest: {vault.read()}")`,
-        visual: "A tiny robotic arm carefully sliding a piece of paper into a heavy steel filing cabinet and locking it with a loud CLICK.",
-        recap: "Always use 'with open()' to prevent data corruption.<br>File modes decide if you overwrite or add to a file.<br>Persistence is what separates scripts from real applications.",
-        hook: "Write a script that creates 'notes.txt' and writes your name inside it!"
+# Slice middle parts
+print(text[0:2]) # Py
+
+# Get last letter
+print(text[-1]) # n`,
+        visual: "A long train where each carriage holds one letter and has a specific number painted on the side.",
+        recap: "Indexes always start at 0.<br>Slicing [start:end] excludes the ending index.<br>Negative indexes count backwards from the end.",
+        hook: "Take the word 'Learning' and slice out the 'Learn' part!"
     },
     {
         id: 11,
         title: "Lists",
-        tag: "CRASH PROTECTION",
-        overview: "Users will break your code. They type text into number boxes and delete files they shouldn't. Exceptions are the safety nets that catch the fall so the app doesn't die.",
-        explanation: `<strong>1. Try-Except:</strong> Wrap risky code in <code>try</code>. If it triggers an error, the <code>except</code> block catches the fire.<br><br><strong>2. Specificity:</strong> Don't just catch 'anything'. Catch the exact problem (like <code>ZeroDivisionError</code>) so you can fix it properly.<br><br><strong>3. Finally:</strong> The <code>finally</code> block runs no matter what. It's used for mission-critical cleanup, like turning off a laser before the program exits.`,
-        code: `try:
-    num = int(input("Enter divisor: "))
-    print(f"10 / {num} = {10 / num}")
-except ZeroDivisionError:
-    print("Security Alert: You cannot divide by zero!")
-except ValueError:
-    print("Input Error: Please only type numbers.")`,
-        visual: "A high-speed train derailing off a broken track, but jumping safely into a massive, soft carbon-fiber net.",
-        recap: "Anticipate user errors before they happen.<br>Try-Except blocks keep your application running during failures.<br>Specific error names make debugging 10x faster.",
-        hook: "Try to divide 10 by 'hello' in a try block and catch the error!"
+        tag: "COLLECTIONS",
+        overview: "Lists are used to store multiple items in a single variable. They are ordered, changeable, and allow duplicate values.",
+        explanation: "<strong>1. Creation:</strong> Defined with square brackets <code>[ ]</code>.<br><strong>2. Methods:</strong> Use <code>.append()</code> to add to the end, <code>.insert()</code> to add at a specific spot, and <code>.pop()</code> to remove an item.<br><strong>3. Nested Lists:</strong> A list can contain other lists, allowing you to create grids or matrices.",
+        code: `fruits = ["Apple", "Banana"]
+fruits.append("Orange")
+
+# Accessing
+print(f"Second item: {fruits[1]}")
+
+# Updating
+fruits[0] = "Mango"
+print(fruits)`,
+        visual: "A digital filing cabinet where you can easily slide new drawers in and out or reorder them.",
+        recap: "Lists are mutable (can be changed).<br>Items are accessed via zero-based indexing.<br>Lists can hold different data types at once.",
+        hook: "Create a list of 3 colors and append 'Purple' to it!"
     },
     {
         id: 12,
         title: "Tuples",
-        tag: "BLUEPRINTS",
-        overview: "Object-Oriented Programming (OOP) allows you to model the real world. Instead of loose variables, you create 'Classes' which are blueprints for objects like 'Users', 'Enemies', or 'Cars'.",
-        explanation: `<strong>1. Classes:</strong> The theoretical architectural blueprint.<br><strong>2. Objects:</strong> The actual houses built from that blueprint.<br><br><strong>The Core Pillars:</strong><br>• <strong>Attributes:</strong> What the object HAS (e.g., color, name, health).<br>• <strong>Methods:</strong> What the object DOES (e.g., drive, speak, attack).<br>• <strong>Inheritance:</strong> Creating a 'Super Class' (Vehicle) and making specialized versions (Car, Plane) that inherit its traits.`,
-        code: `class Robot:
-    def __init__(self, name):
-        self.name = name # Attribute
+        tag: "CONSTANT DATA",
+        overview: "Tuples are similar to lists but are IMMUTABLE. Once a tuple is created, its contents cannot be changed, added to, or removed.",
+        explanation: "<strong>1. Why use them?</strong> They are faster than lists and safer for data that must not change (like coordinates or configuration).<br><strong>2. Syntax:</strong> Defined with parentheses <code>( )</code>.<br><strong>3. Packing/Unpacking:</strong> You can assign a tuple to multiple variables in one line.",
+        code: `coordinates = (10, 20)
+# coordinates[0] = 5  # This would cause an ERROR!
 
-    def speak(self): # Method
-        return f"Greetings, I am {self.name}!"
-
-# Create an object from the blueprint
-bot = Robot("Dexter")
-print(bot.speak())`,
-        visual: "A glowing blue holographic blueprint morphing and sparking until it solidifies into a tangible metal robot that walks away.",
-        recap: "Classes are templates; Objects are the living instances in memory.<br>The __init__ method is a special 'constructor' that runs when the object is born.<br>'Self' allows an object to talk to its own internal data.",
-        hook: "Create a class called 'Warrior' with a 'power' attribute and print it!"
+# Unpacking
+x, y = coordinates
+print(f"X is {x}, Y is {y}")`,
+        visual: "A sealed, transparent glass safe where you can see the data inside but cannot reach in to change it.",
+        recap: "Tuples use () and are immutable.<br>Used for fixed data sequences like GPS points.<br>Faster and more memory-efficient than lists.",
+        hook: "Try to create a tuple of your birth day, month, and year!"
     },
     {
         id: 13,
         title: "Sets",
-        tag: "META PROGRAMMING",
-        overview: "As you move from coder to engineer, you need to understand the hidden mechanisms that make Python scale to millions of users.",
-        explanation: `<strong>1. Iterators & Generators:</strong> Memory is expensive. Instead of creating a list of 1 million items, use a <strong>Generator</strong> (with <code>yield</code>) to produce them one at a time. It's like a faucet instead of a bucket.<br><br><strong>2. Decorators:</strong> A way to wrap your code in specialized logic. Use <code>@decorator</code> to add logging, authentication, or timing to any function without changing its internal code.<br><br><strong>3. The GIL:</strong> Python's 'Global Interpreter Lock'. Understanding this is key to mastering <strong>Multiprocessing</strong> and high-performance computing.`,
-        code: `# A memory-saving generator
-def countdown(n):
-    while n > 0:
-        yield n
-        n -= 1
+        tag: "UNIQUE ITEMS",
+        overview: "A Set is an unordered collection of items where every element is unique. Sets are great for removing duplicates and performing math operations like unions.",
+        explanation: "<strong>1. No Duplicates:</strong> If you add the same item twice, the set will only keep one.<br><strong>2. Operations:</strong> You can easily find the intersection (items in both), union (items in either), or difference (items in one but not the other) between two sets.<br><strong>3. Unordered:</strong> You cannot access items by index because the order is not guaranteed.",
+        code: `nums = {1, 2, 2, 3}
+print(nums) # results in {1, 2, 3}
 
-# Using the generator
-for num in countdown(3):
-    print(num)
-
-# A simple decorator wrapper
-def log_call(func):
-    return lambda *args: (print("Calling..."), func(*args))`,
-        visual: "A room of infinite mirrors where every action (function) is reflected and modified by golden rings (decorators) while energy flows as needed (generators).",
-        recap: "Generators save memory by producing data on-demand.<br>Decorators allow you to inject logic once and use it everywhere.<br>Advanced Python is about efficiency and architecture.",
-        hook: "Research what 'yield' does compared to 'return' — it's the heart of streaming data!"
+# Check for existence
+print(1 in nums) # True`,
+        visual: "A magical bag that automatically dissolves any duplicate items you try to put inside.",
+        recap: "Sets use {} and only store unique values.<br>Items are unordered and cannot be indexed.<br>Perfect for math-heavy comparison tasks.",
+        hook: "Create a set from the list [1, 1, 2, 2, 3, 3] and see what happens!"
     },
     {
         id: 14,
         title: "Dictionaries",
-        tag: "BATTERIES INCLUDED",
-        overview: "Python says it comes with 'batteries included'. This means it ships with an massive internal Power Grid of tools that can handle almost any task imaginable.",
-        explanation: `<strong>1. Time & OS:</strong> The <code>datetime</code> module handles messy timezones, while <code>os</code> and <code>sys</code> let you talk to the operating system itself.<br><br><strong>2. Collections:</strong> Use <code>Counter</code> to instantly count duplicates or <code>deque</code> for lightning-fast lists.<br><br><strong>3. Math & Random:</strong> From rolling dice (<code>random.randint</code>) to calculating complex geometry (<code>math.pi</code>), the power is at your fingertips.`,
-        code: `import math
-from random import randint
-from datetime import datetime
+        tag: "KEY-VALUE PAIRS",
+        overview: "Dictionaries store data in Key:Value pairs. They are unordered, changeable, and indexed by keys instead of numbers.",
+        explanation: "<strong>1. Mapping:</strong> Think of a real dictionary; you look up the 'Word' (Key) to find the 'Definition' (Value).<br><strong>2. Keys:</strong> Must be unique and immutable (like strings or numbers).<br><strong>3. Methods:</strong> Use <code>.keys()</code>, <code>.values()</code>, or <code>.items()</code> to see different parts of your dictionary.",
+        code: `user = {
+    "name": "Stitch",
+    "level": 100,
+    "role": "Admin"
+}
 
-# Rolling a digital die
-print(f"You rolled a {randint(1, 20)}!")
-
-# Modern timestamping
-now = datetime.now()
-print(f"Recorded at: {now.strftime('%H:%M:%S')}")`,
-        visual: "A massive industrial power grid with thousands of plugs, each granting access to a different superpower like time travel or advanced physics.",
-        recap: "The Standard Library is built-in and requires no installation.<br>'import' is how you plug into the grid.<br>Mastering these modules separate beginners from pros.",
-        hook: "Import 'random' and print a random choice from a list of your 3 favorite colors!"
+print(user["name"]) # Stitch
+user["level"] = 101 # Update`,
+        visual: "A wall of numbered locks where each lock has a specific label and opens to reveal its own prize.",
+        recap: "Dictionaries use {'key': 'value'} syntax.<br>Keys must be unique; values can be anything.<br>Fastest way to retrieve data by a specific label.",
+        hook: "Create a dictionary representing a car with 'brand' and 'model' keys!"
     },
     {
         id: 15,
         title: "Functions",
-        tag: "DATA PERSISTENCE",
-        overview: "Professional applications don't use text files; they use Databases. Databases are organized vaults that can search through billions of rows in the blink of an eye.",
-        explanation: `<strong>1. SQL:</strong> The universal language of data. Even if you aren't a coder, knowing SQL is a career superpower.<br><br><strong>2. SQLite:</strong> Python has a full database engine built-in. It's file-based, meaning you don't need a server to start building database-powered apps.<br><br><strong>3. CRUD:</strong> The four operations of the vault: <strong>C</strong>reate, <strong>R</strong>ead, <strong>U</strong>pdate, and <strong>D</strong>elete.`,
-        code: `import sqlite3
+        tag: "REUSABLE BLOCKS",
+        overview: "A function is a block of code which only runs when it is called. Functions allow you to reuse logic without retyping it.",
+        explanation: "<strong>1. Parameters:</strong> Data passed into the function to influence its behavior.<br><strong>2. Return:</strong> The keyword used to send a value back to where the function was called.<br><strong>3. DRY Principle:</strong> Don't Repeat Yourself! If you write the same code twice, make it a function.",
+        code: `def greet(name):
+    return f"Hello, {name}!"
 
-# Create a vault in your RAM
-conn = sqlite3.connect(":memory:")
-cur = conn.cursor()
-
-# Create a table
-cur.execute("CREATE TABLE users (name TEXT, level INTEGER)")
-cur.execute("INSERT INTO users VALUES ('Stitch', 100)")
-
-# Retrieve data
-cur.execute("SELECT * FROM users")
-print(f"Logged in: {cur.fetchone()}")`,
-        visual: "A massive, glowing bank vault where data is slotted into perfectly organized grids, rows, and tightly guarded tables.",
-        recap: "Databases provide structured, fast, and secure storage.<br>SQLite is perfect for small apps and learning.<br>SQL is the standard language for interacting with data.",
-        hook: "Look up what a 'Primary Key' is in a database — it's how we keep data unique!"
+# Call the function
+message = greet("Programmer")
+print(message)`,
+        visual: "A vending machine where you insert currency (parameters) and it pushes out a specific product (return value).",
+        recap: "Use 'def' to create a function.<br>Functions make code modular and easier to debug.<br>Local variables inside a function stay inside that function.",
+        hook: "Write a function 'add' that takes a and b and returns their sum!"
     },
     {
         id: 16,
         title: "Lambda Expressions",
-        tag: "BUILDING THE WEB",
-        overview: "Python is the heartbeat of the internet. It powers the 'Backend' — the invisible brain behind websites like Instagram, Pinterest, and Netflix.",
-        explanation: `<strong>1. Frameworks:</strong> Use <strong>Flask</strong> for simple, fast websites and <strong>Django</strong> for massive enterprise platforms.<br><br><strong>2. API Bridges:</strong> Websites talk to each other using <strong>APIs</strong>. Python is the world's best tool for building these digital bridges.<br><br><strong>3. Routing:</strong> Mapping a URL (like /home) to a specific Python function that serves a webpage.`,
-        code: `# A tiny Flask server example
-from flask import Flask
-app = Flask(__name__)
+        tag: "ONE-LINERS",
+        overview: "Lambda expressions are small, anonymous functions. They are used for simple, short-term tasks that don't require a full 'def' block.",
+        explanation: "<strong>Syntax:</strong> <code>lambda arguments : expression</code>. You can have any number of arguments, but only <strong>one expression</strong>.<br><br>They are often used as arguments to other functions like <code>map()</code>, <code>filter()</code>, or for quick calculations.",
+        code: `sqr = lambda x : x * x
+print(sqr(5)) # 25
 
-@app.route('/')
-def hello():
-    return "<h1>Python Web App Live!</h1>"
-
-# In a real app, you would run: app.run()`,
-        visual: "A bustling dispatch center where request envelopes fly in from around the world and Python blasts back webpages in milliseconds.",
-        recap: "The Backend handles logic, security, and data storage.<br>Flask and Django are the two industry-standard choices.<br>APIs allow your Python code to talk to browsers and mobile apps.",
-        hook: "Search for 'Flask Hello World' — you can have a website live in 5 minutes!"
+# Used in sorting
+pairs = [(1, 'one'), (2, 'two')]
+pairs.sort(key=lambda p: p[1]) # Sort by name`,
+        visual: "A tiny portable tool that performs one specific job and fits right in your pocket.",
+        recap: "Lambdas are anonymous (no name required).<br>Limited to a single expression.<br>Perfect for quick data filtering or sorting.",
+        hook: "Create a lambda that multiplies two numbers 'a' and 'b'!"
     },
     {
         id: 17,
         title: "Classes & Objects",
-        tag: "DATA INSIGHTS",
-        overview: "Raw data is just noise. Data Science is the art of turning that noise into clear, actionable stories. Python is the undisputed king of this field.",
-        explanation: `<strong>1. NumPy:</strong> High-performance math arrays. Fast as lightning.<br><strong>2. Pandas:</strong> This is Excel on steroids. It can clean and analyze millions of rows of data instantly.<br><strong>3. Visualization:</strong> Turning numbers into art. Libraries like <code>Matplotlib</code> allow you to build charts, graphs, and heatmaps that reveal hidden trends.`,
-        code: `import pandas as pd
+        tag: "BLUEPRINTS",
+        overview: "Object-Oriented Programming (OOP) allows you to model real-world concepts. A Class is a blueprint, and an Object is the actual item built from it.",
+        explanation: "<strong>1. Attributes:</strong> Data stored within the object (e.g., color, health).<br><strong>2. Methods:</strong> Functions that belong to the object (e.g., walk, fire_laser).<br><strong>3. __init__:</strong> The special 'constructor' method that runs when an object is first created to set its initial state.",
+        code: `class Robot:
+    def __init__(self, name):
+        self.name = name
 
-# Creating a mini-spreadsheet (DataFrame)
-stats = {"Level": [1, 2, 3], "XP": [100, 250, 500]}
-df = pd.DataFrame(stats)
+    def speak(self):
+        return f"Beep! I am {self.name}"
 
-# Instantly finding the average
-print(f"Average XP: {df['XP'].mean()}")`,
-        visual: "A chaotic hurricane of numbers flowing into a funnel and coming out as perfectly color-coded, elegant charts.",
-        recap: "Pandas is the primary tool for data manipulation.<br>Data cleaning is 80% of the job for an Oracle (Data Scientist).<br>Visualization turns cold numbers into compelling stories.",
-        hook: "Research 'What is a DataFrame' — it's the fundamental unit of all data science!"
+my_bot = Robot("Dexter")
+print(my_bot.speak())`,
+        visual: "A holographic blueprint of a car that sparkles and solidifies into a real, driveable car.",
+        recap: "Classes are templates; Objects are the instances.<br>'self' refers to the current object itself.<br>OOP helps organize complex, large-scale code.",
+        hook: "Create a 'Dog' class with a 'bark' method!"
     },
     {
         id: 18,
         title: "Inheritance",
-        tag: "ARTIFICIAL INTEL",
-        overview: "Teaching computers to find patterns without explicit instructions. This is the foundation of self-driving cars, medicine, and chatbots like ChatGPT.",
-        explanation: `<strong>1. Supervised Learning:</strong> Training models using 'labeled data' (inputs + correct answers). It's like teaching a child by showing them pictures of apples and oranges.<br><br><strong>2. Regression vs Classification:</strong> Regression predicts numbers (like house prices), while Classification predicts categories (like 'Dog' vs 'Cat').<br><br><strong>3. Neural Networks:</strong> Massive layers of digital 'neurons' (modeled after the human brain) that can learn complex patterns in images and voice.`,
-        code: `# Using Scikit-learn (Industry Standard)
-# from sklearn.ensemble import RandomForestClassifier
+        tag: "SPECIALIZATION",
+        overview: "Inheritance allows a class (Child) to take on the characteristics of another class (Parent). This prevents code duplication and allows for complex hierarchies.",
+        explanation: "<strong>1. Parent Class:</strong> The base class containing general attributes.<br><strong>2. Child Class:</strong> The specialized class that inherits from the parent.<br><strong>3. Method Overriding:</strong> A child can replace a parent's method with its own version to behave differently.",
+        code: `class Animal:
+    def speak(self): print("Noise")
 
-# ML Workflow:
-# 1. Gather Data
-# 2. Train Model: model.fit(X_train, y_train)
-# 3. Predict: result = model.predict(X_test)
+class Dog(Animal): # Inherits from Animal
+    def speak(self): print("Woof!")
 
-print("AI learns from history to predict the future.")`,
-        visual: "A digital brain digesting thousands of chess games, building internal connections, until it achieves total mastery.",
-        recap: "Machine Learning is about pattern recognition at scale.<br>Scikit-learn is the primary library for traditional ML in Python.<br>Data quality is more important than the algorithm itself.",
-        hook: "Look up 'What is a Neural Network' — it's the engine behind modern AI!"
+rexi = Dog()
+rexi.speak() # Uses specialized version`,
+        visual: "A family tree where the children inherit the height of the parents but develop their own unique skills.",
+        recap: "Inheritance creates a 'is-a' relationship.<br>Child classes can add new methods or change old ones.<br>Pass the parent class name in parentheses during definition.",
+        hook: "Make a 'Car' class inherit from a 'Vehicle' class!"
     },
     {
         id: 19,
         title: "Error Handling",
-        tag: "CODE QUALITY",
-        overview: "Professional code isn't just code that works; it's code that is tested. Testing finds bugs before your users do, making your app bulletproof.",
-        explanation: `<strong>1. Debugging:</strong> Using tools like <code>pdb</code> to pause time and inspect your variables mid-execution.<br><br><strong>2. Unit Testing:</strong> Writing small scripts that 'test' your main code. If you change something and the tests fail, you know exactly what broke.<br><br><strong>3. Pytest:</strong> The most popular testing framework in Python. It's simple, fast, and incredibly powerful.`,
-        code: `# A simple test case
-def add(a, b): return a + b
-
-# Using assert to check logic
-def test_add():
-    assert add(1, 2) == 3
-    print("Test Passed! ✓")
-
-test_add()`,
-        visual: "A robotic inspector arm scanning every component on an assembly line to ensure nothing ever snaps under pressure.",
-        recap: "Testing saves you from 'regression' (breaking old features with new code).<br>Pytest is the professional standard for testing in Python.<br>Write tests for your most critical logic first.",
-        hook: "Research 'TDD' (Test Driven Development) — it's how the world's best engineers write code!"
+        tag: "CRASH PROTECTION",
+        overview: "Errors (exceptions) are inevitable. Error handling allows your program to gracefully catch these errors instead of crashing and closing.",
+        explanation: "<strong>1. Try:</strong> The block of code that might fail.<br><strong>2. Except:</strong> The block that runs if an error occurs. You can catch specific errors like <code>ZeroDivisionError</code>.<br><strong>3. Finally:</strong> Code that runs no matter what, often used for cleanup like closing files.",
+        code: `try:
+    num = int(input("Enter divisor: "))
+    print(100 / num)
+except ZeroDivisionError:
+    print("Cannot divide by zero!")
+except ValueError:
+    print("Please enter a valid number!")`,
+        visual: "A high-tech safety net that catches a falling gymnast and gently places them back on their feet.",
+        recap: "Try-Except blocks keep your app alive.<br>Specific exceptions help you identify exactly what went wrong.<br>Finally is used for mission-critical cleanup.",
+        hook: "Try to divide by zero in a try-except block and print a catch message!"
     },
     {
         id: 20,
         title: "Git & GitHub",
-        tag: "COLLABORATION",
-        overview: "Git is the ultimate time machine for your code. It tracks every change, allowing you to go back in time or work with thousands of people at once.",
-        explanation: `<strong>1. Commits:</strong> Snapshots of your project. Each commit is a saved point in history.<br><br><strong>2. Branching:</strong> Parallel universes. Create a 'feature branch' to try something crazy without breaking the main app.<br><br><strong>3. GitHub:</strong> The cloud for your code. It's where the global developer community hosts projects, collaborates, and shares ideas.`,
-        code: `# The Big 4 Git Commands:
-# 1. git init (Start a project)
-# 2. git add . (Prepare changes)
-# 3. git commit -m "Message" (Save snapshot)
-# 4. git push (Upload to the cloud)`,
-        visual: "A glowing timeline showing parallel threads of code branching off, then elegantly weaving back together into a stronger master thread.",
-        recap: "Git handles local version history; GitHub handles cloud collaboration.<br>Never share code by zip file — always use Git.<br>Clear commit messages are a key professional skill.",
-        hook: "Create a free GitHub account today — it's the first step to becoming a pro!"
+        tag: "VERSION CONTROL",
+        overview: "Git is a version control system that tracks changes in your code. GitHub is a cloud platform where you can host and share your Git repositories.",
+        explanation: "<strong>1. Commit:</strong> A snapshot of your work at a specific time.<br><strong>2. Branch:</strong> A parallel version of your code to test features without breaking the main app.<br><strong>3. Pull Request:</strong> A way to propose changes to a project and have others review your code before merging it.",
+        code: `# Basic Git Commands
+# git init         (Start project)
+# git add .        (Stage changes)
+# git commit -m "" (Save snapshot)
+# git push         (Upload to cloud)`,
+        visual: "A glowing timeline where you can travel back to any saved point in history or jump into parallel universes.",
+        recap: "Git handles local version history.<br>GitHub enables global collaboration.<br>Branches isolate risky changes from stable code.",
+        hook: "Create a GitHub account and push your first 'Hello World' file today!"
     },
     {
         id: 21,
         title: "Deployment",
         tag: "GOING LIVE",
-        overview: "Moving your code from your laptop to the real world. Deployment is the final stage where your app becomes a live service used by people.",
-        explanation: `<strong>1. Environments:</strong> Use <code>venv</code> (Virtual Environments) to isolate your project's libraries. This prevents 'Dependency Hell'.<br><br><strong>2. Packaging:</strong> Creating a <code>requirements.txt</code> file so a server knows exactly which tools to install to run your app.<br><br><strong>3. Cloud Hosting:</strong> Services like Railway, Render, or AWS that host your app 24/7 so it's always accessible to the world.`,
-        code: `# Preparing for launch:
+        overview: "Deployment is the process of making your application available to the real world. It moves your code from your laptop to a server on the internet.",
+        explanation: "<strong>1. Virtual Environments:</strong> Use <code>venv</code> to isolate your project's libraries so they don't conflict with other projects.<br><strong>2. Requirements:</strong> A list of tools your app needs to run (e.g., <code>pip freeze > requirements.txt</code>).<br><strong>3. Hosting:</strong> Platforms like Railway, Render, or AWS that run your code 24/7.",
+        code: `# Deployment Prep
 # 1. Create venv: python -m venv venv
-# 2. Save requirements: pip freeze > requirements.txt
-# 3. Deploy to cloud (e.g., git push heroku main)`,
-        visual: "A shiny glass dome shielding your code as it's lifted by drones into a massive glowing cloud server in the sky.",
-        recap: "Virtual environments keep your project libraries clean and isolated.<br>A requirements file acts as a map for the server.<br>Launchpad (Deployment) makes your work real and accessible.",
-        hook: "Look up 'Railway.app' — it's one of the easiest ways to host your first Python app!"
+# 2. Activate: venv\\Scripts\\activate
+# 3. Create map: pip freeze > requirements.txt`,
+        visual: "A rocket ship carrying a glass-shielded server box up into a glowing cloud in the sky.",
+        recap: "Venv keeps your project clean and portable.<br>Requirements.txt is the recipe for your environment.<br>Launchpad (Deployment) makes your code real.",
+        hook: "Look up Railway.app — it is one of the easiest ways to host a Python app for free!"
     }
 ];
 
@@ -792,6 +730,9 @@ async function initPyodide() {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
+    // Initialize Python Engine
+    pyodideReadyPromise = initPyodide();
+
     const theoryMenuList = document.getElementById('theory-menu-list');
     const theoryContainer = document.getElementById('theory-dynamic-container');
 
