@@ -7,14 +7,166 @@
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Manrope:wght@600;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css" rel="stylesheet" />
+    <!-- Google Identity Services for OAuth -->
+    <script src="https://accounts.google.com/gsi/client" async defer></script>
 </head>
 <body>
     <div id="app-container">
-        
+
+        <!-- ==================== SCREEN 0: AUTH ==================== -->
+        <div id="screen-auth" class="screen active auth-screen">
+            <div class="auth-hero-bg"></div>
+            <div class="auth-content">
+                <div class="auth-brand">
+                    <span class="auth-snake-icon">🐍</span>
+                    <h1 class="gradient-text title-manrope auth-title">PY-Learn</h1>
+                    <p class="auth-subtitle">Master Python. Build the Future.</p>
+                </div>
+
+                <div class="auth-card">
+                    <div class="auth-tab-bar">
+                        <button class="auth-tab-btn active" id="tab-login" onclick="switchAuthTab('login')">Sign In</button>
+                        <button class="auth-tab-btn" id="tab-register" onclick="switchAuthTab('register')">Register</button>
+                    </div>
+
+                    <!-- Login Form -->
+                    <div id="auth-login-form" class="auth-form">
+                        <div class="auth-input-group">
+                            <span class="auth-input-icon">📧</span>
+                            <input type="email" id="login-email" class="auth-input" placeholder="Email address" autocomplete="email">
+                        </div>
+                        <div class="auth-input-group">
+                            <span class="auth-input-icon">🔑</span>
+                            <input type="password" id="login-password" class="auth-input" placeholder="Password" autocomplete="current-password">
+                        </div>
+                        <div id="login-error" class="auth-error-msg" style="display:none;"></div>
+                        <button class="primary-btn auth-submit-btn" id="login-btn" onclick="AuthManager.login()">Sign In ▸</button>
+                    </div>
+
+                    <!-- Register Form -->
+                    <div id="auth-register-form" class="auth-form" style="display:none">
+                        <div class="auth-input-group">
+                            <span class="auth-input-icon">👤</span>
+                            <input type="text" id="reg-name" class="auth-input" placeholder="Full Name">
+                        </div>
+                        <div class="auth-input-group">
+                            <span class="auth-input-icon">🏷</span>
+                            <input type="text" id="reg-username" class="auth-input" placeholder="@username">
+                        </div>
+                        <div class="auth-input-group">
+                            <span class="auth-input-icon">📧</span>
+                            <input type="email" id="reg-email" class="auth-input" placeholder="Email address">
+                        </div>
+                        <div class="auth-input-group">
+                            <span class="auth-input-icon">🔑</span>
+                            <input type="password" id="reg-password" class="auth-input" placeholder="Password (min 6 chars)">
+                        </div>
+                        <div id="reg-error" class="auth-error-msg" style="display:none;"></div>
+                        <button class="primary-btn auth-submit-btn" id="register-btn" onclick="AuthManager.register()">Create Account ▸</button>
+                    </div>
+
+                    <div class="auth-divider">
+                        <div class="auth-divider-line"></div>
+                        <span class="auth-divider-text">or</span>
+                        <div class="auth-divider-line"></div>
+                    </div>
+
+                    <button class="google-signin-btn" onclick="AuthManager.googleSignIn()">
+                        <svg width="18" height="18" viewBox="0 0 18 18" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M17.64 9.2c0-.637-.057-1.251-.164-1.84H9v3.481h4.844c-.209 1.125-.843 2.078-1.796 2.717v2.258h2.908c1.702-1.567 2.684-3.875 2.684-6.615z" fill="#4285F4"/>
+                            <path d="M9 18c2.43 0 4.467-.806 5.956-2.18l-2.908-2.259c-.806.54-1.837.86-3.048.86-2.344 0-4.328-1.584-5.036-3.711H.957v2.332C2.438 15.983 5.482 18 9 18z" fill="#34A853"/>
+                            <path d="M3.964 10.71A5.41 5.41 0 0 1 3.682 9c0-.593.102-1.17.282-1.71V4.958H.957A8.996 8.996 0 0 0 0 9c0 1.452.348 2.827.957 4.042l3.007-2.332z" fill="#FBBC05"/>
+                            <path d="M9 3.58c1.321 0 2.508.454 3.44 1.345l2.582-2.58C13.463.891 11.426 0 9 0 5.482 0 2.438 2.017.957 4.958L3.964 6.29C4.672 4.163 6.656 3.58 9 3.58z" fill="#EA4335"/>
+                        </svg>
+                        Continue with Google
+                    </button>
+
+                    <div class="auth-footer-row">
+                        <p class="auth-footer-text">💾 Data saved locally</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ==================== SCREEN: ADMIN PANEL ==================== -->
+        <div id="screen-admin" class="screen admin-screen">
+            <div class="admin-hero-bg"></div>
+            <div class="admin-panel-wrap">
+
+                <!-- Header -->
+                <div class="admin-header">
+                    <div class="admin-header-left">
+                        <span class="admin-shield-icon">🛡️</span>
+                        <div>
+                            <h1 class="admin-title">Admin Panel</h1>
+                            <p class="admin-subtitle">PY-Learn Platform · Logged in as Admin</p>
+                        </div>
+                    </div>
+                    <button class="admin-logout-btn" onclick="adminLogout()">Logout ▸</button>
+                </div>
+
+                <!-- Stats Bar -->
+                <div class="admin-stats-bar">
+                    <div class="admin-stat-card">
+                        <div class="admin-stat-num" id="admin-user-count">0</div>
+                        <div class="admin-stat-label">Total Users</div>
+                    </div>
+                    <div class="admin-stat-card">
+                        <div class="admin-stat-num" id="admin-today-count">—</div>
+                        <div class="admin-stat-label">Joined Today</div>
+                    </div>
+                    <div class="admin-stat-card">
+                        <div class="admin-stat-num" id="admin-active-count">—</div>
+                        <div class="admin-stat-label">Active (7 days)</div>
+                    </div>
+                </div>
+
+                <!-- Action Bar -->
+                <div class="admin-action-bar">
+                    <h2 class="admin-section-title">👥 Registered Users</h2>
+                </div>
+
+                <!-- Users Table -->
+                <div class="admin-table-wrap">
+                    <table class="admin-table">
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Name</th>
+                                <th>Email</th>
+                                <th>Provider</th>
+                                <th>Registered</th>
+                                <th>Last Login</th>
+                                <th>Logins</th>
+                            </tr>
+                        </thead>
+                        <tbody id="admin-user-tbody">
+                            <tr><td colspan="7" style="text-align:center;color:var(--grey-text);padding:2rem;">Loading...</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <p class="admin-data-note">💾 Data is stored locally in this browser's localStorage.</p>
+            </div>
+        </div>
+
         <!-- ==================== SCREEN 1: DASHBOARD ==================== -->
-        <div id="screen-dashboard" class="screen active">
+        <div id="screen-dashboard" class="screen">
             <header class="app-header">
-                <div class="avatar">👨‍💼</div>
+                <div class="avatar-wrap">
+                    <div class="avatar" id="main-avatar" onclick="toggleProfileDropdown()">\u{1F468}\u200D\u{1F4BC}</div>
+                    <div class="profile-dropdown" id="profile-dropdown">
+                        <div class="dropdown-user-info">
+                            <div class="dropdown-initial" id="dropdown-initial">?</div>
+                            <div>
+                                <p class="dropdown-name" id="dropdown-user-name">User</p>
+                                <p class="dropdown-email" id="dropdown-user-email">Loading...</p>
+                            </div>
+                        </div>
+                        <div class="dropdown-divider"></div>
+                        <button class="dropdown-item signout" onclick="AuthManager.logout()">\u{1F6AA} Sign Out</button>
+                    </div>
+                </div>
                 <h1 class="gradient-text title-manrope">PY-Learn</h1>
                 <div class="streak-badge">7 🔥</div>
             </header>
@@ -195,12 +347,7 @@
                     </div>
                 </div>
 
-                <div class="leaderboard component-margin">
-                    <h3 class="white-text margin-bot">Top Performers 🏆</h3>
-                    <div class="rank-row"><div class="rank-avatar">👩‍💻</div><div class="rank-info"><span class="name">Sarah.py <span class="pro-tag">PRO</span></span><span class="xp">12,450 XP</span></div><div class="badge gold">1</div></div>
-                    <div class="rank-row"><div class="rank-avatar">👨‍💻</div><div class="rank-info"><span class="name">ZenCoder</span><span class="xp">11,920 XP</span></div><div class="badge silver">2</div></div>
-                    <div class="rank-row active-user"><div class="rank-avatar">👨‍💼</div><div class="rank-info"><span class="name">You (Rank 42)</span><span class="xp">8,240 XP <span class="green-up">↗</span></span></div></div>
-                </div>
+
                 
                 <div style="height: 100px;"></div>
             </div>
@@ -210,7 +357,7 @@
         <div id="screen-theory-menu" class="screen">
             <header class="app-header">
                 <h1 class="title-manrope white-text">Python Curriculum</h1>
-                <span class="pill-label dark">13 Modules</span>
+                <span class="pill-label dark">21 Modules</span>
             </header>
             
             <div class="main-content scrollable">
@@ -260,6 +407,6 @@
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-python.min.js"></script>
-    <script src="app.js"></script>
+    <script src="app.js?v=modern_v1"></script>
 </body>
 </html>
