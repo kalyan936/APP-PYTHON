@@ -58,6 +58,7 @@ body {
 
 .screen.active {
     display: flex;
+    will-change: opacity, transform;
 }
 
 .scrollable {
@@ -235,9 +236,11 @@ button { border: none; cursor: pointer; outline: none; transition: 0.2s; }
 
 .ai-overlay {
     position: absolute; bottom: 120px; left: 2rem; right: 2rem;
-    background: rgba(45, 52, 73, 0.9); /* backdrop blur conceptual */
-    backdrop-filter: blur(10px);
+    background: rgba(45, 52, 73, 0.9);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
     padding: 1rem; border-radius: var(--radius-md); box-shadow: var(--ambient-shadow);
+    will-change: transform;
 }
 .ai-actions { display: flex; gap: 1rem; margin-top: 1rem; }
 
@@ -369,14 +372,16 @@ button { border: none; cursor: pointer; outline: none; transition: 0.2s; }
 
 .auth-card {
     width: 100%;
-    background: rgba(19, 27, 46, 0.6);
+    background: rgba(19, 27, 46, 0.85); /* Slightly more opaque for performance */
     border-radius: 1.5rem;
     padding: 2rem;
     border: 1px solid rgba(255, 255, 255, 0.1);
-    box-shadow: 0 30px 60px rgba(0,0,0,0.6), inset 0 1px 0 rgba(255,255,255,0.1);
-    backdrop-filter: blur(24px);
-    -webkit-backdrop-filter: blur(24px);
-    transition: transform 0.3s;
+    box-shadow: 0 30px 60px rgba(0,0,0,0.6);
+    /* Performance friendly blur */
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    transition: transform 0.2s cubic-bezier(0.17, 0.67, 0.83, 0.67);
+    will-change: transform;
 }
 .auth-card:hover { transform: translateY(-3px); }
 
