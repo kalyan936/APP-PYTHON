@@ -24,7 +24,9 @@ const AuthManager = {
                 btn.onclick = async () => {
                     try {
                         const { GoogleSignIn } = window.Capacitor.Plugins;
-                        const result = await GoogleSignIn.signIn();
+                        const result = await GoogleSignIn.signIn({
+                            clientId: '1006797435922-kjaroc53f58tg4vgepj8kjnk900l8tep.apps.googleusercontent.com',
+                        });
                         console.log("Native Google Result:", result);
                         
                         const user = {
