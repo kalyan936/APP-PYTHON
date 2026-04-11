@@ -216,10 +216,10 @@ async function startPyodideInitialization() {
         if (!window.loadPyodide) {
             await new Promise((resolve, reject) => {
                 const script = document.createElement('script');
-                script.src = "https://cdn.jsdelivr.net/pyodide/v0.25.2/full/pyodide.js";
+                script.src = "https://cdn.jsdelivr.net/pyodide/v0.23.4/full/pyodide.js"; // Highly compatible version for older devices
                 script.async = true;
                 script.onload = resolve;
-                script.onerror = reject;
+                script.onerror = () => reject(new Error("Network failure while downloading Python Engine."));
                 document.head.appendChild(script);
             });
         }
@@ -230,11 +230,10 @@ async function startPyodideInitialization() {
         if (terminal) {
             terminal.innerHTML = '<span class="output-green">$ Python Engine Loaded ✓</span>\n$ Ready for execution.';
         }
-        console.log("Pyodide Ready.");
     } catch (err) {
         console.error("Pyodide Load Fail:", err);
         if (terminal) {
-            terminal.innerHTML = '<span style="color:#ff6b6b">$ Error: Browser version incompatible or connection timeout.</span>';
+            terminal.innerHTML = `<span style="color:#ff6b6b">$ Error Details: ${err.message}</span>\n<p style="font-size: 0.8rem; color: #888; margin-top: 10px;">Please check your internet connection or update your System Android WebView.</p>`;
         }
     } finally {
         pyodideInitInProgress = false;
