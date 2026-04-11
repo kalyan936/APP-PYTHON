@@ -16,12 +16,76 @@
 <body>
     <div id="app-container">
 
-        <!-- ==================== DASHBOARD REMOVED AUTH ==================== -->
+        <!-- ==================== SCREEN 0: AUTH ==================== -->
+        <div id="screen-auth" class="screen active">
+            <div class="auth-hero-bg"></div>
+            <div class="auth-content">
+                <div class="auth-brand">
+                    <span class="auth-snake-icon">🐍</span>
+                    <h1 class="gradient-text auth-title title-manrope">PY-Learn</h1>
+                    <p class="auth-subtitle">Master Python Intelligence</p>
+                </div>
 
-        <!-- ==================== ADMIN PANEL REMOVED ==================== -->
+                <div class="auth-card">
+                    <div class="auth-tab-bar">
+                        <button class="auth-tab-btn active" id="tab-login" onclick="switchAuthTab('login')">Login</button>
+                        <button class="auth-tab-btn" id="tab-signup" onclick="switchAuthTab('signup')">Sign Up</button>
+                    </div>
+
+                    <div id="auth-login-form" class="auth-form">
+                        <div class="auth-input-group">
+                            <span class="auth-input-icon">✉️</span>
+                            <input type="email" placeholder="Email Address" class="auth-input" id="login-email">
+                        </div>
+                        <div class="auth-input-group">
+                            <span class="auth-input-icon">🔒</span>
+                            <input type="password" placeholder="Password" class="auth-input" id="login-password">
+                        </div>
+                        <button class="primary-btn auth-submit-btn" onclick="handleEmailAuth('login')">Continue</button>
+                    </div>
+
+                    <div id="auth-signup-form" class="auth-form" style="display: none;">
+                        <div class="auth-input-group">
+                            <span class="auth-input-icon">👤</span>
+                            <input type="text" placeholder="Full Name" class="auth-input" id="signup-name">
+                        </div>
+                        <div class="auth-input-group">
+                            <span class="auth-input-icon">✉️</span>
+                            <input type="email" placeholder="Email Address" class="auth-input" id="signup-email">
+                        </div>
+                        <div class="auth-input-group">
+                            <span class="auth-input-icon">🔒</span>
+                            <input type="password" placeholder="Password" class="auth-input" id="signup-password">
+                        </div>
+                        <button class="primary-btn auth-submit-btn" onclick="handleEmailAuth('signup')">Create Account</button>
+                    </div>
+
+                    <div class="auth-divider">
+                        <div class="auth-divider-line"></div>
+                        <span class="auth-divider-text">OR</span>
+                        <div class="auth-divider-line"></div>
+                    </div>
+
+                    <div id="google-btn-container">
+                        <!-- Google Identity Services button will be rendered here -->
+                        <button class="google-signin-btn" id="google-signin-btn">
+                            <img src="https://www.gstatic.com/images/branding/product/1x/gsa_512dp.png" alt="Google" width="20">
+                            Continue with Google
+                        </button>
+                    </div>
+
+                    <p id="auth-error" class="auth-error-msg" style="display: none;"></p>
+                </div>
+
+                <div class="auth-footer-row">
+                    <span class="auth-footer-text">Don't have an account?</span>
+                    <button class="auth-link-btn" onclick="switchAuthTab('signup')">Get Started</button>
+                </div>
+            </div>
+        </div>
 
         <!-- ==================== SCREEN 1: DASHBOARD ==================== -->
-        <div id="screen-dashboard" class="screen active">
+        <div id="screen-dashboard" class="screen">
             <header class="app-header">
                 <div class="avatar-wrap">
                     <div class="avatar" id="main-avatar">🐍</div>

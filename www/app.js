@@ -1,3 +1,127 @@
+// ==================== AUTH ENGINE ====================
+const AuthManager = {
+    currentUser: null,
+
+    init() {
+        const savedUser = localStorage.getItem('py_learn_user');
+        if (savedUser) {
+            this.currentUser = JSON.parse(savedUser);
+            this.onAuthenticated(this.currentUser);
+        } else {
+            this.initGoogleSignIn();
+        }
+    },
+
+    async initGoogleSignIn() {
+        // Detect Platform
+        const isNative = window.Capacitor && window.Capacitor.isNativePlatform();
+        console.log("Platform Check - isNative:", isNative);
+
+        if (isNative) {
+            // NATIVE LOGIN (Android/iOS)
+            const btn = document.getElementById('google-signin-btn');
+            if (btn) {
+                btn.onclick = async () => {
+                    try {
+                        const { GoogleSignIn } = window.Capacitor.Plugins;
+                        const result = await GoogleSignIn.signIn();
+                        console.log("Native Google Result:", result);
+                        
+                        const user = {
+                            name: result.name || "Learner",
+                            email: result.email,
+                            provider: "google",
+                            avatar: result.imageUrl || "👤"
+                        };
+                        this.onAuthenticated(user);
+                    } catch (err) {
+                        console.error("Native Google Login Fail:", err);
+                        const errorEl = document.getElementById('auth-error');
+                        errorEl.innerText = "Google Sign-In failed. Please try again.";
+                        errorEl.style.display = 'block';
+                    }
+                };
+            }
+        } else {
+            // WEB LOGIN (Browser)
+            if (window.google) {
+                google.accounts.id.initialize({
+                    client_id: "1006797435922-kjaroc53f58tg4vgepj8kjnk900l8tep.apps.googleusercontent.com",
+                    callback: (response) => this.handleGoogleResponse(response)
+                });
+                const btn = document.getElementById('google-signin-btn');
+                if (btn) {
+                    btn.onclick = () => google.accounts.id.prompt();
+                }
+            }
+        }
+    },
+
+    handleGoogleResponse(response) {
+        console.log("Google Auth Response:", response);
+        // In a real app, you'd verify the JWT token on your backend.
+        // Here we'll mock a successful login.
+        const user = {
+            name: "Google User",
+            email: "user@gmail.com",
+            provider: "google",
+            avatar: "👤"
+        };
+        this.onAuthenticated(user);
+    },
+
+    handleEmailAuth(type) {
+        const email = document.getElementById(`${type}-email`).value;
+        const password = document.getElementById(`${type}-password`).value;
+        const errorEl = document.getElementById('auth-error');
+
+        if (!email || !password) {
+            errorEl.innerText = "Please fill in all fields.";
+            errorEl.style.display = 'block';
+            return;
+        }
+
+        // Mock authentication
+        const user = {
+            name: type === 'signup' ? document.getElementById('signup-name').value : "Learner",
+            email: email,
+            provider: "email",
+            avatar: "🐍"
+        };
+        this.onAuthenticated(user);
+    },
+
+    onAuthenticated(user) {
+        this.currentUser = user;
+        localStorage.setItem('py_learn_user', JSON.stringify(user));
+        
+        // Update UI
+        const avatarEl = document.getElementById('main-avatar');
+        if (avatarEl) avatarEl.innerText = user.avatar || "🐍";
+        
+        NavigationManager.navigateTo('screen-dashboard');
+    },
+
+    logout() {
+        localStorage.removeItem('py_learn_user');
+        this.currentUser = null;
+        window.location.reload(); // Refresh to clean state
+    },
+
+    switchTab(tab) {
+        const isLogin = tab === 'login';
+        document.getElementById('auth-login-form').style.display = isLogin ? 'flex' : 'none';
+        document.getElementById('auth-signup-form').style.display = isLogin ? 'none' : 'flex';
+        document.getElementById('tab-login').classList.toggle('active', isLogin);
+        document.getElementById('tab-signup').classList.toggle('active', !isLogin);
+        document.getElementById('auth-error').style.display = 'none';
+    }
+};
+
+window.switchAuthTab = (tab) => AuthManager.switchTab(tab);
+window.handleEmailAuth = (type) => AuthManager.handleEmailAuth(type);
+window.AuthManager = AuthManager;
+
 // ==================== NAVIGATION ENGINE ====================
 const NavigationManager = {
     navigateTo(targetScreenId) {
@@ -22,7 +146,13 @@ const NavigationManager = {
             }
         }
 
-        // Update Bottom Nav
+        // Handle Bottom Nav visibility
+        const bottomNav = document.querySelector('.bottom-nav');
+        if (bottomNav) {
+            bottomNav.style.display = targetScreenId === 'screen-auth' ? 'none' : 'flex';
+        }
+
+        // Update Bottom Nav active state
         document.querySelectorAll('.nav-item').forEach(item => {
             item.classList.remove('active');
             const onclickAttr = item.getAttribute('onclick');
@@ -173,6 +303,9 @@ window.openTheoryModule = function(moduleId) {
 
 // ==================== INITIALIZATION ====================
 document.addEventListener('DOMContentLoaded', () => {
+    // Initialize Auth
+    AuthManager.init();
+
     // Initial Render
     renderTheoryMenu();
 

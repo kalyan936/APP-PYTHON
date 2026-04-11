@@ -1,5 +1,11 @@
 {
   "appId": "com.stitch.app",
   "appName": "PY-Learn",
-  "webDir": "www"
+  "webDir": "www",
+  "plugins": {
+    "GoogleSignIn": {
+      "clientId": "1006797435922-kjaroc53f58tg4vgepj8kjnk900l8tep.apps.googleusercontent.com",
+      "serverClientId": "1006797435922-kjaroc53f58tg4vgepj8kjnk900l8tep.apps.googleusercontent.com"
+    }
+  }
 }
