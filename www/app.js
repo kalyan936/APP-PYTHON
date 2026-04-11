@@ -1,145 +1,14 @@
-// ==================== AUTH ENGINE ====================
-const AuthManager = {
-    currentUser: null,
+// ==================== INITIALIZATION ====================
+function initApp() {
+    console.log("Initializing PY-Learn (No-Auth Mode)");
+    renderTheoryMenu();
+    NavigationManager.navigateTo('screen-dashboard');
+}
 
-    init() {
-        const savedUser = localStorage.getItem('py_learn_user');
-        if (savedUser) {
-            this.currentUser = JSON.parse(savedUser);
-            this.onAuthenticated(this.currentUser);
-        } else {
-            this.initGoogleSignIn();
-        }
-    },
-
-    async initGoogleSignIn() {
-        // Detect Platform
-        const isNative = window.Capacitor && window.Capacitor.isNativePlatform();
-        console.log("Platform Check - isNative:", isNative);
-
-        if (isNative) {
-            // NATIVE LOGIN (Android/iOS)
-            const btn = document.getElementById('google-signin-btn');
-            if (btn) {
-                btn.onclick = async () => {
-                    try {
-                        const { GoogleSignIn } = window.Capacitor.Plugins;
-                        const result = await GoogleSignIn.signIn({
-                            clientId: '1006797435922-blgc259idks35vsq5dnbn5qpd180vq67.apps.googleusercontent.com',
-                        });
-                        console.log("Native Google Result:", result);
-                        
-                        const user = {
-                            name: result.name || "Learner",
-                            email: result.email,
-                            provider: "google",
-                            avatar: result.imageUrl || "👤"
-                        };
-                        this.onAuthenticated(user);
-                    } catch (err) {
-                        console.error("Native Google Login Fail:", err);
-                        const errorEl = document.getElementById('auth-error');
-                        errorEl.innerText = "Google Sign-In failed. Please try again.";
-                        errorEl.style.display = 'block';
-                    }
-                };
-            }
-        } else {
-            // WEB LOGIN (Browser)
-            if (window.google) {
-                google.accounts.id.initialize({
-                    client_id: "1006797435922-blgc259idks35vsq5dnbn5qpd180vq67.apps.googleusercontent.com",
-                    callback: (response) => this.handleGoogleResponse(response)
-                });
-                const btn = document.getElementById('google-signin-btn');
-                if (btn) {
-                    btn.onclick = () => google.accounts.id.prompt();
-                }
-            }
-        }
-    },
-
-    handleGoogleResponse(response) {
-        console.log("Google Auth Response:", response);
-        // In a real app, you'd verify the JWT token on your backend.
-        // Here we'll mock a successful login.
-        const user = {
-            name: "Google User",
-            email: "user@gmail.com",
-            provider: "google",
-            avatar: "👤"
-        };
-        this.onAuthenticated(user);
-    },
-
-    handleEmailAuth(type) {
-        const email = document.getElementById(`${type}-email`).value;
-        const password = document.getElementById(`${type}-password`).value;
-        const errorEl = document.getElementById('auth-error');
-
-        if (!email || !password) {
-            errorEl.innerText = "Please fill in all fields.";
-            errorEl.style.display = 'block';
-            return;
-        }
-
-        // Mock authentication
-        const user = {
-            name: type === 'signup' ? document.getElementById('signup-name').value : "Learner",
-            email: email,
-            provider: "email",
-            avatar: "🐍"
-        };
-        this.onAuthenticated(user);
-    },
-
-    onAuthenticated(user) {
-        this.currentUser = user;
-        localStorage.setItem('py_learn_user', JSON.stringify(user));
-        
-        // Update UI
-        const avatarEl = document.getElementById('main-avatar');
-        if (avatarEl) avatarEl.innerText = user.avatar || "🐍";
-        
-        // Add a smooth success transition
-        const authContent = document.querySelector('.auth-content');
-        if (authContent) {
-            authContent.style.transition = '0.5s';
-            authContent.style.opacity = '0';
-            authContent.style.transform = 'scale(0.95)';
-        }
-
-        setTimeout(() => {
-            renderTheoryMenu(); // Ensure modules are rendered
-            NavigationManager.navigateTo('screen-dashboard');
-        }, 500);
-    },
-
-    logout() {
-        localStorage.removeItem('py_learn_user');
-        this.currentUser = null;
-        window.location.reload(); // Refresh to clean state
-    },
-
-    switchTab(tab) {
-        const isLogin = tab === 'login';
-        const loginForm = document.getElementById('auth-login-form');
-        const signupForm = document.getElementById('auth-signup-form');
-        
-        if (loginForm && signupForm) {
-            loginForm.style.display = isLogin ? 'flex' : 'none';
-            signupForm.style.display = isLogin ? 'none' : 'flex';
-        }
-
-        document.getElementById('tab-login').classList.toggle('active', isLogin);
-        document.getElementById('tab-signup').classList.toggle('active', !isLogin);
-        document.getElementById('auth-error').style.display = 'none';
-    }
+window.logout = () => {
+    localStorage.clear();
+    window.location.reload();
 };
-
-window.switchAuthTab = (tab) => AuthManager.switchTab(tab);
-window.handleEmailAuth = (type) => AuthManager.handleEmailAuth(type);
-window.AuthManager = AuthManager;
 
 // ==================== NAVIGATION ENGINE ====================
 const NavigationManager = {
@@ -161,23 +30,14 @@ const NavigationManager = {
             if (mainContent) {
                 mainContent.style.animation = 'none';
                 mainContent.offsetHeight; 
-                mainContent.style.animation = null; 
+                mainContent.style.animation = 'slideUpFade 0.4s ease-out forwards';
             }
         }
 
-        // Handle Bottom Nav visibility
-        const bottomNav = document.querySelector('.bottom-nav');
-        if (bottomNav) {
-            bottomNav.style.display = targetScreenId === 'screen-auth' ? 'none' : 'flex';
-        }
-
-        // Update Bottom Nav active state
-        document.querySelectorAll('.nav-item').forEach(item => {
-            item.classList.remove('active');
-            const onclickAttr = item.getAttribute('onclick');
-            if (onclickAttr && onclickAttr.includes(targetScreenId)) {
-                item.classList.add('active');
-            }
+        // Active state for bottom nav
+        document.querySelectorAll('.nav-item').forEach(btn => {
+            const onclickAttr = btn.getAttribute('onclick') || "";
+            btn.classList.toggle('active', onclickAttr.includes(targetScreenId));
         });
         
         const scrollable = targetScreen?.querySelector('.scrollable');
@@ -216,24 +76,30 @@ async function startPyodideInitialization() {
         if (!window.loadPyodide) {
             await new Promise((resolve, reject) => {
                 const script = document.createElement('script');
-                script.src = "https://cdn.jsdelivr.net/pyodide/v0.23.4/full/pyodide.js"; // Highly compatible version for older devices
+                // Using a more modern but compatible version with ML support
+                script.src = "https://cdn.jsdelivr.net/pyodide/v0.25.2/full/pyodide.js";
                 script.async = true;
                 script.onload = resolve;
-                script.onerror = () => reject(new Error("Network failure while downloading Python Engine."));
+                script.onerror = () => reject(new Error("Unable to reach Python CDN. Check your internet."));
                 document.head.appendChild(script);
             });
         }
 
+        if (terminal) terminal.innerHTML = '<div class="loader-pulse">Initializing WASM Core...</div>';
         pyodideInstance = await loadPyodide();
-        await pyodideInstance.loadPackage("micropip");
+        
+        if (terminal) terminal.innerHTML = '<div class="loader-pulse">Installing ML Support (NumPy, Pandas)...</div>';
+        
+        // Pre-load essential ML packages
+        await pyodideInstance.loadPackage(["numpy", "pandas", "micropip"]);
         
         if (terminal) {
-            terminal.innerHTML = '<span class="output-green">$ Python Engine Loaded ✓</span>\n$ Ready for execution.';
+            terminal.innerHTML = '<span class="output-green">$ Python Engine Ready ✓</span>\n$ ML Support Active (NumPy, Pandas Loaded)\n$ Use `await micropip.install("scikit-learn")` for ML models.';
         }
     } catch (err) {
         console.error("Pyodide Load Fail:", err);
         if (terminal) {
-            terminal.innerHTML = `<span style="color:#ff6b6b">$ Error Details: ${err.message}</span>\n<p style="font-size: 0.8rem; color: #888; margin-top: 10px;">Please check your internet connection or update your System Android WebView.</p>`;
+            terminal.innerHTML = `<span style="color:#ff6b6b">$ Error: ${err.message}</span>\n<div style="font-size: 0.8rem; margin-top:10px; opacity:0.6;">Android WebView update may be required.</div>`;
         }
     } finally {
         pyodideInitInProgress = false;
@@ -328,8 +194,8 @@ window.openTheoryModule = function(moduleId) {
 
 // ==================== INITIALIZATION ====================
 document.addEventListener('DOMContentLoaded', () => {
-    // Initialize Auth
-    AuthManager.init();
+    // Initialize App
+    initApp();
 
     // Initial Render
     renderTheoryMenu();
