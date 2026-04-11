@@ -4,8 +4,8 @@
   "webDir": "www",
   "plugins": {
     "GoogleSignIn": {
-      "clientId": "1006797435922-kjaroc53f58tg4vgepj8kjnk900l8tep.apps.googleusercontent.com",
-      "serverClientId": "1006797435922-kjaroc53f58tg4vgepj8kjnk900l8tep.apps.googleusercontent.com"
+      "clientId": "1006797435922-blgc259idks35vsq5dnbn5qpd180vq67.apps.googleusercontent.com",
+      "serverClientId": "1006797435922-blgc259idks35vsq5dnbn5qpd180vq67.apps.googleusercontent.com"
     }
   }
 }

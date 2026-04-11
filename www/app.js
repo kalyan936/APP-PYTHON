@@ -25,7 +25,7 @@ const AuthManager = {
                     try {
                         const { GoogleSignIn } = window.Capacitor.Plugins;
                         const result = await GoogleSignIn.signIn({
-                            clientId: '1006797435922-kjaroc53f58tg4vgepj8kjnk900l8tep.apps.googleusercontent.com',
+                            clientId: '1006797435922-blgc259idks35vsq5dnbn5qpd180vq67.apps.googleusercontent.com',
                         });
                         console.log("Native Google Result:", result);
                         
@@ -48,7 +48,7 @@ const AuthManager = {
             // WEB LOGIN (Browser)
             if (window.google) {
                 google.accounts.id.initialize({
-                    client_id: "1006797435922-kjaroc53f58tg4vgepj8kjnk900l8tep.apps.googleusercontent.com",
+                    client_id: "1006797435922-blgc259idks35vsq5dnbn5qpd180vq67.apps.googleusercontent.com",
                     callback: (response) => this.handleGoogleResponse(response)
                 });
                 const btn = document.getElementById('google-signin-btn');
