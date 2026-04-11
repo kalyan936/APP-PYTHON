@@ -305,11 +305,15 @@ button { border: none; cursor: pointer; outline: none; transition: 0.2s; }
 
 /* Bottom Nav */
 .bottom-nav {
-    position: absolute; bottom: 0; width: 100%;
-    background: #080c14; /* Darker than base */
-    display: flex; justify-content: space-around;
+    position: fixed; bottom: 0; left: 0; right: 0;
+    width: 100%;
+    background: rgba(8, 12, 20, 0.95);
+    backdrop-filter: blur(10px);
+    display: none; /* Hidden by default for Auth */
+    justify-content: space-around;
     padding: 1rem 0.5rem;
     border-top: 1px solid var(--surface-high);
+    z-index: 999;
 }
 .nav-item {
     background: none; color: var(--grey-text);
@@ -372,6 +376,7 @@ button { border: none; cursor: pointer; outline: none; transition: 0.2s; }
 
 .auth-card {
     width: 100%;
+    max-width: 450px; /* Cap for desktop */
     background: rgba(19, 27, 46, 0.85); /* Slightly more opaque for performance */
     border-radius: 1.5rem;
     padding: 2rem;
