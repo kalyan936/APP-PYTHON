@@ -101,7 +101,18 @@ const AuthManager = {
         const avatarEl = document.getElementById('main-avatar');
         if (avatarEl) avatarEl.innerText = user.avatar || "🐍";
         
-        NavigationManager.navigateTo('screen-dashboard');
+        // Add a smooth success transition
+        const authContent = document.querySelector('.auth-content');
+        if (authContent) {
+            authContent.style.transition = '0.5s';
+            authContent.style.opacity = '0';
+            authContent.style.transform = 'scale(0.95)';
+        }
+
+        setTimeout(() => {
+            renderTheoryMenu(); // Ensure modules are rendered
+            NavigationManager.navigateTo('screen-dashboard');
+        }, 500);
     },
 
     logout() {
@@ -112,8 +123,14 @@ const AuthManager = {
 
     switchTab(tab) {
         const isLogin = tab === 'login';
-        document.getElementById('auth-login-form').style.display = isLogin ? 'flex' : 'none';
-        document.getElementById('auth-signup-form').style.display = isLogin ? 'none' : 'flex';
+        const loginForm = document.getElementById('auth-login-form');
+        const signupForm = document.getElementById('auth-signup-form');
+        
+        if (loginForm && signupForm) {
+            loginForm.style.display = isLogin ? 'flex' : 'none';
+            signupForm.style.display = isLogin ? 'none' : 'flex';
+        }
+
         document.getElementById('tab-login').classList.toggle('active', isLogin);
         document.getElementById('tab-signup').classList.toggle('active', !isLogin);
         document.getElementById('auth-error').style.display = 'none';
@@ -199,7 +216,7 @@ async function startPyodideInitialization() {
         if (!window.loadPyodide) {
             await new Promise((resolve, reject) => {
                 const script = document.createElement('script');
-                script.src = "https://cdn.jsdelivr.net/pyodide/v1.17.0/full/pyodide.js"; // Using more stable version
+                script.src = "https://cdn.jsdelivr.net/pyodide/v0.25.2/full/pyodide.js";
                 script.async = true;
                 script.onload = resolve;
                 script.onerror = reject;
@@ -227,11 +244,18 @@ async function startPyodideInitialization() {
 // ==================== THEORY ENGINE ====================
 function renderTheoryMenu() {
     const theoryMenuList = document.getElementById('theory-menu-list');
-    if (!theoryMenuList || !window.theoryModules) return;
+    const modules = window.theoryModules || theoryModules;
+    
+    if (!theoryMenuList) return;
+    if (!modules) {
+        console.warn("Theory modules not found. Retrying in 1s...");
+        setTimeout(renderTheoryMenu, 1000);
+        return;
+    }
 
     // Use DocumentFragment for better performance
     const fragment = document.createDocumentFragment();
-    window.theoryModules.forEach((mod) => {
+    modules.forEach((mod) => {
         const div = document.createElement('div');
         div.className = 'card theory-menu-card';
         div.onclick = () => openTheoryModule(mod.id);

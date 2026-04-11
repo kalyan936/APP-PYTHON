@@ -1,4 +1,4 @@
-const theoryModules = [
+var theoryModules = [
     {
         id: 1,
         title: "Introduction to Python",
