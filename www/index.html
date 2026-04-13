@@ -2,69 +2,125 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self' data: gap: https://ssl.gstatic.com 'unsafe-eval'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdnjs.cloudflare.com; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://cdn.jsdelivr.net https://accounts.google.com https://cdnjs.cloudflare.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https://www.gstatic.com; connect-src 'self' https://cdn.jsdelivr.net https://pypi.org https://files.pythonhosted.org; worker-src 'self' blob:; child-src 'self' blob:;">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self' data: gap: https://ssl.gstatic.com 'unsafe-eval'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdnjs.cloudflare.com; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://cdn.jsdelivr.net https://*.jsdelivr.net https://accounts.google.com https://cdnjs.cloudflare.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https://www.gstatic.com https://*.googleusercontent.com https://lh3.googleusercontent.com; connect-src 'self' https://cdn.jsdelivr.net https://*.jsdelivr.net https://pypi.org https://files.pythonhosted.org https://oauth2.googleapis.com https://openidconnect.googleapis.com https://accounts.google.com; worker-src 'self' blob:; child-src 'self' blob: https://accounts.google.com; frame-src 'self' https://accounts.google.com;">
     <title>Stitch - PY-Learn</title>
+    
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
     <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Manrope:wght@600;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css" rel="stylesheet" />
+    
     <script src="theory.js"></script>
     <script src="https://accounts.google.com/gsi/client" async defer></script>
 </head>
 <body>
     <div id="app-container">
 
+        <!-- ==================== SCREEN 0: LOGIN ==================== -->
+        <div id="screen-login" class="screen active">
+            <div class="login-bg-glow"></div>
+            <div class="login-container">
+                <div class="login-logo-wrap">
+                    <div class="login-snake-icon">🐍</div>
+                    <h1 class="gradient-text title-outfit login-title">PY-Learn</h1>
+                    <p class="login-tagline">Master Python. Architect the Future.</p>
+                </div>
+
+                <div class="login-features">
+                    <div class="login-feature-item">
+                        <span class="feature-icon">🚀</span>
+                        <span>21 Premium Modules</span>
+                    </div>
+                    <div class="login-feature-item">
+                        <span class="feature-icon">⚡</span>
+                        <span>WASM Python Engine</span>
+                    </div>
+                    <div class="login-feature-item">
+                        <span class="feature-icon">🧠</span>
+                        <span>Adaptive Challenges</span>
+                    </div>
+                </div>
+
+                <div class="login-card glass">
+                    <p class="login-card-label">Secure Authentication</p>
+
+                    <div id="google-signin-btn-wrapper">
+                        <div id="g_id_onload"
+                             data-client_id="1006797435922-blgc259idks35vsq5dnbn5qpd180vq67.apps.googleusercontent.com"
+                             data-callback="handleGoogleSignIn"
+                             data-auto_prompt="false">
+                        </div>
+                        <div class="g_id_signin"
+                             data-type="standard"
+                             data-shape="pill"
+                             data-theme="filled_black"
+                             data-text="continue_with"
+                             data-size="large"
+                             data-logo_alignment="left"
+                             data-width="280">
+                        </div>
+                    </div>
+
+                    <div class="login-divider"><span>or</span></div>
+
+                    <button class="guest-btn" onclick="signInAsGuest()">
+                        Explore as Guest
+                    </button>
+                    <p class="login-disclaimer">By entering, you agree to our Neural Terms.</p>
+                </div>
+            </div>
+        </div>
+
         <!-- ==================== SCREEN 1: DASHBOARD ==================== -->
-        <div id="screen-dashboard" class="screen active">
+        <div id="screen-dashboard" class="screen">
             <header class="app-header">
-                <div class="avatar-wrap">
+                <div class="avatar-wrap" onclick="navigateTo('screen-profile')" style="cursor:pointer;">
                     <div class="avatar" id="main-avatar">🐍</div>
                 </div>
-                <h1 class="gradient-text title-manrope">PY-Learn</h1>
+                <h1 class="gradient-text title-outfit">PY-Learn</h1>
                 <div class="streak-badge">7 🔥</div>
             </header>
 
             <div class="main-content scrollable">
-                <div class="card current-progress">
-                    <p class="overline-text">CURRENT PROGRESS</p>
+                <div class="card current-progress neon-border">
+                    <p class="overline-text">COGNITIVE PROGRESS</p>
                     <div class="progress-metric">
                         <span class="large-number">0%</span> <span class="mastery-text">Mastery</span>
                     </div>
                     <div class="progress-bar-bg"><div class="progress-bar-fill" style="width: 0%"></div></div>
                     <div class="assistant-quote">
-                        "Welcome to Python Intelligence! Start your very first lesson to begin your mastery journey."
+                        "Welcome to the Nexus. Your neural journey into Python architecture begins now."
                     </div>
                 </div>
 
-                <div class="card activity-streak">
-                    <h3 class="streak-title gold-text">0 Day Streak!</h3>
+                <div class="card activity-streak glass">
+                    <h3 class="streak-title gold-text">Commencing Streak...</h3>
                     <p class="streak-sub">Next milestone: 3 days</p>
                     <div class="streak-grid">
                         <div class="day past">M</div><div class="day past">T</div>
-                        <div class="day past">-</div><div class="day past">-</div>
-                        <div class="day past">-</div><div class="day past">-</div>
+                        <div class="day past">W</div><div class="day past">T</div>
+                        <div class="day past">F</div><div class="day past">S</div>
                         <div class="day current">🏃</div>
                     </div>
                 </div>
 
-                <div class="card next-lesson">
-                    <span class="pill-label">NEXT LESSON</span>
+                <div class="card next-lesson primary-grad">
+                    <span class="pill-label dark">NEW MODULE</span>
                     <h2 class="lesson-heading">Introduction to Python</h2>
-                    <p class="lesson-body">Start your very first module and learn the foundational blocks of Python programming.</p>
+                    <p class="lesson-body">Initialize your environment and master the foundational blocks of the ecosystem.</p>
                     <div class="lesson-meta">
-                        <span>🕒 5 mins</span> <span>⭐ Beginner</span>
+                        <span>🕒 5 mins</span> <span>⭐ Elite</span>
                     </div>
-                    <button class="primary-btn" onclick="navigateTo('screen-theory-menu')">Start Session ▸</button>
+                    <button class="primary-btn white" onclick="navigateTo('screen-theory-menu')">Launch Session ▸</button>
                 </div>
 
-                <div class="pro-tip widget">
+                <div class="pro-tip widget glass">
                     <div class="pro-tip-border"></div>
                     <div class="pro-tip-content">
-                        <h4 class="amber-text">💡 Pro Tip</h4>
-                        <p>Use <code>enumerate()</code> when you need both the index and value in a loop. It's more readable than <code>range(len())</code>.</p>
+                        <h4 class="amber-text">💡 Architectural Insight</h4>
+                        <p>Leverage <code>enumerate()</code> for simultaneous index-value access. It's the standard for clean, performant iteration.</p>
                     </div>
                 </div>
             </div>
@@ -74,57 +130,57 @@
         <div id="screen-editor" class="screen">
             <header class="app-header">
                 <button class="back-btn" onclick="navigateTo('screen-dashboard')">←</button>
-                <h1 class="gradient-text title-manrope">PY-Learn</h1>
+                <h1 class="gradient-text title-outfit">Sandbox</h1>
                 <div class="streak-badge">0 🔥</div>
             </header>
 
-            <div class="toolbar">
-                <button class="run-btn primary-btn-small" id="run-code-btn">▸ Run</button>
-                <button class="debug-btn">🕷 Clear</button>
+            <div class="toolbar glass">
+                <button class="run-btn primary-btn-small" id="run-code-btn">▸ Execute</button>
+                <button class="debug-btn">🕷 Reset</button>
                 <div class="spacer"></div>
                 <button class="icon-btn">⚙</button>
                 <button class="icon-btn">🕒</button>
             </div>
 
-            <div class="editor-window">
+            <div class="editor-window glass-dark">
                 <div class="editor-bar">
                     <span class="file-name">main.py</span>
                     <div class="window-controls"><span class="dot red"></span><span class="dot yellow"></span><span class="dot green"></span></div>
                 </div>
                 <div class="editor-content">
-                    <textarea id="python-code-editor" class="code-textarea" spellcheck="false" autocomplete="off" autocorrect="off" autocapitalize="off" dir="ltr" placeholder="Write your Python code here..."></textarea>
+                    <textarea id="python-code-editor" class="code-textarea" spellcheck="false" autocomplete="off" autocorrect="off" autocapitalize="off" dir="ltr" placeholder="# Write your Python code here..."></textarea>
                 </div>
             </div>
 
-            <div class="terminal-section">
+            <div class="terminal-section glass">
                 <div class="terminal-tabs">
-                    <span class="tab active">TERMINAL</span>
-                    <span class="tab">PROBLEMS</span>
+                    <span class="tab active">VIRTUAL TERMINAL</span>
+                    <span class="tab">DIAGNOSTICS</span>
                 </div>
                 <div class="terminal-content" id="terminal-output" style="white-space: pre-wrap; word-wrap: break-word;">
-                    <p>$ waiting for execution...</p>
+                    <p>$ System ready. Waiting for input...</p>
                 </div>
             </div>
 
             <div class="success-notification floating-pill">
-                ✅ Exercise Complete! Neural score updated.
+                ✅ Logic Optimized! +50 Neural Score
             </div>
-            <div style="height: 80px;"></div>
+            <div style="height: 100px;"></div>
         </div>
 
         <!-- ==================== SCREEN 3: JOURNEY ==================== -->
         <div id="screen-journey" class="screen">
             <header class="app-header">
-                <h1 class="title-manrope white-text">Practice Journey</h1>
+                <h1 class="title-outfit white-text">Neural Journey</h1>
             </header>
             
             <div class="main-content scrollable">
-                <p class="summary-text">Master Python fundamentals through interactive challenges. Each step unlocks new professional capabilities.</p>
+                <p class="summary-text grey-text" style="font-size: 0.95rem;">Architect your skills through multidimensional challenges. Each node represents a leap in capability.</p>
                 
-                <div class="global-stats component-margin">
-                    <p class="overline-text">GLOBAL PROGRESS</p>
+                <div class="global-stats glass component-margin">
+                    <p class="overline-text">GLOBAL SYNC</p>
                     <div class="stats-flex"><span class="large-number">0 %</span> <span class="icon">📈</span></div>
-                    <div class="progress-bar-bg"><div class="progress-bar-fill green-grad" style="width: 0%"></div></div>
+                    <div class="progress-bar-bg"><div class="progress-bar-fill accent-grad" style="width: 0%"></div></div>
                 </div>
 
                 <div class="skill-map component-margin">
@@ -135,100 +191,94 @@
                     <div class="node locked"><div class="icon-wrap">🔒</div></div>
                 </div>
 
-                <div class="card current-module">
-                    <h3 class="white-text">Current Module</h3>
+                <div class="card current-module glass">
+                    <h3 class="white-text">Active Clusters</h3>
                     <ul class="module-list">
                         <li class="active" onclick="navigateTo('screen-theory-menu')"><span class="icon">▶</span> Introduction to Python</li>
-                        <li class="locked"><span class="icon">🔒</span> Basic Syntax</li>
-                        <li class="locked"><span class="icon">🔒</span> Variables</li>
+                        <li class="locked"><span class="icon">🔒</span> Basic Syntax Engine</li>
+                        <li class="locked"><span class="icon">🔒</span> Recursive Structures</li>
                     </ul>
                 </div>
 
-                <div class="card sandbox-card component-margin" onclick="navigateTo('screen-editor')">
-                    <h3 class="white-text">Live Coding Sandbox</h3>
-                    <p class="streak-sub">New exercises are generated every 24 hours based on your learning curve.</p>
-                    <button class="gradient-text-btn">Launch IDE ➔</button>
+                <div class="card sandbox-card glass-bright component-margin" onclick="navigateTo('screen-editor')">
+                    <h3 class="white-text">Neural Workspace</h3>
+                    <p class="grey-text" style="font-size: 0.85rem; margin-top: 5px;">Procedural challenges generated every cycle based on your cognitive profile.</p>
+                    <button class="gradient-text-btn">Initialize IDE ➔</button>
                 </div>
-                <div style="height: 100px;"></div>
-            </div>
-            
-            <!-- Instant Feedback Overlay -->
-            <div class="feedback-popup floating-pill">
-                ✅ Function logic is optimized! <span class="green-text">+50 XP</span>
+                <div style="height: 120px;"></div>
             </div>
         </div>
 
         <!-- ==================== SCREEN 4: QUIZ ==================== -->
         <div id="screen-quiz" class="screen">
             <header class="app-header">
-                <div class="avatar">👨‍💼</div>
-                <h1 class="title-manrope white-text">PY-Learn</h1>
+                <div class="avatar" id="quiz-avatar">👨‍💼</div>
+                <h1 class="title-outfit white-text">Evaluation</h1>
                 <div class="streak-badge">0 🔥</div>
             </header>
             
             <div class="main-content scrollable">
                 <div class="hero-section center-text component-margin">
-                    <p class="gold-caps">CURRENT CHALLENGE</p>
-                    <h2 class="display-text title-manrope">List Comprehension Mastery</h2>
+                    <p class="gold-caps">VALIDATION PROTOCOL</p>
+                    <h2 class="display-text title-outfit">Collection Mastery</h2>
                 </div>
 
-                <div class="stats-card row-flex component-margin">
+                <div class="stats-card row-flex glass component-margin">
                     <div class="col">
-                        <p class="overline-text">TIME LEFT</p>
+                        <p class="overline-text">LATENCY</p>
                         <p class="mint-mono">04:52</p>
                     </div>
                     <div class="col right-align">
-                        <p class="overline-text">ACCURACY</p>
+                        <p class="overline-text">PRECISION</p>
                         <p class="large-white" id="quiz-accuracy">0%</p>
                     </div>
                 </div>
                 <div class="progress-bar-bg margin-bot"><div class="progress-bar-fill blue-purple-grad" style="width: 60%"></div></div>
 
-                <div class="quiz-container component-margin">
+                <div class="quiz-container glass component-margin">
                     <div class="quiz-header">
-                        <span class="pill-label purple">Q8 / 12</span>
-                        <span class="grey-italic">Difficulty: Intermediate</span>
+                        <span class="pill-label purple">NOD8 / 12</span>
+                        <span class="grey-italic">Complexity: Elite</span>
                     </div>
-                    <p class="quiz-question">Which of the following is the correct syntax for a nested list comprehension that flattens a matrix [[1, 2], [3, 4]] into [1, 2, 3, 4]?</p>
+                    <p class="quiz-question">Identify the correct syntax for a nested comprehension to flatten a multidimensional matrix into a linear vector.</p>
                     
-                    <div class="code-snippet margin-bot">
-<pre><code class="language-python"><span class="string">matrix</span> = [[<span class="number">1</span>, <span class="number">2</span>], [<span class="number">3</span>, <span class="number">4</span>]]
-<span class="comment"># How to flatten this?</span></code></pre>
+                    <div class="code-snippet margin-bot glass-dark">
+<pre><code class="language-python">matrix = [[1, 2], [3, 4]]
+# Flattener sequence?</code></pre>
                     </div>
-
+                    
                     <div class="options-stack" id="quiz-options">
-                        <div class="option" onclick="handleQuiz(this, false)"><span>A) [num for num in row for row in matrix]</span><div class="radio"></div></div>
-                        <div class="option" onclick="handleQuiz(this, true)"><span>B) [num for row in matrix for num in row]</span><div class="radio"></div></div>
-                        <div class="option" onclick="handleQuiz(this, false)"><span>C) [row for num in matrix for num in row]</span><div class="radio"></div></div>
+                        <div class="option glass" onclick="handleQuiz(this, false)"><span>[n for n in r for r in matrix]</span><div class="radio"></div></div>
+                        <div class="option glass" onclick="handleQuiz(this, true)"><span>[n for r in matrix for n in r]</span><div class="radio"></div></div>
+                        <div class="option glass" onclick="handleQuiz(this, false)"><span>[r for n in matrix for n in r]</span><div class="radio"></div></div>
                     </div>
                 </div>
-
-
-                
-                <div style="height: 100px;"></div>
+                <div style="height: 120px;"></div>
             </div>
         </div>
 
         <!-- ==================== SCREEN 5: THEORY MENU ==================== -->
         <div id="screen-theory-menu" class="screen">
             <header class="app-header">
-                <h1 class="title-manrope white-text">Python Curriculum</h1>
-                <span class="pill-label dark">21 Modules</span>
+                <h1 class="title-outfit white-text">Curriculum</h1>
+                <span class="pill-label glass">21 Modules</span>
             </header>
             
             <div class="main-content scrollable">
-                <p class="lesson-body margin-bot">Select a theory module to begin your learning journey.</p>
+                <p class="lesson-body grey-text margin-bot" style="font-size: 0.9rem;">Select a logic module to upgrade your cognitive capabilities.</p>
                 <div id="theory-menu-list">
                     <!-- Javascript injects theory menu cards here -->
                 </div>
-                <div style="height: 100px;"></div>
+                <div style="height: 120px;"></div>
             </div>
         </div>
 
         <!-- ==================== SCREEN 6: THEORY CONTENT ==================== -->
         <div id="screen-theory" class="screen">
             <header class="app-header">
-                <span class="pill-label purple">🎓 THEORY MODULE</span>
+                <button class="back-btn" onclick="navigateTo('screen-theory-menu')">←</button>
+                <span class="pill-label purple">LOGIC MODULE</span>
+                <div style="width:40px;"></div>
             </header>
             
             <div class="main-content scrollable" id="theory-dynamic-container">
@@ -236,27 +286,70 @@
             </div>
         </div>
 
+        <!-- ==================== SCREEN 7: PROFILE ==================== -->
+        <div id="screen-profile" class="screen">
+            <header class="app-header">
+                <button class="back-btn" onclick="navigateTo('screen-dashboard')">←</button>
+                <h1 class="title-outfit white-text">User Profile</h1>
+                <div style="width:40px;"></div>
+            </header>
+
+            <div class="main-content scrollable">
+                <div class="profile-hero glass-bright">
+                    <div class="profile-avatar-large" id="profile-avatar-img">🐍</div>
+                    <h2 class="white-text title-outfit" id="profile-name">Unidentified User</h2>
+                    <p class="grey-text" id="profile-email">Nexus Link: Inactive</p>
+                    <div class="profile-badge guest" id="profile-badge">VISITOR</div>
+                </div>
+
+                <div class="card profile-stats-card glass">
+                    <p class="overline-text">COGNITIVE STATS</p>
+                    <div class="profile-stats-grid">
+                        <div class="stat-item">
+                            <span class="stat-num gradient-text">0</span>
+                            <span class="stat-label">Units Done</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-num gradient-text">0%</span>
+                            <span class="stat-label">Neural Sync</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-num gradient-text">0</span>
+                            <span class="stat-label">Active Cycle</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card profile-actions-card glass">
+                    <div id="profile-auth-section">
+                        <!-- Injected by JS -->
+                    </div>
+                </div>
+                <div style="height: 120px;"></div>
+            </div>
+        </div>
+
         <!-- ==================== GLOBAL BOTTOM NAV ==================== -->
         <nav class="bottom-nav">
             <button class="nav-item" onclick="navigateTo('screen-theory-menu')">
                 <span class="icon">📚</span>
-                <span>THEORY</span>
+                <span>LEARN</span>
             </button>
             <button class="nav-item" onclick="navigateTo('screen-editor')">
                 <span class="icon">💻</span>
-                <span>PRACTICE</span>
+                <span>CODE</span>
             </button>
             <button class="nav-item active" onclick="navigateTo('screen-dashboard')">
                 <span class="icon">🏠</span>
-                <span>HOME</span>
+                <span>START</span>
             </button>
             <button class="nav-item" onclick="navigateTo('screen-quiz')">
                 <span class="icon">🎯</span>
-                <span>QUIZZES</span>
+                <span>TEST</span>
             </button>
             <button class="nav-item" onclick="navigateTo('screen-journey')">
                 <span class="icon">🗺</span>
-                <span>PROJECTS</span>
+                <span>MAP</span>
             </button>
         </nav>
     </div>
