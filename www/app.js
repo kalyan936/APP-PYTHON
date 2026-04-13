@@ -139,10 +139,10 @@ window.handleNativeGoogleSignIn = async function() {
 
             const payload = JSON.parse(jsonPayload);
             const user = {
-                name: payload.name || result.user?.givenName || 'Native User',
-                email: payload.email || result.user?.email,
-                picture: payload.picture || result.user?.imageUrl,
-                id: payload.sub || result.user?.id,
+                name: payload.name || (result.user && result.user.givenName) || 'Native User',
+                email: payload.email || (result.user && result.user.email),
+                picture: payload.picture || (result.user && result.user.imageUrl),
+                id: payload.sub || (result.user && result.user.id),
                 isGuest: false
             };
             Auth.onSignedIn(user, true);
@@ -308,9 +308,11 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // Execution Logic
-    document.getElementById('run-code-btn')?.addEventListener('click', async () => {
-        const term = document.getElementById('terminal-output');
-        const code = document.getElementById('python-code-editor').value;
+    const runBtn = document.getElementById('run-code-btn');
+    if (runBtn) {
+        runBtn.addEventListener('click', async () => {
+            const term = document.getElementById('terminal-output');
+            const code = document.getElementById('python-code-editor').value;
         
         if (!pyodideInstance) {
             term.innerHTML = "$ Initializing WASM Core...\n";
@@ -351,13 +353,17 @@ document.addEventListener('DOMContentLoaded', () => {
             term.innerText += `\n[Exception]\n${errorText}`;
         }
         term.scrollTop = term.scrollHeight;
-    });
+        });
+    }
 
     // Reset Terminal
-    document.querySelector('.debug-btn')?.addEventListener('click', () => {
-        document.getElementById('terminal-output').innerText = "$ Terminal reset.";
-        document.getElementById('python-code-editor').value = "";
-    });
+    const debugBtn = document.querySelector('.debug-btn');
+    if (debugBtn) {
+        debugBtn.addEventListener('click', () => {
+            document.getElementById('terminal-output').innerText = "$ Terminal reset.";
+            document.getElementById('python-code-editor').value = "";
+        });
+    }
 
     // Detect Native Platform to swap Google Sign In Buttons
     if (window.Capacitor && window.Capacitor.isNativePlatform && window.Capacitor.isNativePlatform()) {
