@@ -320,21 +320,37 @@ document.addEventListener('DOMContentLoaded', () => {
         term.innerText = "$ Executing sequence...\n";
 
         try {
+            term.innerText += "$ Analyzing imports for ML modules...\n";
             await pyodideInstance.loadPackagesFromImports(code);
+            
             pyodideInstance.setStdout({ 
                 batched: (msg) => { term.innerText += msg + "\n"; term.scrollTop = term.scrollHeight; } 
             });
+            pyodideInstance.setStderr({
+                batched: (msg) => { term.innerText += "[Warning] " + msg + "\n"; term.scrollTop = term.scrollHeight; }
+            });
             
             await pyodideInstance.runPythonAsync(code);
-            term.innerText += "\n[Sequence Complete]";
+            term.innerText += "\n[Process Completed]";
             
             // Show Success Notification
             const note = document.querySelector('.success-notification');
-            note.style.display = 'flex';
-            setTimeout(() => note.style.display = 'none', 3000);
+            if (note) {
+                note.style.display = 'flex';
+                setTimeout(() => note.style.display = 'none', 3000);
+            }
         } catch (e) {
-            term.innerText += `\n[Exception] ${e.message}`;
+            let errorText = e.toString();
+            const execIndex = errorText.indexOf('File "<exec>"');
+            if (execIndex !== -1) {
+                errorText = 'Traceback (most recent call last):\n  ' + errorText.substring(execIndex);
+            } else {
+                // If the error occurred outside of standard execution (e.g. module missing)
+                errorText = errorText.split('\n').pop() || errorText;
+            }
+            term.innerText += `\n[Exception]\n${errorText}`;
         }
+        term.scrollTop = term.scrollHeight;
     });
 
     // Reset Terminal
