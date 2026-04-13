@@ -117,6 +117,42 @@ window.handleGoogleSignIn = function(response) {
     }
 };
 
+window.handleNativeGoogleSignIn = async function() {
+    try {
+        console.log("Initiating Native Capacitor Google Auth...");
+        if (!window.Capacitor || !window.Capacitor.Plugins.GoogleSignIn) {
+            throw new Error("Native Plugin Not Found");
+        }
+        
+        const result = await window.Capacitor.Plugins.GoogleSignIn.signIn();
+        if (result.idToken) {
+            // Verify and decode ID token similar to Web
+            const base64Url = result.idToken.split('.')[1];
+            let base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
+            const pad = base64.length % 4;
+            if (pad) {
+                base64 += '='.repeat(4 - pad);
+            }
+            const jsonPayload = decodeURIComponent(atob(base64).split('').map(function(c) {
+                return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
+            }).join(''));
+
+            const payload = JSON.parse(jsonPayload);
+            const user = {
+                name: payload.name || result.user?.givenName || 'Native User',
+                email: payload.email || result.user?.email,
+                picture: payload.picture || result.user?.imageUrl,
+                id: payload.sub || result.user?.id,
+                isGuest: false
+            };
+            Auth.onSignedIn(user, true);
+        }
+    } catch(e) {
+        console.error('Native Auth Failure:', e);
+        alert('Native sign-in failed. Error: ' + e.message);
+    }
+};
+
 window.signInAsGuest = function() {
     Auth.onSignedIn({ name: 'Guest', isGuest: true }, true);
 };
@@ -306,6 +342,23 @@ document.addEventListener('DOMContentLoaded', () => {
         document.getElementById('terminal-output').innerText = "$ Terminal reset.";
         document.getElementById('python-code-editor').value = "";
     });
+
+    // Detect Native Platform to swap Google Sign In Buttons
+    if (window.Capacitor && window.Capacitor.isNativePlatform && window.Capacitor.isNativePlatform()) {
+        const webSignIn = document.getElementById('web-google-signin');
+        const nativeSignIn = document.getElementById('native-google-signin');
+        if (webSignIn && nativeSignIn) {
+            webSignIn.style.display = 'none';
+            nativeSignIn.style.display = 'flex';
+        }
+        
+        // Initialize Native Plugin if available
+        if (window.Capacitor.Plugins.GoogleSignIn) {
+            window.Capacitor.Plugins.GoogleSignIn.initialize({
+                clientId: '1006797435922-blgc259idks35vsq5dnbn5qpd180vq67.apps.googleusercontent.com'
+            }).catch(console.error);
+        }
+    }
 
     // Quiz Handler
     window.handleQuiz = (el, isCorrect) => {

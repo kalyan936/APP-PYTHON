@@ -47,20 +47,29 @@
                     <p class="login-card-label">Secure Authentication</p>
 
                     <div id="google-signin-btn-wrapper">
-                        <div id="g_id_onload"
-                             data-client_id="1006797435922-blgc259idks35vsq5dnbn5qpd180vq67.apps.googleusercontent.com"
-                             data-callback="handleGoogleSignIn"
-                             data-auto_prompt="false">
+                        <!-- Web Google Sign-In -->
+                        <div id="web-google-signin">
+                            <div id="g_id_onload"
+                                 data-client_id="1006797435922-blgc259idks35vsq5dnbn5qpd180vq67.apps.googleusercontent.com"
+                                 data-callback="handleGoogleSignIn"
+                                 data-auto_prompt="false">
+                            </div>
+                            <div class="g_id_signin"
+                                 data-type="standard"
+                                 data-shape="pill"
+                                 data-theme="filled_black"
+                                 data-text="continue_with"
+                                 data-size="large"
+                                 data-logo_alignment="left"
+                                 data-width="280">
+                            </div>
                         </div>
-                        <div class="g_id_signin"
-                             data-type="standard"
-                             data-shape="pill"
-                             data-theme="filled_black"
-                             data-text="continue_with"
-                             data-size="large"
-                             data-logo_alignment="left"
-                             data-width="280">
-                        </div>
+                        
+                        <!-- Native Google Sign-In (Capacitor) -->
+                        <button id="native-google-signin" class="guest-btn" style="display:none; width: 280px; align-items: center; justify-content: center; gap: 10px; background: #000; border: 1px solid #333; color: #fff;" onclick="handleNativeGoogleSignIn()">
+                            <img src="https://www.gstatic.com/firebasejs/ui/2.0.0/images/auth/google.svg" width="20" alt="G" />
+                            Continue with Google
+                        </button>
                     </div>
 
                     <div class="login-divider"><span>or</span></div>
